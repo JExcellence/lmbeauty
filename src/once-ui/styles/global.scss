@@ -89,8 +89,10 @@ a:not(.button) {
 /* SCROLLBAR */
 ::-webkit-scrollbar {
     background: var(--static-transparent);
-    width: var(--static-space-8);
-    height: var(--static-space-8);
+    width: var(--static-space-0);
+
+
+    height: var(--static-space-0);
 }
 
 ::-webkit-scrollbar-track {

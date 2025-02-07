@@ -3,131 +3,163 @@ import "@/once-ui/tokens/index.scss";
 
 import classNames from "classnames";
 
-import { baseURL, style, meta, font, effects } from "@/app/resources/once-ui.config";
-import { Background, Column, Flex, ToastProvider, ThemeProvider } from "@/once-ui/components";
+import { Footer, Header, RouteGuard } from "@/components";
+import { baseURL, effects, style } from "@/app/resources";
 
-import { opacity, SpacingToken } from "@/once-ui/types";
-import { Meta, Schema } from "@/once-ui/modules";
+import { Inter } from "next/font/google";
+import { Source_Code_Pro } from "next/font/google";
+
+import { person, home } from "@/app/resources/content";
+import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
+import { Raleway } from 'next/font/google';
+import { Sora } from 'next/font/google';
+import React from "react";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: meta.home.title,
-    description: meta.home.description,
-    baseURL: baseURL,
-    path: meta.home.path,
-    canonical: meta.home.canonical,
-    image: meta.home.image,
-    robots: meta.home.robots,
-    alternates: meta.home.alternates,
-  });
+	return {
+		metadataBase: new URL(`https://${baseURL}`),
+		title: home.title,
+		description: home.description,
+		openGraph: {
+			title: `LM Beauty | Wimpern & Nägel in Oldenburg`,
+			description: "Meine Webseite für alles rund um Wimpern und Nägel",
+			url: baseURL,
+			siteName: `LM Beauty | Wimpern & Nägel in Oldenburg`,
+			locale: "de_DE",
+			type: "website",
+		},
+		robots: {
+			index: true,
+			follow: true,
+			googleBot: {
+				index: true,
+				follow: true,
+				"max-video-preview": -1,
+				"max-image-preview": "large",
+				"max-snippet": -1,
+			},
+		},
+	};
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <Flex
-      suppressHydrationWarning
-      as="html"
-      lang="en"
-      fillHeight
-      background="page"
-      data-neutral={style.neutral}
-      data-brand={style.brand}
-      data-accent={style.accent}
-      data-border={style.border}
-      data-solid={style.solid}
-      data-solid-style={style.solidStyle}
-      data-surface={style.surface}
-      data-transition={style.transition}
-      data-scaling={style.scaling}
-      className={classNames(
-        font.primary.variable,
-        font.secondary.variable,
-        font.tertiary.variable,
-        font.code.variable,
-      )}
-    >
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        title={meta.home.title}
-        description={meta.home.description}
-        path={meta.home.path}
-      />
-      <head>
-        <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: <It's not dynamic nor a security issue.>
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const theme = localStorage.getItem('theme') || 'system';
-                  const root = document.documentElement;
-                  if (theme === 'system') {
-                    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
-                  } else {
-                    root.setAttribute('data-theme', theme);
-                  }
-                } catch (e) {
-                  document.documentElement.setAttribute('data-theme', 'dark');
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
-      <ThemeProvider>
-        <ToastProvider>
-          <Column as="body" fillWidth margin="0" padding="0">
-            <Background
-              position="absolute"
-              mask={{
-                x: effects.mask.x,
-                y: effects.mask.y,
-                radius: effects.mask.radius,
-                cursor: effects.mask.cursor
-              }}
-              gradient={{
-                display: effects.gradient.display,
-                opacity: effects.gradient.opacity as opacity,
-                x: effects.gradient.x,
-                y: effects.gradient.y,
-                width: effects.gradient.width,
-                height: effects.gradient.height,
-                tilt: effects.gradient.tilt,
-                colorStart: effects.gradient.colorStart,
-                colorEnd: effects.gradient.colorEnd,
-              }}
-              dots={{
-                display: effects.dots.display,
-                opacity: effects.dots.opacity as opacity,
-                size: effects.dots.size as SpacingToken,
-                color: effects.dots.color,
-              }}
-              grid={{
-                display: effects.grid.display,
-                opacity: effects.grid.opacity as opacity,
-                color: effects.grid.color,
-                width: effects.grid.width,
-                height: effects.grid.height,
-              }}
-              lines={{
-                display: effects.lines.display,
-                opacity: effects.lines.opacity as opacity,
-                size: effects.lines.size as SpacingToken,
-                thickness: effects.lines.thickness,
-                angle: effects.lines.angle,
-                color: effects.lines.color,
-              }}
-            />
-            {children}
-          </Column>
-        </ToastProvider>
-      </ThemeProvider>
-    </Flex>
-  );
+type FontConfig = {
+	variable: string;
+};
+
+import { Arvo } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
+import { Cormorant_Garamond } from 'next/font/google';
+
+const primary = Arvo({
+	variable: '--font-primary',
+	subsets: ['latin'],
+	weight: '700',
+	display: 'swap'
+});
+
+const secondary = Playfair_Display({
+	variable: '--font-secondary',
+	subsets: ['latin'],
+	display: 'swap'
+});
+
+const tertiary = Cormorant_Garamond({
+	variable: '--font-tertiary',
+	subsets: ['latin'],
+	weight: '600',
+	display: 'swap'
+});
+
+
+
+const code = Source_Code_Pro({
+	variable: "--font-code",
+	subsets: ["latin"],
+	display: "swap",
+});
+
+interface RootLayoutProps {
+	children: React.ReactNode;
+}
+
+export default async function RootLayout({ children }: RootLayoutProps) {
+	return (
+		<Flex
+			as="html"
+			lang="de"
+			background="page"
+			data-neutral={style.neutral}
+			data-brand={style.brand}
+			data-accent={style.accent}
+			data-solid={style.solid}
+			data-solid-style={style.solidStyle}
+			data-theme={style.theme}
+			data-border={style.border}
+			data-surface={style.surface}
+			data-transition={style.transition}
+			className={classNames(
+				primary.variable,
+				secondary ? secondary.variable : "",
+				tertiary ? tertiary.variable : "",
+				code.variable,
+			)}
+		>
+			<ToastProvider>
+				<Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
+					<Background
+						mask={{
+							cursor: effects.mask.cursor,
+							x: effects.mask.x,
+							y: effects.mask.y,
+							radius: effects.mask.radius,
+						}}
+						gradient={{
+							display: effects.gradient.display,
+							x: effects.gradient.x,
+							y: effects.gradient.y,
+							width: effects.gradient.width,
+							height: effects.gradient.height,
+							tilt: effects.gradient.tilt,
+							colorStart: effects.gradient.colorStart,
+							colorEnd: effects.gradient.colorEnd,
+							opacity: effects.gradient.opacity as
+								| 0
+								| 10
+								| 20
+								| 30
+								| 40
+								| 50
+								| 60
+								| 70
+								| 80
+								| 90
+								| 100,
+						}}
+						dots={{
+							display: effects.dots.display,
+							color: effects.dots.color,
+							size: effects.dots.size as any,
+							opacity: effects.dots.opacity as any,
+						}}
+						grid={{
+							display: effects.grid.display,
+							color: effects.grid.color,
+							width: effects.grid.width as any,
+							height: effects.grid.height as any,
+							opacity: effects.grid.opacity as any,
+						}}
+						lines={{
+							display: effects.lines.display,
+							opacity: effects.lines.opacity as any,
+						}}
+					/>
+					<Header/>
+					<Flex>
+						<RouteGuard>{children}</RouteGuard>
+					</Flex>
+					<Footer />
+				</Column>
+			</ToastProvider>
+		</Flex>
+	);
 }
