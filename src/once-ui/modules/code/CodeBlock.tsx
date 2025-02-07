@@ -23,7 +23,6 @@ type CodeInstance = {
 
 interface CodeBlockProps extends React.ComponentProps<typeof Flex> {
   highlight?: string;
-  codeHeight?: number;
   codeInstances?: CodeInstance[];
   codePreview?: ReactNode;
   copyButton?: boolean;
@@ -34,7 +33,6 @@ interface CodeBlockProps extends React.ComponentProps<typeof Flex> {
 
 const CodeBlock: React.FC<CodeBlockProps> = ({
   highlight,
-  codeHeight,
   codeInstances = [],
   codePreview,
   copyButton = true,
@@ -105,17 +103,21 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
       {(codeInstances.length > 1 || (copyButton && !compact)) && (
         <Flex borderBottom="neutral-medium" zIndex={2} fillWidth horizontal="space-between">
           {codeInstances.length > 1 ? (
-            <Flex padding="4">
+            <Flex borderRight="neutral-medium">
               <DropdownWrapper
                 isOpen={isDropdownOpen}
                 onOpenChange={setIsDropdownOpen}
                 trigger={
                   <Button
-                    weight="default"
-                    size="s"
+                    style={{
+                      border: "1px solid var(--static-transparent)",
+                      minWidth: "6rem",
+                    }}
+                    radius="none"
+                    size="m"
                     label={label}
                     suffixIcon="chevronDown"
-                    variant="tertiary"
+                    variant="secondary"
                   />
                 }
                 dropdown={
@@ -140,12 +142,16 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
             <div />
           )}
           {copyButton && !compact && (
-            <Flex padding="4">
+            <Flex borderLeft="neutral-medium">
               <IconButton
-                size="m"
+                style={{
+                  border: "none",
+                }}
+                radius="none"
+                size="l"
                 tooltip="Copy"
                 tooltipPosition="left"
-                variant="tertiary"
+                variant="secondary"
                 onClick={handleCopy}
                 icon={copyIcon}
               />
@@ -173,9 +179,25 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
           fillWidth
           position="relative"
         >
-          <Flex overflowX="auto" fillWidth>
+          {compact && copyButton && (
+            <Flex
+              className={styles.compactCopy}
+              overflow="hidden"
+              zIndex={1}
+              right="8"
+              position="absolute"
+            >
+              <IconButton
+                aria-label="Copy code"
+                onClick={handleCopy}
+                icon={copyIcon}
+                size="m"
+                variant="secondary"
+              />
+            </Flex>
+          )}
+          <Flex overflowX="auto">
             <pre
-              style={{ maxHeight: `${codeHeight}rem` }}
               data-line={highlight}
               ref={preRef}
               className={classNames(styles.pre, `language-${language}`)}
@@ -186,24 +208,6 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
               </code>
             </pre>
           </Flex>
-          {compact && copyButton && (
-            <Flex
-              paddingX="8"
-              paddingY="4"
-              className={styles.compactCopy}
-              zIndex={1}
-            >
-              <IconButton
-                tooltip="Copy"
-                tooltipPosition="left"
-                aria-label="Copy code"
-                onClick={handleCopy}
-                icon={copyIcon}
-                size="m"
-                variant="tertiary"
-              />
-            </Flex>
-          )}
         </Flex>
       )}
     </Flex>
