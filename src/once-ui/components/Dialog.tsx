@@ -17,7 +17,7 @@ import styles from "./Dialog.module.scss";
 interface DialogProps extends Omit<React.ComponentProps<typeof Flex>, "title"> {
   isOpen: boolean;
   onClose: () => void;
-  title: ReactNode | string;
+  title: ReactNode;
   description?: ReactNode;
   children: ReactNode;
   footer?: ReactNode;
@@ -257,68 +257,64 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
                       const firstElement = focusableElements[0] as HTMLElement;
                       const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
 
-                if (e.shiftKey && document.activeElement === firstElement) {
-                  e.preventDefault();
-                  lastElement.focus();
-                } else if (!e.shiftKey && document.activeElement === lastElement) {
-                  e.preventDefault();
-                  firstElement.focus();
-                }
-              }
-            }}
-            {...rest}
-          >
-            <Flex
-              as="header"
-              direction="column"
-              paddingX="24"
-              paddingTop="24"
-              paddingBottom="s"
-              gap="4"
-            >
-              <Flex fillWidth horizontal="space-between" gap="8">
-                {typeof title === 'string' ? (
-                  <Heading id="dialog-title" variant="heading-strong-l">
-                    {title}
-                  </Heading>
-                ) : (
-                  title
+                      if (e.shiftKey && document.activeElement === firstElement) {
+                        e.preventDefault();
+                        lastElement.focus();
+                      } else if (!e.shiftKey && document.activeElement === lastElement) {
+                        e.preventDefault();
+                        firstElement.focus();
+                      }
+                    }
+                  }}
+                  {...rest}
+              >
+                <Flex
+                    as="header"
+                    direction="column"
+                    paddingX="24"
+                    paddingTop="24"
+                    paddingBottom="s"
+                    gap="4"
+                >
+                  <Flex fillWidth horizontal="space-between" gap="8">
+                    <Heading id="dialog-title" variant="heading-strong-l">
+                      {title}
+                    </Heading>
+                    <IconButton
+                        icon="close"
+                        size="m"
+                        variant="tertiary"
+                        tooltip="Close"
+                        onClick={onClose}
+                    />
+                  </Flex>
+                  {description && (
+                      <Text variant="body-default-s" onBackground="neutral-weak">
+                        {description}
+                      </Text>
+                  )}
+                </Flex>
+                <Flex
+                    as="section"
+                    paddingX="24"
+                    paddingBottom="24"
+                    flex={1}
+                    overflowY="auto"
+                    direction="column"
+                >
+                  {children}
+                </Flex>
+                {footer && (
+                    <Flex borderTop="neutral-medium" as="footer" horizontal="end" padding="12" gap="8">
+                      {footer}
+                    </Flex>
                 )}
-                <IconButton
-                  icon="close"
-                  size="m"
-                  variant="tertiary"
-                  tooltip="Close"
-                  onClick={onClose}
-                />
               </Flex>
-              {description && (
-                <Text variant="body-default-s" onBackground="neutral-weak">
-                  {description}
-                </Text>
-              )}
             </Flex>
-            <Flex
-              as="section"
-              paddingX="24"
-              paddingBottom="24"
-              flex={1}
-              overflowY="auto"
-              direction="column"
-            >
-              {children}
-            </Flex>
-            {footer && (
-              <Flex borderTop="neutral-medium" as="footer" horizontal="end" padding="12" gap="8">
-                {footer}
-              </Flex>
-            )}
-          </Flex>
-        </Flex>
-      </Flex>,
-      document.body,
-    );
-  },
+          </Flex>,
+          document.body,
+      );
+    },
 );
 
 Dialog.displayName = "Dialog";

@@ -51,7 +51,7 @@ export const Faq: React.FC<FaqProps> = ({ title, description, content }) => {
                     ))}
                 </Column>
                 <Text align="center" wrap="balance" variant="body-default-s" onBackground="neutral-medium" marginTop="20">
-                    Du hast mehr Fragen? Dann schreib mir doch einfach unter {" "}
+                    Got more questions? Email us at{" "}
                     <SmartLink href={"mailto:" + schema.email}>{schema.email}</SmartLink>
                 </Text>
             </Column>
