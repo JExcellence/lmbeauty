@@ -37,7 +37,8 @@ export const TestimonialCarousel: React.FC<Props> = ({
     }, [paused, testimonials.length, autoPlayInterval]);
 
     return (
-        <Column fillWidth horizontal="center" gap="64">
+        <Column fillWidth horizontal="start" gap="16">
+            <Heading as="h1">Rezensionen</Heading>
             <div
                 className={styles.carouselContainer}
                 onMouseEnter={() => setPaused(true)}
