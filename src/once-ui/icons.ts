@@ -32,7 +32,9 @@ import {
 
 import { RiVisaLine } from "react-icons/ri";
 
-import { FaDiscord, FaGithub, FaGoogle } from "react-icons/fa6";
+import {FaDiscord, FaGithub, FaGoogle, FaInstagram, FaMailchimp, FaWhatsapp} from "react-icons/fa6";
+import {FaMailBulk} from "react-icons/fa";
+import {HiMail} from "react-icons/hi";
 
 export const iconLibrary: Record<string, IconType> = {
   chevronUp: HiChevronUp,
@@ -50,12 +52,15 @@ export const iconLibrary: Record<string, IconType> = {
   checkCircle: HiCheckCircle,
   eyeDropper: HiEyeDropper,
   clipboard: HiOutlineClipboard,
+  mail: HiMail,
   person: HiMiniUser,
   close: HiMiniXMark,
   openLink: HiOutlineLink,
   discord: FaDiscord,
+  instagram: FaInstagram,
   google: FaGoogle,
   github: FaGithub,
+  whatsapp: FaWhatsapp,
   arrowUpRight: HiArrowUpRight,
   minus: HiMiniMinus,
   plus: HiMiniPlus,
