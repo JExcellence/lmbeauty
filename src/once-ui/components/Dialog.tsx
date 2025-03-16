@@ -7,7 +7,7 @@ import React, {
   useRef,
   forwardRef,
   useState,
-  useContext,
+  useContext, createContext,
 } from "react";
 import ReactDOM from "react-dom";
 import classNames from "classnames";
@@ -27,24 +27,33 @@ interface DialogProps extends Omit<React.ComponentProps<typeof Flex>, "title"> {
   minHeight?: number;
 }
 
-const DialogContext = React.createContext<{
-  stackedDialogOpen: boolean;
-  setStackedDialogOpen: (open: boolean) => void;
-}>({
-  stackedDialogOpen: false,
-  setStackedDialogOpen: () => {},
+interface DialogContextType {
+  stackedDialogCount: number;
+  incrementStack: () => void;
+  decrementStack: () => void;
+}
+
+export const DialogContext = createContext<DialogContextType>({
+  stackedDialogCount: 0,
+  incrementStack: () => {},
+  decrementStack: () => {},
 });
 
-export const DialogProvider: React.FC<{
-  children: React.ReactNode;
-}> = ({ children }) => {
-  const [stackedDialogOpen, setStackedDialogOpen] = useState(false);
+export const DialogProvider: React.FC<{ children: ReactNode }> = ({
+                                                                    children,
+                                                                  }) => {
+  const [stackedDialogCount, setStackedDialogCount] = useState(0);
+
+  const incrementStack = () => setStackedDialogCount((count) => count + 1);
+  const decrementStack = () =>
+      setStackedDialogCount((count) => Math.max(0, count - 1));
 
   return (
       <DialogContext.Provider
           value={{
-            stackedDialogOpen,
-            setStackedDialogOpen,
+            stackedDialogCount,
+            incrementStack,
+            decrementStack,
           }}
       >
         {children}
@@ -67,40 +76,64 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
           minHeight,
           ...rest
         },
-        ref,
+        ref
     ) => {
       const dialogRef = useRef<HTMLDivElement>(null);
       const [isVisible, setIsVisible] = useState(isOpen);
       const [isAnimating, setIsAnimating] = useState(false);
-      const { stackedDialogOpen, setStackedDialogOpen } = useContext(DialogContext);
+      const { stackedDialogCount, incrementStack, decrementStack } = useContext(
+          DialogContext
+      );
 
+      // Increment or decrement the dialog stack count
       useEffect(() => {
-        if (stack) {
-          setStackedDialogOpen(isOpen);
+        if (isOpen) {
+          incrementStack();
+        } else {
+          const timeout = setTimeout(() => {
+            decrementStack();
+          }, 300); // Match the animation duration
+          return () => clearTimeout(timeout);
         }
-      }, [stack, isOpen, setStackedDialogOpen]);
+      }, [isOpen, incrementStack, decrementStack]);
 
+      // Manage the interactivity of the background
       useEffect(() => {
-        if (dialogRef.current && isVisible) {
-          const height = dialogRef.current.offsetHeight;
-          onHeightChange?.(height);
-        }
-      }, [isVisible, onHeightChange]);
+        const manageInteractivity = () => {
+          if (stackedDialogCount === 0) {
+            // Enable scrolling and restore interactivity only when no dialogs are open
+            document.body.style.overflow = "unset";
+            document.body.childNodes.forEach((node) => {
+              if (node instanceof HTMLElement) {
+                node.inert = false;
+              }
+            });
+          } else {
+            // Disable scrolling and add inert attributes
+            document.body.style.overflow = "hidden";
+            document.body.childNodes.forEach((node) => {
+              if (node instanceof HTMLElement && node !== dialogRef.current) {
+                node.inert = true;
+              }
+            });
+          }
+        };
 
+        manageInteractivity();
+      }, [stackedDialogCount]);
+
+      // Dialog visibility animations
       useEffect(() => {
         if (isOpen) {
           setIsVisible(true);
-          setTimeout(() => {
-            setIsAnimating(true);
-          }, 0);
+          setTimeout(() => setIsAnimating(true), 0);
         } else {
           setIsAnimating(false);
-          setTimeout(() => {
-            setIsVisible(false);
-          }, 300);
+          setTimeout(() => setIsVisible(false), 300);
         }
       }, [isOpen]);
 
+      // Keyboard navigation (focus trap & ESC key handling)
       const handleKeyDown = useCallback(
           (event: KeyboardEvent) => {
             if (event.key === "Escape" && !base) {
@@ -108,108 +141,62 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
             }
             if (event.key === "Tab" && dialogRef.current) {
               const focusableElements = dialogRef.current.querySelectorAll(
-                  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+                  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
               );
 
               if (focusableElements.length > 0) {
                 const firstElement = focusableElements[0] as HTMLElement;
-                const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+                const lastElement = focusableElements[
+                focusableElements.length - 1
+                    ] as HTMLElement;
 
                 if (event.shiftKey && document.activeElement === firstElement) {
                   event.preventDefault();
                   lastElement.focus();
-                } else if (!event.shiftKey && document.activeElement === lastElement) {
+                } else if (
+                    !event.shiftKey &&
+                    document.activeElement === lastElement
+                ) {
                   event.preventDefault();
                   firstElement.focus();
                 }
               }
             }
           },
-          [onClose, base],
+          [onClose, base]
       );
 
+      // Attach/detach keyboard listeners
       useEffect(() => {
         if (isOpen) {
           document.addEventListener("keydown", handleKeyDown);
-          return () => {
-            document.removeEventListener("keydown", handleKeyDown);
-          };
+          return () => document.removeEventListener("keydown", handleKeyDown);
         }
       }, [isOpen, handleKeyDown]);
 
-      useEffect(() => {
-        if (isOpen) {
-          // Store original inert states
-          const originalInertStates = new Map<HTMLElement, string>();
-
-          document.body.style.overflow = "hidden";
-
-          // Make everything outside the dialog inert
-          document.body.childNodes.forEach((node) => {
-            if (node instanceof HTMLElement && node !== document.getElementById("portal-root")) {
-              originalInertStates.set(node, node.getAttribute('inert') || 'false');
-              node.inert = true;
-            }
-          });
-
-          // If stacked dialog, make base dialogs inert
-          if (stack) {
-            const dialogs = document.querySelectorAll('[role="dialog"]');
-            dialogs.forEach((dialog) => {
-              if (dialog instanceof HTMLElement && !dialog.contains(dialogRef.current)) {
-                originalInertStates.set(dialog, dialog.getAttribute('inert') || 'false');
-                dialog.inert = true;
-              }
-            });
-          }
-
-          return () => {
-            // Restore original inert states
-            originalInertStates.forEach((value, element) => {
-              element.inert = value === 'true';
-            });
-          };
-        } else {
-          const restoreInteractivity = () => {
-            const dialogs = document.querySelectorAll('[role="dialog"]');
-
-            // Only restore body scroll if no dialogs remain
-            if (dialogs.length === 0) {
-              document.body.style.overflow = "unset";
-            }
-          };
-
-          const timeout = setTimeout(restoreInteractivity, 300);
-          return () => clearTimeout(timeout);
-        }
-      }, [isOpen, stack]);
-
-      useEffect(() => {
-        if (isOpen && dialogRef.current) {
-          const focusableElements = dialogRef.current.querySelectorAll<HTMLElement>(
-              'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-          );
-          const firstElement = focusableElements[0];
-          firstElement.focus();
-        }
-      }, [isOpen]);
-
+      // Handle clicks outside the dialog
       useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-          if (!dialogRef.current?.contains(event.target as Node)) {
-            if (stack || !base) {
-              onClose();
-            }
+          if (!dialogRef.current?.contains(event.target as Node) && !base) {
+            onClose();
           }
         };
 
         if (isVisible) {
           document.addEventListener("mousedown", handleClickOutside);
-          return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-          };
+          return () => document.removeEventListener("mousedown", handleClickOutside);
         }
-      }, [isVisible, onClose, stack, base]);
+      }, [isVisible, onClose, base]);
+
+      // Focus the first focusable element inside the dialog
+      useEffect(() => {
+        if (isOpen && dialogRef.current) {
+          const focusableElements = dialogRef.current.querySelectorAll<HTMLElement>(
+              'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          focusableElements[0]?.focus();
+        }
+      }, [isOpen]);
 
       if (!isVisible) return null;
 
