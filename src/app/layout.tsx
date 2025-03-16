@@ -8,14 +8,27 @@ import { Metadata } from "next";
 import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/config";
 import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
 
-import { Inter } from "next/font/google";
-import { Roboto_Mono } from "next/font/google";
+import {Lora, Roboto_Mono} from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import React from "react";
 
-const primary = Inter({
-    variable: "--font-primary",
-    subsets: ["latin"],
-    display: "swap",
+
+const primary = Lora({
+    variable: '--font-primary',
+    subsets: ['latin'],
+    display: 'swap'
+});
+
+const secondary = Montserrat({
+    variable: '--font-secondary',
+    subsets: ['latin'],
+    display: 'swap'
+});
+
+const tertiary = Lora({
+    variable: '--font-primary',
+    subsets: ['latin'],
+    display: 'swap'
 });
 
 const code = Roboto_Mono({
@@ -23,19 +36,6 @@ const code = Roboto_Mono({
     subsets: ["latin"],
     display: "swap",
 });
-
-type FontConfig = {
-    variable: string;
-};
-
-/*
-	Replace with code for secondary and tertiary fonts
-	from https://once-ui.com/customize
-*/
-const secondary: FontConfig | undefined = undefined;
-const tertiary: FontConfig | undefined = undefined;
-/*
- */
 
 export async function generateMetadata(): Promise<Metadata> {
     const host = (await headers()).get("host");

@@ -15,6 +15,17 @@ export const ProfileGallery = () => {
 
     return (
         <Column fillWidth horizontal="center">
+            <Column fillWidth horizontal="center" paddingY="xl" maxWidth={70}>
+                <Heading variant="display-strong-xs" align="center">
+                    Mehr als Wimpern - eine Haltung
+                </Heading>
+
+                <Text align="center">
+                    "Bei LM Beauty glaube ich an Schönheit, die stärkt statt stresst.
+                    Mein Studio ist ein Safe Space für alle, die ihre natürliche Ausstrahlung
+                    feiern wollen - ganz ohne Wenn und Aber."
+                </Text>
+            </Column>
             <SegmentedControl
                 maxWidth={30}
                 buttons={[

@@ -44,39 +44,40 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                 <RevealFx fillWidth paddingBottom="16" speed="fast">
                     <Badge
                         background="surface"
-                        border="neutral-alpha-weak"
-                        href=" "
-                        textVariant="label-strong-xl"
+                        border="surface"
+                        href="#contact"
+                        textVariant="label-default-l"
                     >
                         Wimperntraum buchen
                     </Badge>
                 </RevealFx>
                 <RevealFx speed="fast" delay={0.2} translateY="4">
-                    <Heading onSolid="neutral-strong" align="center" variant="display-strong-m">
+                    <Heading onSolid="neutral-weak" align="center" variant="display-strong-m">
                         Dein Moment für Schönheit und Selbstbewusstsein.
                     </Heading>
                 </RevealFx>
-                <RevealFx speed="fast" delay={0.4} translateY="12" marginBottom="24">
+                <RevealFx speed="fast" delay={0.4} translateY="12" marginBottom="4">
                     <Heading
                         wrap="balance"
                         align="center"
-                        onSolid="neutral-strong"
-                        variant="heading-strong-xl"
+                        onSolid="neutral-medium"
+                        variant="heading-default-xl"
                     >
                         Professionelle Wimpernverlängerung mit persönlichem Touch – von Lisa Marie für dich.
                     </Heading>
                 </RevealFx>
                 <RevealFx speed="fast" delay={0.6} translateY="16">
                     <Flex gap="16" vertical="center">
-                        <Button id="download" href="/" size="m">
+                        <Button id="download" href="/" size="m" variant="primary" arrowIcon>
                             Preisliste
                         </Button>
                         <Button
-                            id="viewDemo"
-                            href="/"
+                            id="preisliste"
+                            href="#about"
                             variant="primary"
+                            prefixIcon="sparkle"
                             weight="default"
-                            suffixIcon="chevronRight"
+                            arrowIcon
                             size="m"
                         >
                             Über mich

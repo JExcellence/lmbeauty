@@ -128,7 +128,8 @@ export const Contact = () => {
                             data-border="rounded"
                             size="s"
                             href={contact.link.href}
-                            variant={contact.title === "WhatsApp" ? "primary" : "secondary"}>
+                            variant={contact.title === "WhatsApp" ? "primary" : "secondary"}
+                        >
                             {contact.link.label}
                         </Button>
                     </Column>

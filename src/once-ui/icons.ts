@@ -32,8 +32,7 @@ import {
 
 import { RiVisaLine } from "react-icons/ri";
 
-import {FaDiscord, FaGithub, FaGoogle, FaInstagram, FaMailchimp, FaWhatsapp} from "react-icons/fa6";
-import {FaMailBulk} from "react-icons/fa";
+import {FaDiscord, FaGithub, FaGoogle, FaInstagram, FaWhatsapp} from "react-icons/fa6";
 import {HiMail} from "react-icons/hi";
 
 export const iconLibrary: Record<string, IconType> = {

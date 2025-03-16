@@ -1,17 +1,17 @@
 "use client";
 
-import {Column, Flex, Heading} from "@/once-ui/components";
+import {Background, Column, Flex, IconButton} from "@/once-ui/components";
 import { Header } from "@/app/components/header/header";
 import {Hero} from "@/app/components/hero/hero";
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import {Contact} from "@/app/components/contact/contact";
 import {TestimonialCarousel} from "@/app/components/testimonial/testimonialcarousel";
 import {About} from "@/app/components/aboutme/aboutme";
 import {ProfileGallery} from "@/app/components/profilegallery/ProfileGallery";
-import {Cookie} from "next/dist/compiled/@next/font/dist/google";
 import {CookieBanner} from "@/app/components/cookie/Cookie";
 import {Faq} from "@/app/components/faq/faq";
 import {Footer} from "@/app/components/footer/Footer";
+
 
 const testimonials = [
     {
@@ -54,19 +54,22 @@ const testimonials = [
 
 export default function Home() {
     return (
-        <Column fillWidth center>
+        <Column
+            fillWidth
+            center
+        >
             <Header/>
             <Column center maxWidth={60} gap="128">
-                <Column>
+                <Column id="home">
                     <Hero fullscreen={true}/>
                 </Column>
-                <Column fillWidth maxWidth={40}>
+                <Column fillWidth maxWidth={45} id="about">
                     <About/>
                 </Column>
-                <Column fillWidth maxWidth={100}>
+                <Column fillWidth maxWidth={45} id="profile-gallery">
                     <ProfileGallery />
                 </Column>
-                <Column maxWidth={40} paddingY="xl">
+                <Column maxWidth={40} paddingY="xl" id="testimonials">
                     <Flex fillWidth horizontal="center" paddingX="24">
                         <TestimonialCarousel
                             testimonials={testimonials}
@@ -74,7 +77,7 @@ export default function Home() {
                         />
                     </Flex>
                 </Column>
-                <Column center maxWidth={40}>
+                <Column center maxWidth={40} id="faq">
                     <Faq
                         title="Deine Fragen – meine Antworten"
                         description="Alles, was du über Wimpernverlängerungen wissen möchtest"
@@ -122,13 +125,28 @@ export default function Home() {
                         ]}
                     />
                 </Column>
-                <Column>
+                <Column id="contact">
                     <Contact/>
                 </Column>
                 <Column>
                    <Footer/>
                 </Column>
             </Column>
+
+            <IconButton
+                icon="chevronUp"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                variant="primary"
+                size="l"
+                style={{
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                    position: "fixed",
+                    bottom: "80px",
+                    right: "20px",
+                    zIndex: "1000"
+                }}
+            />
+
             <CookieBanner/>
         </Column>
     );
