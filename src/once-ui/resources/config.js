@@ -1,4 +1,4 @@
-const baseURL = "demo.once-ui.com";
+const baseURL = "lmbeauty.de";
 
 // default customization applied to the HTML in the main layout.tsx
 const style = {
@@ -16,9 +16,8 @@ const style = {
 
 // default metadata
 const meta = {
-  title: "Once UI - Your Personalized Design System for Next.js",
-  description:
-    "An open-source design system and component library for Next.js that emphasizes easy styling and accessibility in UI development.",
+  title: "LMBeauty | Professionelles Make-up sowie Wimpern in Oldenburg",
+  description: "Entdecke die Kunst der Schönheit mit LM-Beauty in Oldenburg. Als professionelle Make-up und Wimpernstylistin verwandle ich Deine Vorstellungskraft in atemberaubende Realität. Vereinbare noch heute einen Termin und lasse Dich von meinem Fachwissen und meiner Leidenschaft verzaubern.",
 };
 
 // default open graph data
@@ -31,18 +30,15 @@ const og = {
 
 // default schema data
 const schema = {
-  logo: "",
+  logo: "/images/lm.jpg",
   type: "Organization",
-  name: "One UI",
-  description: "Once UI is an open-source design system and component library for Next.js.",
-  email: "",
+  name: "LM Beauty",
+  description: "Entdecke die Kunst der Schönheit mit LM-Beauty in Oldenburg. Als professionelle Make-up und Wimpernstylistin verwandle ich Deine Vorstellungskraft in atemberaubende Realität. Vereinbare noch heute einen Termin und lasse Dich von meinem Fachwissen und meiner Leidenschaft verzaubern.",
+  email: "info@lmbeauty.de",
 };
 
-// social links
 const social = {
-  twitter: "https://www.twitter.com/_onceui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  instagram: "https://www.instagram.com/_l.m_beauty_/",
 };
 
 export { baseURL, style, meta, og, schema, social };
