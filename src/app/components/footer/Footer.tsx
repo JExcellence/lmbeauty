@@ -1,69 +1,47 @@
 import {
     Button,
     Column,
-    Flex,
-    Icon,
-    IconButton,
-    Logo,
-    Row,
-    SmartLink,
-    Text,
+    Row, SmartImage, SmartLink,
+
 } from "@/once-ui/components";
+import React from "react";
 
 export const Footer = () => {
     return (
-        <Column gap="40" fillWidth paddingTop="xl" paddingBottom="xl" paddingX="24" horizontal="center">
-            <Row gap="12" textVariant="label-default-m" maxWidth="m" vertical="center">
-                <Logo href="/" wordmark={false} size="m" />
-                <Button
-                    data-border="rounded"
-                    size="s"
-                    weight="default"
-                    variant="tertiary"
-                    href="https://once-ui.com/templates"
-                >
-                    <Row gap="12" vertical="center">
-                        Launch your app now
-                        <Icon size="xs" name="arrowUpRight" onBackground="brand-medium" />
-                    </Row>
-                </Button>
-            </Row>
-            <Row maxWidth="m" horizontal="space-between" gap="40" wrap paddingX="2">
+        <Column fillWidth paddingBottom="xl" horizontal="center">
+            <Row maxWidth="xl" horizontal="space-between" gap="128" wrap paddingX="2">
                 <Column gap="12" textVariant="label-default-m">
                     <Row paddingX="4" marginBottom="8">
-                        Solutions
+                        Sonstiges
                     </Row>
                     <Row>
-                        <SmartLink href=" ">Products</SmartLink>
+                        <SmartLink href=" ">Produkte</SmartLink>
                     </Row>
                     <Row>
-                        <SmartLink href=" ">Use cases</SmartLink>
-                    </Row>
-                    <Row>
-                        <SmartLink href=" ">Customers</SmartLink>
+                        <SmartLink href=" ">Preisliste</SmartLink>
                     </Row>
                 </Column>
                 <Column gap="12" textVariant="label-default-m">
                     <Row paddingX="4" marginBottom="8">
-                        Resources
+                        Rechtliches
                     </Row>
                     <Row>
-                        <SmartLink href=" ">About us</SmartLink>
+                        <SmartLink href=" ">Über mich</SmartLink>
                     </Row>
                     <Row>
-                        <SmartLink href=" ">Terms of Use</SmartLink>
+                        <SmartLink href=" ">Impressum</SmartLink>
                     </Row>
                     <Row>
-                        <SmartLink href=" ">Privacy Policy</SmartLink>
+                        <SmartLink href=" ">Datenschutz</SmartLink>
                     </Row>
                 </Column>
                 <Column data-border="rounded" gap="12" textVariant="label-default-m">
                     <Row paddingX="4" marginBottom="8">
-                        Social
+                        Soziales
                     </Row>
-                    <Button href=" " prefixIcon="github" label="GitHub" size="s" variant="secondary" />
-                    <Button href=" " prefixIcon="linkedin" label="LinkedIn" size="s" variant="secondary" />
-                    <Button href=" " prefixIcon="threads" label="Threads" size="s" variant="secondary" />
+                    <Button href=" " prefixIcon="whatsapp" label="WhatsApp" size="s" variant="secondary" />
+                    <Button href=" " prefixIcon="mail" label="E-Mail" size="s" variant="secondary" />
+                    <Button href=" " prefixIcon="instagram" label="Instagram" size="s" variant="secondary" />
                 </Column>
             </Row>
         </Column>
