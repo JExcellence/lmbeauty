@@ -25,25 +25,26 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
             className={fullscreen ? styles.fullscreenHero : ""}
             horizontal="center"
             vertical="center"
+            style={{ height: "100vh" }}
         >
             <Background
-                zIndex={1}
-                position="absolute"
-                mask={{ x: 50, y: 0, radius: 100 }}
-                fill
-                vertical="center"
+            position={"absolute"}
+            mask={{ x: 50, y: 0, radius: 125 }}
+            fill
             >
                 <SmartImage
-                    src="/images/background/hero_section_1.png"
-                    priority
-                    sizes="(max-width: 1024px) 80vw, 960px"
-                    fill
+                    src="/images/store.mp4"
+                    alt="Video"
+                    foreground={{
+                        opacity: 0.5,
+                        backgroundColor: "rgba(0, 0, 0, 1)"
+                    }}
                 />
             </Background>
-            <Column center zIndex={1} maxWidth={60} marginY={"32"} gap="32" paddingY="xl">
-                <RevealFx fillWidth paddingBottom="16" speed="fast">
+            <Column center zIndex={1} maxWidth={60} marginY="s" gap="32" paddingY="s">
+                <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="s">
                     <Badge
-                        background="surface"
+                        background="neutral-weak"
                         border="surface"
                         href="#contact"
                         textVariant="label-default-l"
@@ -51,16 +52,16 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                         Wimperntraum buchen
                     </Badge>
                 </RevealFx>
-                <RevealFx speed="fast" delay={0.2} translateY="4">
+                <RevealFx translateY="12" delay={0.4} horizontal="center">
                     <Heading onSolid="neutral-weak" align="center" variant="display-strong-m">
                         Dein Moment für Schönheit und Selbstbewusstsein.
                     </Heading>
                 </RevealFx>
-                <RevealFx speed="fast" delay={0.4} translateY="12" marginBottom="4">
+                <RevealFx translateY="16" delay={0.6}>
                     <Heading
                         wrap="balance"
                         align="center"
-                        onSolid="neutral-medium"
+                        onSolid="neutral-weak"
                         variant="heading-default-xl"
                     >
                         Professionelle Wimpernverlängerung mit persönlichem Touch – von Lisa Marie für dich.
@@ -68,16 +69,21 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                 </RevealFx>
                 <RevealFx speed="fast" delay={0.6} translateY="16">
                     <Flex gap="16" vertical="center">
-                        <Button id="download" href="/" size="m" variant="primary" arrowIcon>
+                        <Button
+                            id="download"
+                            href="/"
+                            variant="secondary"
+                            prefixIcon="openLink"
+                            weight="default"
+                        >
                             Preisliste
                         </Button>
                         <Button
                             id="preisliste"
                             href="#about"
-                            variant="primary"
-                            prefixIcon="sparkle"
+                            variant="secondary"
+                            prefixIcon="chevronDown"
                             weight="default"
-                            arrowIcon
                             size="m"
                         >
                             Über mich

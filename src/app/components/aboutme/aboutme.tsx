@@ -7,25 +7,53 @@ import {
     Heading,
     SmartImage,
     Text,
-    Badge, Row
+    Badge, Row, Background
 } from "@/once-ui/components";
 import React from "react";
 import {ProfileGallery} from "@/app/components/profilegallery/ProfileGallery";
 
 export const About = () => (
-    <Column fillWidth horizontal="center" gap="128" paddingY="l">
-        <Column fillWidth position="relative" horizontal="center">
+    <Column fillWidth horizontal="center" gap="128" paddingY="l" position="relative">
+        <Background
+            position="absolute"
+            zIndex={1}
+            mask={{
+                x: 50,
+                y: 50,
+                radius: 60
+            }}
+            gradient={{
+                display: true,
+                x: 50,
+                y: 50,
+                width: 50,
+                height: 50,
+                tilt: -20,
+                opacity: 70,
+                colorStart: "accent-background-strong",
+                colorEnd: "page-background"
+            }}
+            grid={{
+                display: false,
+                opacity: 100,
+                width: "0.25rem",
+                color: "neutral-alpha-medium",
+                height: "0.25rem"
+            }}
+        />
+        <Column fillWidth horizontal="center">
             <Avatar
                 src="/images/avatar/avatar_1.png"
                 size="xl"
                 shadow="l"
                 border="accent-weak"
+                zIndex={2}
                 borderWidth={2}
                 statusIndicator={{ color: "green" }}
             />
         </Column>
 
-        <Column gap="32">
+        <Column gap="32" zIndex={2}>
             <Heading variant="display-strong-xs" align="center">
                 Hallo, schön, dass du hier bist! 🌸
             </Heading>
