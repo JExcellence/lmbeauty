@@ -1,12 +1,12 @@
-import { baseURL } from "@/app/resources";
+import {baseURL} from "@/once-ui/resources/config";
 
 export default function robots() {
-  return {
-    rules: [
-      {
-        userAgent: "*",
-      },
-    ],
-    sitemap: `${baseURL}/sitemap.xml`,
-  };
+    return {
+        rules: [
+            {
+                userAgent: "*",
+            },
+        ],
+        sitemap: `${baseURL}/sitemap.xml`,
+    };
 }

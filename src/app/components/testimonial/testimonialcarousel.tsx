@@ -62,8 +62,8 @@ export const TestimonialCarousel: React.FC<Props> = ({
                                 border="neutral-medium"
                                 vertical="space-between"
                                 direction="column"
-                                position="relative"
-                                mask={{ x: 50, y: 20, radius: 75 }}
+                                mask={{ x: 50, y: 20, radius: 75, cursor: true }}
+                                zIndex={9}
                                 {...rest}
                             >
                                 <Flex padding="40" fillWidth>

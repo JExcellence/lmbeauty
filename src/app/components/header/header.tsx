@@ -25,13 +25,13 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = () => {
     return (
-        <Row zIndex={2} paddingX="8" paddingTop="8" fillWidth position="sticky" horizontal="center" top="0">
+        <Row zIndex={3} paddingX="8" paddingTop="8" fillWidth position="sticky" horizontal="center" top="0">
             <Fade
                 fillWidth
                 position="absolute"
                 top="0"
                 height={8}
-                pattern={{ display: true, size: "2" }}
+                pattern={{ display: true, size: "1" }}
             />
             <Row
                 as="header"
