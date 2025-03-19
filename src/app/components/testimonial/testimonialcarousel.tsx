@@ -48,8 +48,11 @@ export const TestimonialCarousel: React.FC<Props> = ({
                 className={styles.testimonialDescription}
             >
                 Dein Feedback ist mir enorm wichtig – es zeigt, wie sehr ich mich um Deine Wünsche kümmere
-                und trägt maßgeblich zu meiner stetigen Verbesserung bei. Schau auch gerne auf Google vorbei,
-                denn Deine Rückmeldungen bedeuten mir wirklich viel.
+                und trägt maßgeblich zu meiner stetigen Verbesserung bei. Schau auch gerne auf <SmartLink
+                    href={"https://www.google.com/search?sca_esv=a702c171394dd447&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzQlQMm-w3GnbBczvXvBLK8ZB1TqIuY4jauDfalwPXB8xcyM4wbdOxP0sEZJNjh7_RK8BC2enlM_kq0xdc1Le9rr0dcqM&q=LM+Beauty+Rezensionen&sa=X&ved=2ahUKEwiEu9CwiJeMAxXqSvEDHZMANgYQ0bkNegQIJBAE&biw=1920&bih=953&dpr=1"}
+                    prefixIcon={"sparkle"}
+
+                > Google </SmartLink> vorbei, denn Deine Rückmeldungen bedeuten mir wirklich viel.
             </Text>
 
             <Column

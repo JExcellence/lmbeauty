@@ -102,21 +102,21 @@ export const ProfileGallery = () => {
                             prefixIcon="instagram"
                             label="Beauty Instagram"
                             size="l"
-                            variant="tertiary"
+                            variant="secondary"
                         />
                         <Button
                             href="https://wa.me/+4915259675346?text=Hey%20Lisa%20%F0%9F%98%8A%20ich%20habe%20deine%20Webseite%20gesehen%20und%20habe%20Interesse%20an%20einem%20Termin."
                             prefixIcon="whatsapp"
                             label="WhatsApp"
                             size="l"
-                            variant="tertiary"
+                            variant="secondary"
                         />
                         <Button
                             href="mailto:info@lmbeauty.de"
                             prefixIcon="mail"
                             label="E-Mail"
                             size="l"
-                            variant="tertiary"
+                            variant="secondary"
                         />
                         <Button
                             href="https://www.instagram.com/_l.m_beauty_/"

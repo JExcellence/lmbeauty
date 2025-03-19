@@ -98,7 +98,7 @@ export default function Home() {
                 />
             </Column>
 
-            <Column zIndex={1} center paddingY="xl" maxWidth={50} id="pricelist">
+            {/*<Column zIndex={1} center paddingY="xl" maxWidth={50} id="pricelist">
                 <PriceList
                     theme={{ color: "#9F7AEA", borderColor: "neutral-medium" }}
                     services={[
@@ -145,7 +145,7 @@ export default function Home() {
                         }
                     ]}
                 />
-            </Column>
+            </Column>*/}
 
             {/* Contact Section */}
             <Column center paddingY="xl" id="contact">
