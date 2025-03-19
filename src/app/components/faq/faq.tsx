@@ -13,22 +13,6 @@ interface FaqProps {
 export const Faq: React.FC<FaqProps> = ({ title, description, content }) => {
     return (
         <Column fillWidth horizontal="center" position="relative">
-            <Background
-                position="absolute"
-                gradient={{
-                    display: true,
-                    colorStart: "neutral-background-strong",
-                    colorEnd: "static-transparent",
-                    x: 50,
-                    y: 50,
-                    width: 50,
-                    height: 50
-                }}
-                dots={{
-                    display: true,
-                    color: "page-background",
-                    size: "2"
-                }}/>
             <Column maxWidth="xs" horizontal="center" position="relative">
                 {title && (
                     <Heading as="h2" variant="display-strong-xs" align="center" marginBottom="8">
@@ -51,7 +35,7 @@ export const Faq: React.FC<FaqProps> = ({ title, description, content }) => {
                     ))}
                 </Column>
                 <Text align="center" wrap="balance" variant="body-default-s" onBackground="neutral-medium" marginTop="20">
-                    Got more questions? Email us at{" "}
+                    Du hast weitere Fragen? Dann melde dich gerne bei mir unter{" "}
                     <SmartLink href={"mailto:" + schema.email}>{schema.email}</SmartLink>
                 </Text>
             </Column>

@@ -5,13 +5,16 @@ import classNames from "classnames";
 import { headers } from "next/headers";
 import { Metadata } from "next";
 
-import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/config";
-import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
+import { baseURL, style, meta, og, schema, social, effects } from "@/once-ui/resources/config";
+import {Background, Column, Flex, IconButton, ToastProvider} from "@/once-ui/components";
 
 import {Lora, Roboto_Mono} from 'next/font/google';
 import { Montserrat } from 'next/font/google';
 import React from "react";
-
+import {CookieBanner} from "@/app/components/cookie/Cookie";
+import {Header} from "@/app/components/header/header";
+import {Hero} from "@/app/components/hero/hero";
+import {Footer} from "@/app/components/footer/Footer";
 
 const primary = Lora({
     variable: '--font-primary',
@@ -38,7 +41,7 @@ const code = Roboto_Mono({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-    const host = (await headers()).get("host");
+    const host = headers().get("host");
     const metadataBase = host ? new URL(`https://${host}`) : undefined;
 
     return {
@@ -48,6 +51,8 @@ export async function generateMetadata(): Promise<Metadata> {
             title: og.title,
             description: og.description,
             url: "https://" + baseURL,
+            siteName: "LM Beauty in Oldenburg",
+            locale: "de_DE",
             images: [
                 {
                     url: og.image,
@@ -74,6 +79,17 @@ export async function generateMetadata(): Promise<Metadata> {
             description: og.description,
             images: [og.image],
         },
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                "max-video-preview": -1,
+                "max-image-preview": "large",
+                "max-snippet": -1,
+            },
+        },
         metadataBase,
     };
 }
@@ -98,7 +114,6 @@ export default function RootLayout({
         <Flex
             as="html"
             lang="de"
-            fillHeight
             background="page"
             data-neutral={style.neutral}
             data-brand={style.brand}
@@ -117,45 +132,26 @@ export default function RootLayout({
                 tertiary ? tertiary.variable : "",
             )}
         >
-            <head>
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(schemaData),
-                    }}
-                />
-            </head>
             <ToastProvider>
-                <Column as="body" fillWidth  margin="0" padding="0">
-                    <Background
-                        position="absolute"
-                        mask={{
-                            x: 100,
-                            y: 0,
-                            radius: 100,
-                        }}
-                        gradient={{
-                            display: true,
-                            x: 100,
-                            y: 60,
-                            width: 70,
-                            height: 50,
-                            tilt: -40,
-                            opacity: 90,
-                            colorStart: "accent-background-strong",
-                            colorEnd: "page-background",
-                        }}
-                        grid={{
-                            display: true,
-                            opacity: 100,
-                            width: "0.25rem",
-                            color: "neutral-alpha-medium",
-                            height: "0.25rem",
-                        }}
-                    />
-                    {children}
+                <Column as="body" fillWidth margin="0" padding="0">
+                    <Header />
+                    <Hero/>
+                    <Flex
+                        position="relative"
+                        zIndex={0}
+                        fillWidth
+                        paddingY="l"
+                        paddingX="l"
+                        horizontal="center"
+                        flex={2}
+                    >
+                        <Flex horizontal="center" fillWidth minHeight="0">
+                            {children}
+                        </Flex>
+                    </Flex>
                 </Column>
             </ToastProvider>
+            <CookieBanner/>
         </Flex>
     );
 }
