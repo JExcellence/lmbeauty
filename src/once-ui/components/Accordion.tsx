@@ -1,11 +1,11 @@
 "use client";
 
-import React, { forwardRef, useImperativeHandle } from "react";
+import React, {forwardRef, useImperativeHandle, useState} from "react";
 import { Flex, Icon, Heading, Column } from ".";
 import styles from "./Accordion.module.scss";
 
 interface AccordionProps extends Omit<React.ComponentProps<typeof Flex>, "title"> {
-    title: React.ReactNode;
+    title?: React.ReactNode;
     children: React.ReactNode;
     isOpen?: boolean;
     onToggle?: () => void;
