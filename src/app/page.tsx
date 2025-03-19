@@ -1,54 +1,47 @@
 "use client";
 
 import {Background, Column, Flex, IconButton} from "@/once-ui/components";
-import { Header } from "@/app/components/header/header";
-import {Hero} from "@/app/components/hero/hero";
 import React, {useEffect, useRef} from "react";
 import {Contact} from "@/app/components/contact/contact";
 import {TestimonialCarousel} from "@/app/components/testimonial/testimonialcarousel";
 import {About} from "@/app/components/aboutme/aboutme";
 import {ProfileGallery} from "@/app/components/profilegallery/ProfileGallery";
-import {CookieBanner} from "@/app/components/cookie/Cookie";
 import {Faq} from "@/app/components/faq/faq";
 import {Footer} from "@/app/components/footer/Footer";
+import {PriceList} from "@/app/components/pricelist/PriceList";
 
 const testimonials = [
     {
         src: "/images/eins_zu_eins_1.jpg",
         title: "Lisa ist einfach unglaublich!",
-        content: "Ich bin jedes Mal begeistert von meinen Wimpern – sie halten super lange und sehen wunderschön aus. Die Gespräche während des Termins machen es zu einem echten Highlight meines Tages. Danke für die tolle Arbeit, Lisa!",
-        name: "Julia S.",
+        content: "Ich hatte kürzlich das Vergnügen, eine Wimpernverlängerung bei Lisa machen zu lassen und ich bin absolut begeistert! Lisa ist nicht nur unglaublich professionell, sondern auch sehr freundlich und aufmerksam. Sie hat sich die Zeit genommen, meine Wünsche und Bedenken zu verstehen, und das Ergebnis ist einfach fantastisch. Meine Wimpern sehen natürlich und gleichzeitig atemberaubend aus. Der gesamte Prozess war entspannt und angenehm, und ich fühlte mich die ganze Zeit über in guten Händen. Ich kann Lisas Service nur wärmstens empfehlen und werde definitiv wiederkommen!",
+        name: "Justin E.",
         avatar: "/images/eins_zu_eins_1.jpg",
-        company: "test comp",
-        role: "designer"
+        company: "JExcellence",
+        role: "Fachinformatiker"
     },
     {
         src: "/images/eins_zu_eins_2.jpg",
         title: "Lisa ist einfach unglaublich!",
-        content: "Ich bin jedes Mal begeistert von meinen Wimpern – sie halten super lange und sehen wunderschön aus. Die Gespräche während des Termins machen es zu einem echten Highlight meines Tages. Danke für die tolle Arbeit, Lisa!",
-        name: "Julia S.",
+        content: "Ich habe mir von Lisa ein Wimpernlifting machen lassen und bin rundum zufrieden! Sie ist sehr freundlich und zuvorkommend und das Ergebnis ihrer Arbeit ist hervorragend! Ich habe mich sehr wohl und gut beraten gefühlt!\n Ich komme auf jeden Fall wieder! Vielen Dank 😊 …",
+        name: "Jana H.",
         avatar: "/images/eins_zu_eins_1.jpg",
-        company: "test comp",
-        role: "designer"
+        company: "",
+        role: " "
     },
 ]
 
 export default function Home() {
     return (
         <Column fillWidth center padding="s" maxWidth={60} gap="s">
-            {/* Hero Section */}
-
-            {/* About Section */}
             <Column center paddingY="xl" id="about" maxWidth={50} gap="s">
                 <About />
             </Column>
 
-            {/* Profile Gallery Section */}
             <Column center paddingY="xl" maxWidth={50} gap="s">
                 <ProfileGallery />
             </Column>
 
-            {/* Testimonials Section */}
             <Column zIndex={1} center paddingY="xl" maxWidth={50} id="testimonials">
                 <TestimonialCarousel
                     testimonials={testimonials}
@@ -56,7 +49,6 @@ export default function Home() {
                 />
             </Column>
 
-            {/* FAQ Section */}
             <Column zIndex={1} center paddingY="xl" maxWidth={50} id="faq">
                 <Faq
                     title="Deine Fragen – meine Antworten"
@@ -68,7 +60,7 @@ export default function Home() {
                         },
                         {
                             title: "Darf ich mit den Wimpern eigentlich schwimmen?",
-                            content: "Klar, deine Wimpern halten das aus! Aber danach bitte mit meinem speziellen Reinigungsshampoo säubern – so bleiben sie schön glänzend und Chlor/Salz macht ihnen nichts aus. 🏊♀️"
+                            content: "Klar, deine Wimpern halten das aus! Aber danach bitte mit meinem speziellen Reinigungsshampoo säubern – so bleiben sie schön glänzend. 🏊♀️"
                         },
                         {
                             title: "Wie halte ich meine Wimpern richtig schön?",
@@ -80,19 +72,19 @@ export default function Home() {
                         },
                         {
                             title: "Kann ich trotzdem Mascara benutzen?",
-                            content: "Ehrlich? Eigentlich brauchst du keine mehr! Aber falls doch: Nimm bitte nur meine spezielle wasserbasierte Tusche – die schadet den Wimpern nicht. 💄"
+                            content: "Nein, solltest du nicht. Der Grund: Herkömmliche Mascara kann sich in den Zwischenräumen zwischen den Wimpern ansammeln, was zu einem ungleichmäßigen Look und einer verkürzten Haltbarkeit führen kann. 💄"
                         },
                         {
                             title: "Was erwartet mich beim ersten Termin?",
-                            content: "Wir starten mit einem ausführlichen Beratungsgespräch über deinen Wunschlook. Dann:\n1. Gründliche Reinigung\n2. Bequemes Hinlegen und Entspannen\n3. Ich setze jede Wimper einzeln von Hand an\n4. Finaler Check und Pflegetipps von mir\nDu musst nur stillhalten – ich mache die Magie! ✨"
+                            content: "Wir starten mit einem ausführlichen Beratungsgespräch über deinen Wunschlook. Dann:\n1. Bequemes Hinlegen\n2. Gründliche Reinigung und Entspannen\n3. Ich setze jede Wimper einzeln von Hand an\n4. Finaler Check und Pflegetipps von mir\nDu musst nur stillhalten – ich mache die Magie! ✨"
                         },
                         {
-                            title: "Geht das auf Dauer nicht auf meine eigenen Wimpern?",
+                            title: "Werden meine Naturwimpern auf langer Sicht geschädigt?",
                             content: "Keine Sorge! Wenn's professionell gemacht wird (und du nicht selbst rumzupfst), bleiben deine Naturwimpern topfit. Ich achte penibel darauf, dass nichts beschädigt wird. 👩⚕️"
                         },
                         {
                             title: "Was wenn mir der Look doch nicht gefällt?",
-                            content: "Kommt vor! Dann komm einfach vorbei und ich löse alles schonend mit einem Spezialgel. Bitte probier das niemals selbst aus – ich mach das professionell für dich! ❌✂️"
+                            content: "Kommt vor! Dann komm einfach vorbei und wir probieren etwas neues aus. Sollte dir der Look gar nicht gefallen, dann löse ich alles schonend mit einem Spezialgel ab. Bitte probier das niemals selbst aus – ich mach das professionell für dich! ❌✂️"
                         },
                         {
                             title: "Wie bereite ich mich am besten vor?",
@@ -106,13 +98,62 @@ export default function Home() {
                 />
             </Column>
 
+            <Column zIndex={1} center paddingY="xl" maxWidth={50} id="pricelist">
+                <PriceList
+                    theme={{ color: "#9F7AEA", borderColor: "neutral-medium" }}
+                    services={[
+                        {
+                            category: "Wimpernverlängerungen",
+                            name: "Classic Extensions",
+                            price: "89€",
+                            duration: "120 Min",
+                            description: "Natürlicher Look mit Einzelwimpern",
+                            details: [
+                                "Für dünne bis normale Wimpern",
+                                "Hält 4-6 Wochen",
+                                "Sanfte 0.15mm Technik",
+                                "Inkl. Aftercare Kit"
+                            ],
+                            new: true
+                        },
+                        {
+                            category: "Wimpernverlängerungen",
+                            name: "Volume Extensions",
+                            price: "129€",
+                            duration: "150 Min",
+                            description: "Volles Volumen mit Multi-Lash Effekt",
+                            details: [
+                                "2-6D Fächertechnik",
+                                "Langanhaltender Halt",
+                                "Individuelle Stärkeanpassung",
+                                "Augenschonende Applikation"
+                            ],
+                            popular: true
+                        },
+                        {
+                            category: "Zusatzleistungen",
+                            name: "Wimpern-Tinting",
+                            price: "39€",
+                            duration: "30 Min",
+                            description: "Natürliche Färbung der Eigenwimpern",
+                            details: [
+                                "In 4 Farbtönen verfügbar",
+                                "Hält 4-6 Wochen",
+                                "Ohne Ammoniak",
+                                "Sofortiger Effekt"
+                            ]
+                        }
+                    ]}
+                />
+            </Column>
+
             {/* Contact Section */}
             <Column center paddingY="xl" id="contact">
                 <Contact />
             </Column>
 
             {/* Footer Section */}
-            <Column center paddingY="xl">
+            <Column center paddingY="xl" position={"relative"}>
                 <Footer />
             </Column>
 

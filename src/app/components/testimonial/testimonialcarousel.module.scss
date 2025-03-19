@@ -17,3 +17,13 @@
   padding: 0 1rem;
   box-sizing: border-box;
 }
+
+
+.testimonialText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  height: 6.5rem;
+}

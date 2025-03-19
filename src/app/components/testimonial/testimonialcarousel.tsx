@@ -1,4 +1,3 @@
-"use client";
 
 import {Column, Flex, Background, Tag, Heading, Text, User, SmartLink, Row} from "@/once-ui/components";
 import React, { useEffect, useState } from "react";
@@ -37,9 +36,24 @@ export const TestimonialCarousel: React.FC<Props> = ({
     }, [paused, testimonials.length, autoPlayInterval]);
 
     return (
-        <Column fillWidth horizontal="start" gap="16" maxWidth={40} paddingX="l" paddingY="l" zIndex={3}>
-            <Heading as="h1">Rezensionen</Heading>
+        <Column fillWidth horizontal="center" paddingY="xl" zIndex={3} gap="40" borderBottom={"surface"}>
+            <Heading variant="display-strong-xs" align="center">
+                Was meine Kunden sagen
+            </Heading>
+            <Text
+                as="p"
+                align="center"
+                variant="body-strong-l"
+                padding="s"
+                className={styles.testimonialDescription}
+            >
+                Dein Feedback ist mir enorm wichtig – es zeigt, wie sehr ich mich um Deine Wünsche kümmere
+                und trägt maßgeblich zu meiner stetigen Verbesserung bei. Schau auch gerne auf Google vorbei,
+                denn Deine Rückmeldungen bedeuten mir wirklich viel.
+            </Text>
+
             <Column
+                maxWidth={60}
                 className={styles.carouselContainer}
                 onMouseEnter={() => setPaused(true)}
                 onMouseLeave={() => setPaused(false)}
@@ -63,29 +77,35 @@ export const TestimonialCarousel: React.FC<Props> = ({
                                 border="neutral-medium"
                                 vertical="space-between"
                                 direction="column"
-                                mask={{
-                                    x: 50,
-                                    y: 50,
-                                    radius: 200
-                                }}
                                 gradient={{
                                     display: true,
                                     x: 50,
                                     y: 50,
                                     width: 50,
-                                    height: 50,
-                                    tilt: -20,
+                                    height: 25,
+                                    tilt: -40,
                                     opacity: 60,
                                     colorStart: "accent-background-strong",
                                     colorEnd: "page-background"
                                 }}
                             >
                                 <Flex padding="40" fillWidth zIndex={3} textVariant="label-default-l">
-                                    <Text wrap="balance" variant="heading-default-m">
+                                    <Text
+                                        wrap="balance"
+                                        variant="heading-default-m"
+                                        className={styles.testimonialText}
+                                    >
                                         {testimonial.content}
                                     </Text>
                                 </Flex>
-                                <Flex zIndex={1} borderTop="neutral-medium" fillWidth paddingY="24" paddingX="40" textVariant="label-default-l">
+                                <Flex
+                                    zIndex={1}
+                                    borderTop="neutral-medium"
+                                    fillWidth
+                                    paddingY="24"
+                                    paddingX="40"
+                                    textVariant="label-default-l"
+                                >
                                     {(testimonial.role || testimonial.company) && (
                                         <User
                                             avatarProps={{

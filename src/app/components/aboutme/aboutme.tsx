@@ -61,7 +61,7 @@ export const About = () => (
             <Text align="center" variant="body-default-l" onBackground="neutral-medium">
                 Hi, ich bin Lisa – Deine Expertin für Schönheit und Selbstbewusstsein.
                 Meine Mission ist es, deine natürliche Schönheit hervorzuheben und dich rundum wohlzufühlen.
-                Ob Wimpernstyling, Haarstyling oder Make-up – ich biete dir Behandlungen, die zu dir und deinen Wünschen passen.
+                Ob Wimpernstyling oder Nageldesign – ich biete dir Behandlungen, die zu dir und deinen Wünschen passen.
                 Mit viel Erfahrung und Leidenschaft für Ästhetik setze ich auf Perfektion, die nicht nur ein Traum bleiben soll.
                 Deine Schönheit verdient nur das Beste, jeden Tag und für besondere Anlässe.
 
@@ -72,7 +72,7 @@ export const About = () => (
             <Flex gap="16" direction="column">
                 <Row center gap="16">
                     <Badge textVariant="body-default-s" icon="sparkle">
-                        Wimpern-Expertin seit 2017, Selbstständig seit 2023
+                        Mehr als 5 Jahre Erfahrung im Beauty Bereich
                     </Badge>
                     <Badge textVariant="body-default-s" icon="sparkle">
                         Mehr als 100 zufriedene Kundinnen
