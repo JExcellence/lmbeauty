@@ -1,6 +1,6 @@
 "use client";
 
-import { Column, Flex, Background, Tag, Heading, Text, User, SmartLink } from "@/once-ui/components";
+import {Column, Flex, Background, Tag, Heading, Text, User, SmartLink, Row} from "@/once-ui/components";
 import React, { useEffect, useState } from "react";
 import styles from "./testimonialcarousel.module.scss";
 
@@ -37,48 +37,62 @@ export const TestimonialCarousel: React.FC<Props> = ({
     }, [paused, testimonials.length, autoPlayInterval]);
 
     return (
-        <Column fillWidth horizontal="start" gap="16">
+        <Column fillWidth horizontal="start" gap="16" maxWidth={40} paddingX="l" paddingY="l" zIndex={3}>
             <Heading as="h1">Rezensionen</Heading>
-            <div
+            <Column
                 className={styles.carouselContainer}
                 onMouseEnter={() => setPaused(true)}
                 onMouseLeave={() => setPaused(false)}
             >
-                <div
+                <Row
                     className={styles.carouselTrack}
                     style={{
                         transform: `translateX(-${activeIndex * 100}%)`,
                     }}
                 >
                     {testimonials.map((testimonial, index) => (
-                        <div
+                        <Column
                             key={index}
                             className={styles.carouselSlide}
                         >
                             <Background
+                                zIndex={1}
                                 fillWidth
-                                background="surface"
+                                background="neutral-weak"
                                 radius="l"
                                 border="neutral-medium"
                                 vertical="space-between"
                                 direction="column"
-                                mask={{ x: 50, y: 20, radius: 75, cursor: true }}
-                                zIndex={9}
-                                {...rest}
+                                mask={{
+                                    x: 50,
+                                    y: 50,
+                                    radius: 200
+                                }}
+                                gradient={{
+                                    display: true,
+                                    x: 50,
+                                    y: 50,
+                                    width: 50,
+                                    height: 50,
+                                    tilt: -20,
+                                    opacity: 60,
+                                    colorStart: "accent-background-strong",
+                                    colorEnd: "page-background"
+                                }}
                             >
-                                <Flex padding="40" fillWidth>
+                                <Flex padding="40" fillWidth zIndex={3} textVariant="label-default-l">
                                     <Text wrap="balance" variant="heading-default-m">
                                         {testimonial.content}
                                     </Text>
                                 </Flex>
-                                <Flex borderTop="neutral-medium" fillWidth paddingY="24" paddingX="40">
+                                <Flex zIndex={1} borderTop="neutral-medium" fillWidth paddingY="24" paddingX="40" textVariant="label-default-l">
                                     {(testimonial.role || testimonial.company) && (
                                         <User
                                             avatarProps={{
                                                 src: testimonial.avatar,
                                                 style: {
-                                                    width: '56px',
-                                                    height: '56px',
+                                                    width: '64px',
+                                                    height: '64px',
                                                     objectFit: 'cover'
                                                 }
                                             }}
@@ -97,10 +111,10 @@ export const TestimonialCarousel: React.FC<Props> = ({
                                     )}
                                 </Flex>
                             </Background>
-                        </div>
+                        </Column>
                     ))}
-                </div>
-            </div>
+                </Row>
+            </Column>
         </Column>
     );
 };
