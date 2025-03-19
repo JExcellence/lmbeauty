@@ -31,33 +31,12 @@ const testimonials = [
         company: "test comp",
         role: "designer"
     },
-    {
-        src: "/images/eins_zu_eins_3.jpg",
-        title: "Lisa ist einfach unglaublich!",
-        content: "Ich bin jedes Mal begeistert von meinen Wimpern – sie halten super lange und sehen wunderschön aus. Die Gespräche während des Termins machen es zu einem echten Highlight meines Tages. Danke für die tolle Arbeit, Lisa!",
-        name: "Julia S.",
-        avatar: "/images/eins_zu_eins_1.jpg",
-        company: "test comp",
-        role: "designer"
-    },
-    {
-        src: "/images/eins_zu_eins_1.jpg",
-        title: "Lisa ist einfach unglaublich!",
-        content: "Ich bin jedes Mal begeistert von meinen Wimpern – sie halten super lange und sehen wunderschön aus. Die Gespräche während des Termins machen es zu einem echten Highlight meines Tages. Danke für die tolle Arbeit, Lisa!",
-        name: "Julia S.",
-        avatar: "/images/eins_zu_eins_1.jpg",
-        company: "test comp",
-        role: "designer"
-    },
 ]
 
 export default function Home() {
     return (
         <Column fillWidth center padding="s" maxWidth={60} gap="s">
             {/* Hero Section */}
-            <Column center padding="s" id="hero">
-                <Hero fullscreen={true} />
-            </Column>
 
             {/* About Section */}
             <Column center paddingY="xl" id="about" maxWidth={50} gap="s">
@@ -70,7 +49,7 @@ export default function Home() {
             </Column>
 
             {/* Testimonials Section */}
-            <Column center paddingY="xl" maxWidth={50} id="testimonials">
+            <Column zIndex={1} center paddingY="xl" maxWidth={50} id="testimonials">
                 <TestimonialCarousel
                     testimonials={testimonials}
                     autoPlayInterval={3000}
@@ -78,7 +57,7 @@ export default function Home() {
             </Column>
 
             {/* FAQ Section */}
-            <Column center paddingY="xl" maxWidth={50} id="faq">
+            <Column zIndex={1} center paddingY="xl" maxWidth={50} id="faq">
                 <Faq
                     title="Deine Fragen – meine Antworten"
                     description="Alles, was du über Wimpernverlängerungen wissen möchtest"

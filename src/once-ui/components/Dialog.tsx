@@ -85,23 +85,20 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
           DialogContext
       );
 
-      // Increment or decrement the dialog stack count
       useEffect(() => {
         if (isOpen) {
           incrementStack();
         } else {
           const timeout = setTimeout(() => {
             decrementStack();
-          }, 300); // Match the animation duration
+          }, 300);
           return () => clearTimeout(timeout);
         }
       }, [isOpen, incrementStack, decrementStack]);
 
-      // Manage the interactivity of the background
       useEffect(() => {
         const manageInteractivity = () => {
           if (stackedDialogCount === 0) {
-            // Enable scrolling and restore interactivity only when no dialogs are open
             document.body.style.overflow = "unset";
             document.body.childNodes.forEach((node) => {
               if (node instanceof HTMLElement) {
@@ -109,7 +106,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
               }
             });
           } else {
-            // Disable scrolling and add inert attributes
             document.body.style.overflow = "hidden";
             document.body.childNodes.forEach((node) => {
               if (node instanceof HTMLElement && node !== dialogRef.current) {
@@ -122,7 +118,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
         manageInteractivity();
       }, [stackedDialogCount]);
 
-      // Dialog visibility animations
       useEffect(() => {
         if (isOpen) {
           setIsVisible(true);
@@ -133,7 +128,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
         }
       }, [isOpen]);
 
-      // Keyboard navigation (focus trap & ESC key handling)
       const handleKeyDown = useCallback(
           (event: KeyboardEvent) => {
             if (event.key === "Escape" && !base) {
@@ -166,7 +160,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
           [onClose, base]
       );
 
-      // Attach/detach keyboard listeners
       useEffect(() => {
         if (isOpen) {
           document.addEventListener("keydown", handleKeyDown);
@@ -174,7 +167,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
         }
       }, [isOpen, handleKeyDown]);
 
-      // Handle clicks outside the dialog
       useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
           if (!dialogRef.current?.contains(event.target as Node) && !base) {
@@ -188,7 +180,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
         }
       }, [isVisible, onClose, base]);
 
-      // Focus the first focusable element inside the dialog
       useEffect(() => {
         if (isOpen && dialogRef.current) {
           const focusableElements = dialogRef.current.querySelectorAll<HTMLElement>(
