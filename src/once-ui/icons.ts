@@ -35,11 +35,14 @@ import { RiVisaLine } from "react-icons/ri";
 import {FaDiscord, FaGithub, FaGoogle, FaInstagram, FaWhatsapp} from "react-icons/fa6";
 import {HiMail} from "react-icons/hi";
 
+import { LuChevronsLeftRight } from "react-icons/lu";
+
 export const iconLibrary: Record<string, IconType> = {
   chevronUp: HiChevronUp,
   chevronDown: HiChevronDown,
   chevronRight: HiChevronRight,
   chevronLeft: HiChevronLeft,
+  chevronsLeftRight: LuChevronsLeftRight,
   refresh: HiOutlineArrowPath,
   check: HiCheck,
   light: HiOutlineSun,
