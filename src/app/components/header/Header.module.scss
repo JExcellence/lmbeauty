@@ -1,0 +1,75 @@
+.mobileMenu {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  z-index: 999;
+  animation: slideDown 0.3s ease-out;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 16px;
+    width: 24px;
+    height: 24px;
+    background: var(--color-background-overlay);
+    transform: rotate(45deg);
+    border-top: 1px solid var(--color-border-neutral-alpha-weak);
+    border-left: 1px solid var(--color-border-neutral-alpha-weak);
+  }
+}
+
+.mobileNavItem {
+  padding: 12px 16px;
+  border-radius: 16px;
+  width: 100%;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--color-background-neutral-alpha-weak);
+  }
+
+  svg {
+    margin-right: 12px;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Hide desktop logo on mobile when menu is open
+.headerInner[data-show-mobile="true"] .logo {
+  @media (max-width: 768px) {
+    visibility: hidden;
+  }
+}
+
+// Add backdrop for mobile menu
+@media (max-width: 768px) {
+  .header {
+    &::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 998;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    &[data-menu-open="true"]::after {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}

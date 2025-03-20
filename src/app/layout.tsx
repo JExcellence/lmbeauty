@@ -5,14 +5,14 @@ import classNames from "classnames";
 import { headers } from "next/headers";
 import { Metadata } from "next";
 
-import { baseURL, style, meta, og, schema, social, effects } from "@/once-ui/resources/config";
-import {Background, Column, Flex, IconButton, ToastProvider} from "@/once-ui/components";
+import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/config";
+import {Column, Flex, ToastProvider} from "@/once-ui/components";
 
 import {Lora, Roboto_Mono} from 'next/font/google';
 import { Montserrat } from 'next/font/google';
 import React from "react";
 import {CookieBanner} from "@/app/components/cookie/Cookie";
-import {Header} from "@/app/components/header/header";
+import {Header} from "@/app/components/header/Header";
 import {Hero} from "@/app/components/hero/hero";
 import {Footer} from "@/app/components/footer/Footer";
 
@@ -85,7 +85,7 @@ export async function generateMetadata(): Promise<Metadata> {
             googleBot: {
                 index: true,
                 follow: true,
-                "max-video-preview": -1,
+                "max-video-preview": 1,
                 "max-image-preview": "large",
                 "max-snippet": -1,
             },

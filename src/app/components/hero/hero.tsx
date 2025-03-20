@@ -32,14 +32,16 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
             mask={{ x: 50, y: 0, radius: 125 }}
             fill
             >
-                <SmartImage
-                    src="/images/store.mp4"
-                    alt="Video"
-                    foreground={{
-                        opacity: 0.5,
-                        backgroundColor: "rgba(0, 0, 0, 1)"
-                    }}
-                />
+                <RevealFx translateY="8" delay={0.1} fillWidth horizontal="center" paddingBottom="s">
+                    <SmartImage
+                        opacity={70}
+                        src="/images/background/store.mp4"
+                        alt="Video"
+                        foreground={{
+                            backgroundColor: "rgba(0, 0, 0, 0.25)"
+                        }}
+                    />
+                </RevealFx>
             </Background>
             <Column center zIndex={1} maxWidth={60} marginY="s" gap="32" paddingY="s">
                 <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="s">

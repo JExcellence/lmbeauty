@@ -4,16 +4,17 @@ import {Background, Column, Flex, IconButton} from "@/once-ui/components";
 import React, {useEffect, useRef} from "react";
 import {Contact} from "@/app/components/contact/contact";
 import {TestimonialCarousel} from "@/app/components/testimonial/testimonialcarousel";
-import {About} from "@/app/components/aboutme/aboutme";
+import {About} from "@/app/components/aboutme/AboutMe";
 import {ProfileGallery} from "@/app/components/profilegallery/ProfileGallery";
 import {Faq} from "@/app/components/faq/faq";
 import {Footer} from "@/app/components/footer/Footer";
 import {PriceList} from "@/app/components/pricelist/PriceList";
+import {ScrollToTopButton} from "@/once-ui/components/ScrollToTopButton";
 
 const testimonials = [
     {
         src: "/images/eins_zu_eins_1.jpg",
-        title: "Lisa ist einfach unglaublich!",
+        title: "Ich bin begeistert!",
         content: "Ich hatte kürzlich das Vergnügen, eine Wimpernverlängerung bei Lisa machen zu lassen und ich bin absolut begeistert! Lisa ist nicht nur unglaublich professionell, sondern auch sehr freundlich und aufmerksam. Sie hat sich die Zeit genommen, meine Wünsche und Bedenken zu verstehen, und das Ergebnis ist einfach fantastisch. Meine Wimpern sehen natürlich und gleichzeitig atemberaubend aus. Der gesamte Prozess war entspannt und angenehm, und ich fühlte mich die ganze Zeit über in guten Händen. Ich kann Lisas Service nur wärmstens empfehlen und werde definitiv wiederkommen!",
         name: "Justin E.",
         avatar: "/images/eins_zu_eins_1.jpg",
@@ -21,11 +22,11 @@ const testimonials = [
         role: "Fachinformatiker"
     },
     {
-        src: "/images/eins_zu_eins_2.jpg",
+        src: "/images/eins_zu_eins_3.jpg",
         title: "Lisa ist einfach unglaublich!",
         content: "Ich habe mir von Lisa ein Wimpernlifting machen lassen und bin rundum zufrieden! Sie ist sehr freundlich und zuvorkommend und das Ergebnis ihrer Arbeit ist hervorragend! Ich habe mich sehr wohl und gut beraten gefühlt!\n Ich komme auf jeden Fall wieder! Vielen Dank 😊 …",
         name: "Jana H.",
-        avatar: "/images/eins_zu_eins_1.jpg",
+        avatar: "/images/eins_zu_eins_3.jpg",
         company: "",
         role: " "
     },
@@ -147,30 +148,15 @@ export default function Home() {
                 />
             </Column>*/}
 
-            {/* Contact Section */}
             <Column center paddingY="xl" id="contact">
                 <Contact />
             </Column>
 
-            {/* Footer Section */}
             <Column center paddingY="xl" position={"relative"}>
                 <Footer />
             </Column>
 
-            {/* Scroll to Top Button */}
-            <IconButton
-                icon="chevronUp"
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                variant="primary"
-                size="l"
-                style={{
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                    position: "fixed",
-                    bottom: "80px",
-                    right: "20px",
-                    zIndex: "1000"
-                }}
-            />
+            <ScrollToTopButton/>
         </Column>
     );
 }
