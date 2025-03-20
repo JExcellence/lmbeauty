@@ -9,6 +9,7 @@ import {
     Button, Heading, Row, Text, Background
 } from "@/once-ui/components";
 import React, { useState } from "react";
+import ImageGallery from "@/app/components/gallery/gallery";
 
 export const ProfileGallery = () => {
     const [view, setView] = useState<string>('gallery');
@@ -19,7 +20,7 @@ export const ProfileGallery = () => {
                 <Heading variant="display-strong-xs" align="center">
                     Mehr als Wimpern - eine Haltung
                 </Heading>
-                <Text as="p" align="center" variant={"body-strong-l"} padding="s">
+                <Text align="center" variant={"body-strong-l"} padding="s">
                     Bei LM Beauty glaube ich an Schönheit, die stärkt statt stresst.
                     Mein Studio ist ein Safe Space für alle, die ihre natürliche Ausstrahlung
                     feiern wollen - ganz ohne Wenn und Aber.
@@ -42,24 +43,162 @@ export const ProfileGallery = () => {
             />
 
             {view === 'gallery' && (
-                <Grid
-                    maxWidth="l" fillWidth gap="16" marginTop="32" paddingX="8" zIndex={2} columns={2} paddingY="48" borderBottom={"surface"}
-                >
-                    <SmartImage
-                        src="/images/eins_zu_eins_1.jpg"
-                        alt="Behandlungsbeispiel"
-                        aspectRatio="4 / 3"
-                        radius="s"
-                        border={"surface"}
-                    />
-                    <SmartImage
-                        src="/images/eins_zu_eins_2.jpg"
-                        alt="Studio Ambiente"
-                        aspectRatio="4 / 3"
-                        radius="s"
-                        border={"surface"}
-                    />
-                </Grid>
+                <Column fillWidth maxWidth="l">
+                    <Column hide="s">
+                        <Background
+                            borderBottom={"surface"}
+                            position={"absolute"}
+                            zIndex={1}
+                            gradient={{
+                                display: true,
+                                x: 50,
+                                y: 50,
+                                width: 50,
+                                height: 50,
+                                tilt: 0,
+                                opacity: 60,
+                                colorStart: "accent-background-strong",
+                                colorEnd: "page-background"
+                            }}
+                        ></Background>
+                        <Grid
+                            gap="16"
+                            marginTop="32"
+                            paddingX="8"
+                            zIndex={2}
+                            columns={2}
+                            paddingY="48"
+                            borderBottom={"surface"}
+                        >
+                            <ImageGallery
+                                images={[
+                                    {
+                                        src: "/images/eins_zu_eins_1.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/eins_zu_eins_3.jpg",
+                                        alt: ""
+                                    }
+                                ]}
+                            />
+                            <ImageGallery
+                                images={[
+                                    {
+                                        src: "/images/eins_zu_eins_1.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/eins_zu_eins_3.jpg",
+                                        alt: ""
+                                    }
+                                ]}
+                            />
+                            <Column
+                                fillWidth
+                                center
+                            >
+                                <Button
+                                    suffixIcon="sparkle"
+                                    prefixIcon="sparkle"
+                                    variant="secondary"
+                                >
+                                    Zur Showcase von Wimpern
+                                </Button>
+                            </Column>
+                            <Column
+                                fillWidth
+                                center
+                            >
+                                <Button
+                                    suffixIcon="sparkle"
+                                    prefixIcon="sparkle"
+                                    variant="secondary"
+                                >
+                                    Zur Showcase von Shellac
+                                </Button>
+                            </Column>
+                        </Grid>
+                    </Column>
+                    <Column show="s">
+                        <Background
+                            borderBottom={"surface"}
+                            position={"absolute"}
+                            zIndex={1}
+                            gradient={{
+                                display: true,
+                                x: 50,
+                                y: 50,
+                                width: 50,
+                                height: 50,
+                                tilt: 0,
+                                opacity: 60,
+                                colorStart: "accent-background-strong",
+                                colorEnd: "page-background"
+                            }}
+                        ></Background>
+                        <Grid
+                            gap="32"
+                            marginTop="32"
+                            paddingX="8"
+                            zIndex={2}
+                            columns={1}
+                            paddingY="48"
+                            borderBottom={"surface"}
+                        >
+                            <ImageGallery
+                                images={[
+                                    {
+                                        src: "/images/eins_zu_eins_1.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/eins_zu_eins_3.jpg",
+                                        alt: ""
+                                    }
+                                ]}
+                            />
+                            <Column
+                                fillWidth
+                                center
+                                paddingBottom="xl"
+                                borderBottom="surface"
+                            >
+                                <Button
+                                    suffixIcon="sparkle"
+                                    prefixIcon="sparkle"
+                                    variant="secondary"
+                                >
+                                    Zur Showcase von Wimpern
+                                </Button>
+                            </Column>
+                            <ImageGallery
+                                images={[
+                                    {
+                                        src: "/images/eins_zu_eins_1.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/eins_zu_eins_3.jpg",
+                                        alt: ""
+                                    }
+                                ]}
+                            />
+                            <Column
+                                fillWidth
+                                center
+                            >
+                                <Button
+                                    suffixIcon="sparkle"
+                                    prefixIcon="sparkle"
+                                    variant="secondary"
+                                >
+                                    Zur Showcase von Shellac
+                                </Button>
+                            </Column>
+                        </Grid>
+                    </Column>
+                </Column>
             )}
 
             {view === 'about' && (
@@ -82,14 +221,14 @@ export const ProfileGallery = () => {
                 <Column maxWidth="l" fillWidth gap="16" marginTop="40" paddingX="16" zIndex={2}>
                     <Heading as="h3" variant="display-strong-s">Über mich 🌸</Heading>
 
-                    <Text as="p" onBackground="neutral-strong" variant="body-default-l">
+                    <Text onBackground="neutral-strong" variant="body-default-l">
                         Hallo und herzlich willkommen! Ich bin Lisa Marie, 23 Jahre alt,
                         staatlich anerkannte Kosmetikerin, zertifizierte Make-up- und Hairstylistin
                         sowie Wimpernstylistin. Seit mehr als 5 Jahren bin ich in der Beauty-Branche tätig
                         und stolze Gründerin von LM Beauty seit 2023.
                     </Text>
 
-                    <Text as="p" onBackground="neutral-strong" variant="body-default-m">
+                    <Text onBackground="neutral-strong" variant="body-default-m">
                         Als Expertin für strahlende Schönheit habe ich es mir zur Mission gemacht,
                         deine natürliche Ausstrahlung zu betonen. Mit Qualifikationen im Wimpernstyling,
                         Nageldesign und Make-up biete ich dir maßgeschneiderte Behandlungen,

@@ -1,0 +1,58 @@
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 8px 0;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    width: 60px;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent 10%);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent 10%);
+  }
+}
+
+.scrollContainer {
+  display: flex;
+  gap: 16px;
+  animation: scroll 30s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+
+  &:hover {
+    animation-play-state: paused;
+
+    .badge {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+  }
+}
+
+.badge {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05) !important;
+    cursor: pointer;
+    filter: brightness(1.1);
+  }
+}
