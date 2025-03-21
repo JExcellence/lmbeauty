@@ -1,6 +1,6 @@
 "use client";
 
-import { Column, Flex, Heading, Text, Accordion, Icon, Badge, SmartLink, Line } from "@/once-ui/components";
+import { Column, Flex, Heading, Text, Accordion, Icon, Badge, SmartLink } from "@/once-ui/components";
 import React, { useState } from "react";
 import styles from './PriceList.module.scss';
 
@@ -32,7 +32,7 @@ export const PriceList = ({ services, theme }: PriceListProps) => {
     const renderServiceDetails = (service: Service) => (
         <Column gap="16" paddingTop="16" paddingBottom="24">
             {service.details?.map((detail, i) => (
-                <Flex key={i} gap="12" vertical="center" style={{ animation: "fadeIn"}}>
+                <Flex key={i} gap="12" vertical="center" data-animation={"fadeIn"}>
                     <Icon name="checkCircle" size="m" color="accent-solid-medium" />
                     <Text variant="body-default-s">{detail}</Text>
                 </Flex>
@@ -45,9 +45,7 @@ export const PriceList = ({ services, theme }: PriceListProps) => {
                     radius="m"
                     background="neutral-weak"
                     vertical="center"
-                    style={{
-                        animation: "slideRight"
-                    }}
+                    data-animation="slideRight"
                 >
                     <Icon name="star" size="s" color="accent-solid-medium" />
                     <Text variant="body-default-s" color="accent-solid-medium">
@@ -64,9 +62,7 @@ export const PriceList = ({ services, theme }: PriceListProps) => {
                     paddingTop="16"
                     paddingLeft="32"
                     borderLeft="accent-medium"
-                    style={{
-                        animation: "fadeIn"
-                    }}
+                    data-animation="fadeIn"
                 >
                     <Flex gap="12" vertical="center">
                         <Icon name="circle" size="s" color="accent-solid-medium" />
@@ -96,9 +92,7 @@ export const PriceList = ({ services, theme }: PriceListProps) => {
                             color="accent"
                             icon="sparkle"
                             textVariant="label-strong-s"
-                            style={{
-                                animation: "pulse"
-                            }}
+                            data-animation="pulse"
                         >
                             Neu
                         </Badge>
@@ -108,9 +102,7 @@ export const PriceList = ({ services, theme }: PriceListProps) => {
                             color="accent"
                             icon="star"
                             textVariant="label-strong-s"
-                            style={{
-                                animation: "glow"
-                            }}
+                            data-animation="glow"
                         >
                             Beliebt
                         </Badge>
@@ -138,9 +130,7 @@ export const PriceList = ({ services, theme }: PriceListProps) => {
             border="neutral-medium"
             background="surface"
             paddingTop="16"
-            style={{
-                animation: "fadeIn"
-            }}
+            data-animation="fadeIn"
         >
             {categories.map((category) => (
                 <Column key={category} fillWidth>
@@ -167,9 +157,7 @@ export const PriceList = ({ services, theme }: PriceListProps) => {
                                 isOpen={isActive}
                                 onToggle={() => setActiveServiceId(isActive ? null : serviceId)}
                                 border="neutral-weak"
-                                style={{
-                                    animation: "slideDown"
-                                }}
+                                data-animation="slideDown"
                             >
                                 {renderServiceDetails(service)}
                             </Accordion>
@@ -192,9 +180,9 @@ export const PriceList = ({ services, theme }: PriceListProps) => {
                     <SmartLink
                         href="/beratung"
                         color="accent-solid-medium"
+                        data-animation="underline"
                         style={{
                             marginLeft: "8",
-                            animation: "underline"
                         }}
                     >
                         Persönliche Beratung vereinbaren
