@@ -6,7 +6,7 @@ import { headers } from "next/headers";
 import { Metadata } from "next";
 
 import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/config";
-import {Column, Flex, ToastProvider} from "@/once-ui/components";
+import {Background, Column, Flex, ToastProvider} from "@/once-ui/components";
 
 import {Lora, Roboto_Mono} from 'next/font/google';
 import { Montserrat } from 'next/font/google';
@@ -14,7 +14,6 @@ import React from "react";
 import {CookieBanner} from "@/app/components/cookie/Cookie";
 import {Header} from "@/app/components/header/Header";
 import {Hero} from "@/app/components/hero/hero";
-import {Footer} from "@/app/components/footer/Footer";
 
 const primary = Lora({
     variable: '--font-primary',

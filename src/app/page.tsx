@@ -101,47 +101,86 @@ export default function Home() {
 
             <Column zIndex={1} center paddingY="xl" maxWidth={50} id="pricelist">
                 <PriceList
-                    theme={{ color: "#9F7AEA", borderColor: "neutral-medium" }}
                     services={[
                         {
-                            category: "Wimpernverlängerungen",
-                            name: "Classic Extensions",
-                            price: "89€",
-                            duration: "120 Min",
+                            category: "1:2 Technik",
+                            name: "Neumodellage",
+                            price: "75€",
                             description: "Natürlicher Look mit Einzelwimpern",
-                            details: [
-                                "Für dünne bis normale Wimpern",
-                                "Hält 4-6 Wochen",
-                                "Sanfte 0.15mm Technik",
-                                "Inkl. Aftercare Kit"
-                            ],
-                            new: true
-                        },
-                        {
-                            category: "Wimpernverlängerungen",
-                            name: "Volume Extensions",
-                            price: "129€",
-                            duration: "150 Min",
-                            description: "Volles Volumen mit Multi-Lash Effekt",
-                            details: [
-                                "2-6D Fächertechnik",
-                                "Langanhaltender Halt",
-                                "Individuelle Stärkeanpassung",
-                                "Augenschonende Applikation"
-                            ],
-                            popular: true
-                        },
-                        {
-                            category: "Zusatzleistungen",
-                            name: "Wimpern-Tinting",
-                            price: "39€",
-                            duration: "30 Min",
-                            description: "Natürliche Färbung der Eigenwimpern",
-                            details: [
-                                "In 4 Farbtönen verfügbar",
-                                "Hält 4-6 Wochen",
-                                "Ohne Ammoniak",
-                                "Sofortiger Effekt"
+                            details: ["Premium Qualität"],
+                            new: true,
+                            popular: false,
+                            children: [
+                                {
+                                    name: "~ 2 Wochen",
+                                    price: "25€",
+                                    description: "Auffüllen bis zur 2. Woche",
+                                },
+                                {
+                                    name: "~ 3 Wochen",
+                                    price: "30€",
+                                    description: "Auffüllen bis zur 3. Woche"
+                                }
+                            ]
+                        }, {
+                            category: "1:1 Technik",
+                            name: "Neumodellage",
+                            price: "75€",
+                            description: "Natürlicher Look mit Einzelwimpern",
+                            details: ["Premium Qualität"],
+                            new: true,
+                            popular: false,
+                            children: [
+                                {
+                                    name: "~ 2 Wochen",
+                                    price: "25€",
+                                    description: "Auffüllen bis zur 2. Woche",
+                                },
+                                {
+                                    name: "~ 3 Wochen",
+                                    price: "30€",
+                                    description: "Auffüllen bis zur 3. Woche"
+                                }
+                            ]
+                        }, {
+                            category: "1:1 Technik",
+                            name: "Neumodellage",
+                            price: "75€",
+                            description: "Natürlicher Look mit Einzelwimpern",
+                            details: ["Premium Qualität"],
+                            new: true,
+                            popular: false,
+                            children: [
+                                {
+                                    name: "~ 2 Wochen",
+                                    price: "25€",
+                                    description: "Auffüllen bis zur 2. Woche",
+                                },
+                                {
+                                    name: "~ 3 Wochen",
+                                    price: "30€",
+                                    description: "Auffüllen bis zur 3. Woche"
+                                }
+                            ]
+                        }, {
+                            category: "1:1 Technik",
+                            name: "Neumodellage",
+                            price: "75€",
+                            description: "Natürlicher Look mit Einzelwimpern",
+                            details: ["Premium Qualität"],
+                            new: true,
+                            popular: false,
+                            children: [
+                                {
+                                    name: "~ 2 Wochen",
+                                    price: "25€",
+                                    description: "Auffüllen bis zur 2. Woche",
+                                },
+                                {
+                                    name: "~ 3 Wochen",
+                                    price: "30€",
+                                    description: "Auffüllen bis zur 3. Woche"
+                                }
                             ]
                         }
                     ]}
