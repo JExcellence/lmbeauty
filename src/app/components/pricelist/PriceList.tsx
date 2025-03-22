@@ -1,189 +1,184 @@
 "use client";
 
-import { Column, Flex, Heading, Text, Accordion, Icon, Badge, SmartLink } from "@/once-ui/components";
+import { Column, Flex, Heading, Text, Accordion, Icon, Badge, SmartLink, Row } from "@/once-ui/components";
 import React, { useState } from "react";
 import styles from './PriceList.module.scss';
 
 interface Service {
-    category: string;
     name: string;
-    price: string;
-    description: string;
+    price?: string;
+    description?: string;
     details?: string[];
     popular?: boolean;
     new?: boolean;
-    children?: Omit<Service, 'category' | 'popular' | 'new'>[]; // Children inherit category
+    children?: Service[];
 }
 
 interface PriceListProps {
     services: Service[];
-    theme?: {
-        color?: string;
-        borderColor?: string;
-    };
 }
 
-export const PriceList = ({ services, theme }: PriceListProps) => {
-    const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
-    const categories = [...new Set(services.map(s => s.category))];
+export const PriceList = ({ services }: PriceListProps) => {
+    const [activePaths, setActivePaths] = useState<Set<string>>(new Set());
 
-    const getServiceId = (category: string, index: number) => `${category}-${index}`;
+    const toggleAccordion = (currentPath: string) => {
+        setActivePaths(prev => {
+            const newPaths = new Set(prev);
+            const currentParts = currentPath.split('-');
 
-    const renderServiceDetails = (service: Service) => (
-        <Column gap="16" paddingTop="16" paddingBottom="24">
-            {service.details?.map((detail, i) => (
-                <Flex key={i} gap="12" vertical="center" data-animation={"fadeIn"}>
-                    <Icon name="checkCircle" size="m" color="accent-solid-medium" />
-                    <Text variant="body-default-s">{detail}</Text>
-                </Flex>
-            ))}
+            const pathSegments = currentPath.split('-');
 
-            {service.popular && (
-                <Flex
-                    gap="12"
-                    padding="16"
-                    radius="m"
-                    background="neutral-weak"
-                    vertical="center"
-                    data-animation="slideRight"
+            Array.from(newPaths).forEach(path => {
+                const isAncestor = currentPath.startsWith(path);
+                const isDescendant = path.startsWith(currentPath);
+                const isSameBranch = path.split('-').every((seg, i) => seg === pathSegments[i]);
+
+                if (!isAncestor && !isDescendant && !isSameBranch) {
+                    newPaths.delete(path);
+                }
+            });
+
+            if (newPaths.has(currentPath)) {
+                newPaths.delete(currentPath);
+            } else {
+                newPaths.add(currentPath);
+            }
+
+            let currentParent = currentPath.split('-').slice(0, -1).join('-');
+            while (currentParent) {
+                newPaths.add(currentParent);
+                currentParent = currentParent.split('-').slice(0, -1).join('-');
+            }
+
+            return newPaths;
+        });
+    };
+
+
+    const renderCategory = (category: Service, depth: number, path: string) => {
+        const isActive = activePaths.has(path);
+
+        return (
+            <Column key={path} fillWidth className={styles.serviceContainer} radius="s" border="surface" padding="s">
+                <Accordion
+                    fillWidth
+                    title={
+                        <Flex gap="16" vertical="center">
+                            <Icon
+                                name={depth === 0 ? "docCurrencyEuro" : "sparkle"}
+                                onBackground="brand-medium"
+                                className={styles.categoryIcon}
+                            />
+                            <Column>
+                                <Heading variant="heading-strong-s">
+                                    {category.name}
+                                </Heading>
+                                {depth === 0 && (
+                                    <Text variant="body-default-s" color="neutral-medium">
+                                        {category.description}
+                                    </Text>
+                                )}
+                            </Column>
+                        </Flex>
+                    }
+                    isOpen={isActive}
+                    onToggle={() => toggleAccordion(path)}
                 >
-                    <Icon name="star" size="s" color="accent-solid-medium" />
-                    <Text variant="body-default-s" color="accent-solid-medium">
-                        Meistgebuchter Service • Empfohlen von 95% der Kundinnen
-                    </Text>
-                </Flex>
-            )}
-
-            {service.children?.map((child, childIndex) => (
-                <Flex
-                    key={childIndex}
-                    gap="24"
-                    horizontal="space-between"
-                    paddingTop="16"
-                    paddingLeft="32"
-                    borderLeft="accent-medium"
-                    data-animation="fadeIn"
-                >
-                    <Flex gap="12" vertical="center">
-                        <Icon name="circle" size="s" color="accent-solid-medium" />
+                    {depth === 0 ? (
                         <Column gap="4">
-                            <Text variant="body-strong-s">{child.name}</Text>
-                            {child.description && (
-                                <Text variant="body-default-s" color="neutral-medium">
-                                    {child.description}
-                                </Text>
+                            <Text variant="body-default-s" color="neutral-medium">
+                                {category.details?.[0]}
+                            </Text>
+                            {category.children?.map((sub, index) =>
+                                renderCategory(sub, depth + 1, `${path}-${index}`)
                             )}
                         </Column>
-                    </Flex>
-                    <Text variant="body-strong-s" color="accent-solid-medium">
-                        {child.price}
-                    </Text>
-                </Flex>
-            ))}
-        </Column>
-    );
-
-    const renderAccordionTitle = (service: Service) => (
-        <Flex horizontal="space-between" vertical="center" fillWidth gap="16">
-            <Flex gap="16" vertical="center" fillWidth>
-                <Flex gap="8">
-                    {service.new && (
-                        <Badge
-                            color="accent"
-                            icon="sparkle"
-                            textVariant="label-strong-s"
-                            data-animation="pulse"
+                    ) : (
+                        <Column
+                            gap="8"
+                            padding="s"
+                            radius="s-4"
                         >
-                            Neu
-                        </Badge>
+                            {category.description && (
+                                <Column
+                                    background="surface"
+                                    padding="s"
+                                    radius="s"
+                                >
+                                    <Text
+                                        variant="body-default-s"
+                                        onBackground="brand-medium"
+                                        wrap={"balance"}
+                                    >
+                                        {category.description}
+                                    </Text>
+                                </Column>
+                            )}
+                            {category.children?.map((service, index) => (
+                                service.children ? (
+                                    renderCategory(service, depth + 1, `${path}-${index}`)
+                                ) : (
+                                    <Flex
+                                        key={`${path}-${index}`}
+                                        horizontal="space-between"
+                                        vertical="center"
+                                        padding="12"
+                                        radius="xl"
+                                        background="neutral-weak"
+                                        className={styles.serviceItem}
+                                    >
+                                        <Flex gap="16" vertical="center">
+                                            <Icon
+                                                name="heart"
+                                                size="l"
+                                                onBackground="brand-medium"
+                                            />
+                                            <Column>
+                                                <Text variant="body-strong-m">{service.name}</Text>
+                                                <Text variant="body-default-s" color="neutral-medium">
+                                                    {service.description}
+                                                </Text>
+                                            </Column>
+                                        </Flex>
+                                        <Text variant="body-default-l" onBackground="brand-medium">
+                                            {service.price}
+                                        </Text>
+                                    </Flex>
+                                )
+                            ))}
+                        </Column>
                     )}
-                    {service.popular && (
-                        <Badge
-                            color="accent"
-                            icon="star"
-                            textVariant="label-strong-s"
-                            data-animation="glow"
-                        >
-                            Beliebt
-                        </Badge>
-                    )}
-                </Flex>
-                <Column gap="4">
-                    <Heading variant="heading-strong-s">{service.name}</Heading>
-                    {service.description && (
-                        <Text variant="body-default-s" color="neutral-medium">
-                            {service.description}
-                        </Text>
-                    )}
-                </Column>
-            </Flex>
-            <Text variant="heading-strong-m" color="accent-solid-medium">
-                {service.price}
-            </Text>
-        </Flex>
-    );
+                </Accordion>
+            </Column>
+        );
+    };
 
     return (
         <Column
             fillWidth
-            radius="l"
-            border="neutral-medium"
-            background="surface"
-            paddingTop="16"
-            data-animation="fadeIn"
+            radius="s"
+            border="surface"
+            className={styles.container}
         >
-            {categories.map((category) => (
-                <Column key={category} fillWidth>
-                    <Flex
-                        paddingX="24"
-                        paddingY="16"
-                        background="neutral-weak"
-                        gap="12"
-                        vertical="center"
-                        borderBottom="neutral-medium"
-                    >
-                        <Icon name="category" size="m" color="accent-solid-medium" />
-                        <Heading variant="heading-strong-s">{category}</Heading>
-                    </Flex>
-
-                    {services.filter(s => s.category === category).map((service, index) => {
-                        const serviceId = getServiceId(category, index);
-                        const isActive = activeServiceId === serviceId;
-
-                        return (
-                            <Accordion
-                                key={serviceId}
-                                title={renderAccordionTitle(service)}
-                                isOpen={isActive}
-                                onToggle={() => setActiveServiceId(isActive ? null : serviceId)}
-                                border="neutral-weak"
-                                data-animation="slideDown"
-                            >
-                                {renderServiceDetails(service)}
-                            </Accordion>
-                        );
-                    })}
-                </Column>
-            ))}
+            {services.map((category, index) =>
+                renderCategory(category, 0, `${index}`)
+            )}
 
             <Flex
                 horizontal="center"
+                vertical="center"
                 gap="16"
                 padding="24"
-                background="neutral-weak"
-                marginTop="16"
-                borderTop="neutral-medium"
+                background="surface"
+                className={styles.footer}
             >
-                <Icon name="sparkle" size="m" color="accent-solid-medium" />
+                <Icon name="heart" size="m" onBackground="brand-medium" />
                 <Text align="center" variant="body-default-s">
                     Alle Preise inkl. MwSt. & Vorbereitung •
                     <SmartLink
                         href="/beratung"
                         color="accent-solid-medium"
-                        data-animation="underline"
-                        style={{
-                            marginLeft: "8",
-                        }}
+                        className={styles.consultationLink}
                     >
                         Persönliche Beratung vereinbaren
                     </SmartLink>

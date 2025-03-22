@@ -82,10 +82,10 @@ export const About = () => (
                             padding="4"
                             className={styles.scrollContainer}
                         >
-                            {[...Array(4)].map((_, idx) => ( // Increased duplicates for smoother loop
+                            {[...Array(4)].map((_, idx) => (
                                 <Row key={idx} gap="16">
                                     <Badge
-                                        background="neutral-weak"
+                                        background="accent-alpha-weak"
                                         textVariant="body-default-s"
                                         icon="sparkle"
                                         className={styles.badge}
@@ -93,18 +93,55 @@ export const About = () => (
                                         Mehr als 5 Jahre Erfahrung im Beauty Bereich
                                     </Badge>
                                     <Badge
+                                        background="accent-alpha-weak"
                                         textVariant="body-default-s"
-                                        icon="sparkle"
+                                        icon="heart"
                                         className={styles.badge}
                                     >
                                         Mehr als 100 zufriedene Kundinnen
                                     </Badge>
                                     <Badge
+                                        background="accent-alpha-weak"
                                         textVariant="body-default-s"
                                         icon="sparkle"
                                         className={styles.badge}
                                     >
                                         Trends & Qualität vereint Immer am Puls der Zeit.
+                                    </Badge>
+                                    <Badge
+                                        background="accent-alpha-weak"
+                                        textVariant="body-default-s"
+                                        icon="clock"
+                                        className={styles.badge}
+                                    >
+                                        Flexible Öffnungszeiten
+                                    </Badge>
+                                    <Badge
+                                        background="accent-alpha-weak"
+                                        textVariant="body-default-s"
+                                        icon="users"
+                                        color="brand-solid-medium"
+                                        className={styles.badge}
+                                    >
+                                        Individuelle Beratung & Personalisierung
+                                    </Badge>
+                                    <Badge
+                                        background="brand-alpha-weak"
+                                        textVariant="body-default-s"
+                                        icon="trending"
+                                        color="brand-solid-medium"
+                                        className={styles.badge}
+                                    >
+                                        Zufriedenheitsgarantie
+                                    </Badge>
+                                    <Badge
+                                        background="accent-alpha-weak"
+                                        textVariant="body-default-s"
+                                        icon="gift"
+                                        color="brand-solid-medium"
+                                        className={styles.badge}
+                                    >
+                                        Geschenkgutscheine & Pakete verfügbar
                                     </Badge>
                                 </Row>
                             ))}

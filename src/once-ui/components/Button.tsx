@@ -92,7 +92,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps | AnchorProps>(
         style={style}
         {...props}
       >
-        {prefixIcon && !loading && <Icon name={prefixIcon} size={iconSize} />}
+        {prefixIcon && !loading && <Icon name={prefixIcon} size={iconSize} onBackground={"brand-medium"} />}
         {loading && <Spinner size={size} />}
         {(label || children) && (
           <Flex
@@ -101,6 +101,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps | AnchorProps>(
             textWeight={weight}
             textSize={size}
             className="font-label"
+            onBackground={"brand-medium"}
           >
             {label || children}
           </Flex>

@@ -1,7 +1,20 @@
 "use client";
 
 import React from "react";
-import { Column, Heading, Row, Text, Input, Button, Textarea, AvatarGroup, Icon, Grid, Background } from "@/once-ui/components";
+import {
+    Column,
+    Heading,
+    Row,
+    Text,
+    Input,
+    Button,
+    Textarea,
+    AvatarGroup,
+    Icon,
+    Grid,
+    Background,
+    Flex, RevealFx
+} from "@/once-ui/components";
 
 const contacts = [
     {
@@ -44,145 +57,99 @@ const contacts = [
 
 export const Contact = () => {
     return (
-        <Column fillWidth fitHeight horizontal="center" gap="64">
-            <Background
-                position="absolute"
-                gradient={{
-                    display: true,
-                    x: 30,
-                    y: 30,
-                    width: 100,
-                    height: 60,
-                    tilt: -45,
-                    opacity: 100,
-                    colorStart: "brand-background-strong",
-                    colorEnd: "static-transparent",
-                }}
-                dots={{
-                    display: true,
-                    opacity: 100,
-                    color: "page-background",
-                    size: "2",
-                }}
-            />
-            <Background
-                position="absolute"
-                gradient={{
-                    display: true,
-                    x: 0,
-                    y: 30,
-                    width: 100,
-                    height: 60,
-                    tilt: -45,
-                    opacity: 100,
-                    colorStart: "accent-background-strong",
-                    colorEnd: "static-transparent",
-                }}
-                dots={{
-                    display: true,
-                    opacity: 100,
-                    color: "page-background",
-                    size: "2",
-                }}
-            />
-            <Column position="relative" maxWidth={40} gap="12" horizontal="center">
-                <Heading as="h3" align="center" variant="display-strong-m">
-                    Kontaktiere mich
-                </Heading>
-                <Text align="center" onBackground="neutral-medium" variant="body-default-xl" wrap="balance">
-                    Ich bin immer für dich da – persönlich, professionell, menschlich.
-                </Text>
-            </Column>
+        <Background
+            paddingY="l"
+            zIndex={1}
+            gradient={{
+                display: true,
+                x: 50,
+                y: 50,
+                width: 50,
+                height: 50,
+                tilt: -45,
+                opacity: 50,
+                colorStart: "brand-background-strong",
+                colorEnd: "page-background",
+            }}
+        >
+        <Flex zIndex={3} horizontal="center" gap="64" direction={"column"}>
+            <RevealFx translateY="8" delay={0.2}>
+                <Column maxWidth={40} gap="12" horizontal="center">
+                    <Heading as="h3" align="center" variant="display-strong-m">
+                        Kontaktiere mich
+                    </Heading>
+                    <Text align="center" onBackground="neutral-medium" variant="body-default-xl" wrap="balance">
+                        Ich bin immer für dich da – persönlich, professionell, menschlich.
+                    </Text>
+                </Column>
+            </RevealFx>
             <Grid
+                paddingX="l"
                 maxWidth="l"
-                position="relative"
-                gap="8"
-                columns="2" mobileColumns="1">
+                gap="16"
+                columns="2" mobileColumns="1"
+            >
                 {contacts.map((contact, index) => (
-                    <Column
-                        radius="s"
-                        padding="24"
-                        border="neutral-medium"
-                        key={index}
-                        fillWidth
-                        gap="8">
-                        <Icon
-                            name={contact.icon}
-                            size="m"
-                            onBackground="brand-medium"/>
-                        <Heading
-                            marginTop="4"
-                            as="h4"
-                            variant="heading-strong-l">
-                            {contact.title}
-                        </Heading>
-                        <Text
-                            marginBottom="16"
-                            onBackground="neutral-medium"
-                            variant="body-default-s"
-                            wrap="balance">
-                            {contact.description}
-                        </Text>
-                        <Button
-                            weight="default"
-                            data-border="rounded"
-                            size="s"
-                            href={contact.link.href}
-                            variant={contact.title === "WhatsApp" ? "primary" : "secondary"}
-                        >
-                            {contact.link.label}
-                        </Button>
-                    </Column>
+                    <RevealFx translateY="16" delay={0.8}>
+                        <Column
+                            radius="s"
+                            padding="24"
+                            border="surface"
+                            key={index}
+                            fillWidth
+                            gap="8">
+                            <Row
+                                vertical={"center"}
+                                horizontal={"space-between"}
+                            >
+                                <Heading
+                                    marginTop="4"
+                                    as="h4"
+                                    variant="heading-default-m"
+                                >
+                                    {contact.title}
+                                </Heading>
+                                <Icon
+                                    name={contact.icon}
+                                    size="m"
+                                    onBackground="brand-medium"
+                                />
+                            </Row>
+                            <Text
+                                marginBottom="8"
+                                variant="body-default-m"
+                                wrap="balance">
+                                {contact.description}
+                            </Text>
+                            <Button
+                                weight="default"
+                                size="m"
+                                href={contact.link.href}
+                                prefixIcon={contact.icon}
+                                variant="secondary"
+                            >
+                                {contact.link.label}
+                            </Button>
+                        </Column>
+                    </RevealFx>
                 ))}
             </Grid>
-            <Row position="relative" maxWidth={80} minHeight={30} tabletDirection="column" gap="s">
-                <Column flex={1} minHeight={25} maxHeight={25} radius="s" overflow="hidden">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2393.2272121889014!2d8.183366776417152!3d53.142016689992765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b6df7f0db40171%3A0x3354833b97a2b438!2sLM%20Beauty!5e0!3m2!1sde!2sde!4v1711314320122!5m2!1sde!2sde"
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0, display: 'block' }}
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                    />
-                </Column>
-                <Column flex={1} gap="16">
-                    <Column gap="s" fillWidth marginBottom="32" marginTop="8">
-                        <Heading variant="display-strong-xs">
-                            Schreib mir eine Nachricht
-                        </Heading>
-                        <Text variant="body-strong-m" onBackground="neutral-medium" wrap="balance">
-                            Ich freue mich darauf, von dir zu hören. Deine Nachricht beantworte ich so schnell wie möglich.
-                        </Text>
-                    </Column>
-
-                    <Column gap="-1">
-                        <Input
-                            radius="top"
-                            id="name"
-                            label="Name"
-                            type="text"
-                        />
-                        <Input
-                            radius="none"
-                            id="email"
-                            label="E-Mail"
-                            type="email"
-                        />
-                        <Textarea
-                            style={{minHeight: "4rem"}}
-                            radius="bottom"
-                            id="message"
-                            label="Nachricht"
-                            lines="auto"
+            <Column fillWidth gap="s" padding="l" borderBottom="surface">
+                <RevealFx translateY="16" delay={1.0}>
+                    <Column flex={1} minHeight={25} maxHeight={25} radius="s" overflow="hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2393.2272121889014!2d8.183366776417152!3d53.142016689992765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b6df7f0db40171%3A0x3354833b97a2b438!2sLM%20Beauty!5e0!3m2!1sde!2sde!4v1711314320122!5m2!1sde!2sde"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0, display: 'block' }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
                         />
                     </Column>
-                    <Button id="send" arrowIcon>
-                        Nachricht senden
-                    </Button>
-                </Column>
-            </Row>
-        </Column>
+                </RevealFx>
+            </Column>
+        </Flex>
+    </Background>
     );
 };

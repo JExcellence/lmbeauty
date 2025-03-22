@@ -28,9 +28,9 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
             style={{ height: "100vh" }}
         >
             <Background
-            position={"absolute"}
-            mask={{ x: 50, y: 0, radius: 125 }}
-            fill
+                position={"absolute"}
+                mask={{ x: 50, y: 0, radius: 125 }}
+                fill
             >
                 <RevealFx translateY="8" delay={0.1} fillWidth horizontal="center" paddingBottom="s">
                     <SmartImage
@@ -72,16 +72,16 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                 <RevealFx speed="fast" delay={0.6} translateY="16">
                     <Flex gap="16" vertical="center">
                         <Button
-                            id="download"
-                            href="/"
+                            id="instagram"
+                            href="https://www.instagram.com/_l.m_beauty_/"
                             variant="secondary"
-                            prefixIcon="openLink"
+                            prefixIcon="instagram"
                             weight="default"
                         >
-                            Preisliste
+                            Instagram
                         </Button>
                         <Button
-                            id="preisliste"
+                            id="aboutme"
                             href="#about"
                             variant="secondary"
                             prefixIcon="chevronDown"

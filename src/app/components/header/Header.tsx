@@ -1,7 +1,6 @@
 "use client";
 
 import {
-    Button,
     Column,
     Fade,
     Logo,
@@ -9,9 +8,8 @@ import {
     Row,
     SmartLink,
     Text,
-    ToggleButton,
 } from "@/once-ui/components";
-import { usePathname } from "next/navigation";
+
 import React, { useEffect, useState } from "react";
 import styles from './Header.module.scss';
 
@@ -24,9 +22,9 @@ interface HeaderProps {
 
 const NAV_ITEMS = [
     { id: 'about', label: 'Über mich', icon: 'person' },
-    { id: 'showcase', label: 'Showcase', icon: 'plus' },
-    { id: 'booking', label: 'Termin buchen', icon: 'calendar' },
-    { id: 'pricing', label: 'Preisliste', icon: 'chevronRight' },
+    { id: 'showcase', label: 'Showcase', icon: 'heart' },
+    { id: 'contact', label: 'Termin buchen', icon: 'calendar' },
+    { id: 'pricelist', label: 'Preisliste', icon: 'docCurrencyEuro' },
 ];
 
 const Header: React.FC<HeaderProps> = () => {
@@ -34,19 +32,28 @@ const Header: React.FC<HeaderProps> = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const handleScroll = (id: string) => {
+    const handleScroll = (id: string, e: React.MouseEvent) => {
+        e.preventDefault();
         const section = document.getElementById(id);
         if (section) {
-            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const headerHeight = document.querySelector('header')?.clientHeight || 0;
+            const offset = headerHeight + 24;
+
+            window.scrollTo({
+                top: section.offsetTop - offset,
+                behavior: 'smooth'
+            });
+
             setActiveSection(id);
             setIsMobileMenuOpen(false);
         }
     };
 
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 20);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        document.documentElement.style.scrollBehavior = 'smooth';
+        return () => {
+            document.documentElement.style.scrollBehavior = 'auto';
+        };
     }, []);
 
     return (
@@ -79,7 +86,6 @@ const Header: React.FC<HeaderProps> = () => {
                 background="overlay"
                 className={styles.headerInner}
             >
-                {/* Mobile Burger Menu */}
                 <Row show="s" gap="8" fillWidth vertical="center" horizontal="space-between">
                     <Row>
                         <Logo size="xl" href="/" className={styles.logo}/>
@@ -108,7 +114,7 @@ const Header: React.FC<HeaderProps> = () => {
                             <SmartLink
                                 key={item.id}
                                 href={`#${item.id}`}
-                                onClick={() => handleScroll(item.id)}
+                                onClick={(e) => handleScroll(item.id, e)}
                                 prefixIcon={item.icon}
                                 className={`${styles.navItem} ${activeSection === item.id ? styles.active : ''}`}
                             >
@@ -118,7 +124,6 @@ const Header: React.FC<HeaderProps> = () => {
                     </Row>
                 </Row>
 
-                {/* Mobile Navigation Dropdown */}
                 {isMobileMenuOpen && (
                     <Column
                         show="s"
@@ -137,11 +142,11 @@ const Header: React.FC<HeaderProps> = () => {
                             <SmartLink
                                 key={item.id}
                                 href={`#${item.id}`}
-                                onClick={() => handleScroll(item.id)}
+                                onClick={(e) => handleScroll(item.id, e)}
                                 prefixIcon={item.icon}
-                                className={styles.mobileNavItem}
+                                className={`${styles.navItem} ${activeSection === item.id ? styles.active : ''}`}
                             >
-                                <Text variant="body-strong-m">{item.label}</Text>
+                                <Text className={styles.navText}>{item.label}</Text>
                             </SmartLink>
                         ))}
                     </Column>
