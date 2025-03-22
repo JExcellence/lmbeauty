@@ -103,7 +103,7 @@ export const ProfileGallery = () => {
                                     prefixIcon="sparkle"
                                     variant="secondary"
                                 >
-                                    Zur Showcase von Wimpern
+                                    Zur Showcase von Wimpern (Bald Verfügbar)
                                 </Button>
                             </Column>
                             <Column
@@ -115,7 +115,7 @@ export const ProfileGallery = () => {
                                     prefixIcon="sparkle"
                                     variant="secondary"
                                 >
-                                    Zur Showcase von Shellac
+                                    Zur Showcase von Shellac (Bald Verfügbar)
                                 </Button>
                             </Column>
                         </Grid>
@@ -149,11 +149,11 @@ export const ProfileGallery = () => {
                             <ImageGallery
                                 images={[
                                     {
-                                        src: "/images/eins_zu_eins_1.jpg",
+                                        src: "/images/work/einzel/eye/eins_zu_eins_1.jpg",
                                         alt: ""
                                     },
                                     {
-                                        src: "/images/eins_zu_eins_3.jpg",
+                                        src: "/images/work/einzel/eye/eins_zu_eins_3.jpg",
                                         alt: ""
                                     }
                                 ]}
@@ -169,17 +169,17 @@ export const ProfileGallery = () => {
                                     prefixIcon="sparkle"
                                     variant="secondary"
                                 >
-                                    Zur Showcase von Wimpern
+                                    Zur Showcase von Wimpern (Bald Verfügbar)
                                 </Button>
                             </Column>
                             <ImageGallery
                                 images={[
                                     {
-                                        src: "/images/eins_zu_eins_1.jpg",
+                                        src: "/images/work/einzel/eye/eins_zu_eins_1.jpg",
                                         alt: ""
                                     },
                                     {
-                                        src: "/images/eins_zu_eins_3.jpg",
+                                        src: "/images/work/einzel/eye/eins_zu_eins_3.jpg",
                                         alt: ""
                                     }
                                 ]}
@@ -193,7 +193,7 @@ export const ProfileGallery = () => {
                                     prefixIcon="sparkle"
                                     variant="secondary"
                                 >
-                                    Zur Showcase von Shellac
+                                    Zur Showcase von Shellac (Bald Verfügbar)
                                 </Button>
                             </Column>
                         </Grid>

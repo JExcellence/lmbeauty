@@ -1,8 +1,8 @@
 import {
     Button,
     Column,
-    Row, SmartImage, SmartLink,
-
+    Row,
+    SmartLink,
 } from "@/once-ui/components";
 import React from "react";
 
@@ -15,10 +15,7 @@ export const Footer = () => {
                         Sonstiges
                     </Row>
                     <Row>
-                        <SmartLink href=" ">Produkte</SmartLink>
-                    </Row>
-                    <Row>
-                        <SmartLink href=" ">Preisliste</SmartLink>
+                        <SmartLink href="#pricelist">Preisliste</SmartLink>
                     </Row>
                 </Column>
                 <Column gap="12" textVariant="label-default-m">
@@ -26,22 +23,22 @@ export const Footer = () => {
                         Rechtliches
                     </Row>
                     <Row>
-                        <SmartLink href=" ">Über mich</SmartLink>
+                        <SmartLink href="#about">Über mich</SmartLink>
                     </Row>
                     <Row>
-                        <SmartLink href=" ">Impressum</SmartLink>
-                    </Row>
+                        <SmartLink href="/">Impressum</SmartLink>
+                    </Row> //TODO imprint
                     <Row>
-                        <SmartLink href=" ">Datenschutz</SmartLink>
-                    </Row>
+                        <SmartLink href="/">Datenschutz</SmartLink>
+                    </Row> //TODO datenschutz
                 </Column>
                 <Column data-border="rounded" gap="12" textVariant="label-default-m">
                     <Row paddingX="4" marginBottom="8">
                         Soziales
                     </Row>
-                    <Button href=" " prefixIcon="whatsapp" label="WhatsApp" size="s" variant="secondary" />
-                    <Button href=" " prefixIcon="mail" label="E-Mail" size="s" variant="secondary" />
-                    <Button href=" " prefixIcon="instagram" label="Instagram" size="s" variant="secondary" />
+                    <Button href="#contact" prefixIcon="whatsapp" label="WhatsApp" size="s" variant="secondary" />
+                    <Button href="#contact" prefixIcon="mail" label="E-Mail" size="s" variant="secondary" />
+                    <Button href="#contact" prefixIcon="instagram" label="Instagram" size="s" variant="secondary" />
                 </Column>
             </Row>
         </Column>

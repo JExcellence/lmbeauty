@@ -28,12 +28,13 @@ import {
   HiCheckCircle,
   HiOutlineShieldCheck,
   HiOutlineSparkles,
+  HiOutlineDocumentCurrencyEuro, HiHeart, HiOutlineGift, HiOutlineArrowTrendingUp, HiOutlineUsers
 } from "react-icons/hi2";
 
 import { RiVisaLine } from "react-icons/ri";
 
 import {FaDiscord, FaGithub, FaGoogle, FaInstagram, FaWhatsapp} from "react-icons/fa6";
-import {HiMail} from "react-icons/hi";
+import {HiMail, HiOutlineClock} from "react-icons/hi";
 
 import { LuChevronsLeftRight } from "react-icons/lu";
 
@@ -66,11 +67,17 @@ export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
   minus: HiMiniMinus,
   plus: HiMiniPlus,
+  heart: HiHeart,
   calendar: HiCalendar,
   eye: HiOutlineEye,
   eyeOff: HiOutlineEyeSlash,
   search: HiOutlineMagnifyingGlass,
   visa: RiVisaLine,
   security: HiOutlineShieldCheck,
+  clock: HiOutlineClock,
+  gift: HiOutlineGift,
+  trending: HiOutlineArrowTrendingUp,
+  users: HiOutlineUsers,
   sparkle: HiOutlineSparkles,
+  docCurrencyEuro: HiOutlineDocumentCurrencyEuro
 };

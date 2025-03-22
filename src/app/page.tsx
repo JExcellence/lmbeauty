@@ -1,6 +1,6 @@
 "use client";
 
-import {Background, Column, Flex, IconButton} from "@/once-ui/components";
+import {Background, Column, Flex, Heading, IconButton, Text} from "@/once-ui/components";
 import React, {useEffect, useRef} from "react";
 import {Contact} from "@/app/components/contact/contact";
 import {TestimonialCarousel} from "@/app/components/testimonial/testimonialcarousel";
@@ -13,20 +13,20 @@ import {ScrollToTopButton} from "@/once-ui/components/ScrollToTopButton";
 
 const testimonials = [
     {
-        src: "/images/eins_zu_eins_1.jpg",
+        src: "/images/work/wimpernlifting/eye/wimpernlifting_1.jpg",
         title: "Ich bin begeistert!",
         content: "Ich hatte kürzlich das Vergnügen, eine Wimpernverlängerung bei Lisa machen zu lassen und ich bin absolut begeistert! Lisa ist nicht nur unglaublich professionell, sondern auch sehr freundlich und aufmerksam. Sie hat sich die Zeit genommen, meine Wünsche und Bedenken zu verstehen, und das Ergebnis ist einfach fantastisch. Meine Wimpern sehen natürlich und gleichzeitig atemberaubend aus. Der gesamte Prozess war entspannt und angenehm, und ich fühlte mich die ganze Zeit über in guten Händen. Ich kann Lisas Service nur wärmstens empfehlen und werde definitiv wiederkommen!",
         name: "Justin E.",
-        avatar: "/images/eins_zu_eins_1.jpg",
+        avatar: "/images/work/wimpernlifting/eye/wimpernlifting_1.jpg",
         company: "JExcellence",
         role: "Fachinformatiker"
     },
     {
-        src: "/images/eins_zu_eins_3.jpg",
+        src: "/images/work/wimpernlifting/eye/wimpernlifting_2.jpg",
         title: "Lisa ist einfach unglaublich!",
         content: "Ich habe mir von Lisa ein Wimpernlifting machen lassen und bin rundum zufrieden! Sie ist sehr freundlich und zuvorkommend und das Ergebnis ihrer Arbeit ist hervorragend! Ich habe mich sehr wohl und gut beraten gefühlt!\n Ich komme auf jeden Fall wieder! Vielen Dank 😊 …",
         name: "Jana H.",
-        avatar: "/images/eins_zu_eins_3.jpg",
+        avatar: "/images/work/wimpernlifting/eye/wimpernlifting_2.jpg",
         company: "",
         role: " "
     },
@@ -34,7 +34,7 @@ const testimonials = [
 
 export default function Home() {
     return (
-        <Column fillWidth center padding="s" maxWidth={60} gap="s">
+        <Column fillWidth center padding="s" gap="s">
             <Column center paddingY="xl" id="about" maxWidth={50} gap="s">
                 <About />
             </Column>
@@ -100,94 +100,175 @@ export default function Home() {
             </Column>
 
             <Column zIndex={1} center paddingY="xl" maxWidth={50} id="pricelist">
+                <Heading variant="display-strong-xs" align="center">Preisliste</Heading>
+                <Text align="center" wrap="balance" variant="body-default-l" onBackground="neutral-medium" marginBottom="20">
+                    Hier findest du meine aktuellen Preise 🌸
+                </Text>
                 <PriceList
                     services={[
                         {
-                            category: "1:2 Technik",
-                            name: "Neumodellage",
-                            price: "75€",
-                            description: "Natürlicher Look mit Einzelwimpern",
-                            details: ["Premium Qualität"],
-                            new: true,
-                            popular: false,
+                            name: "Wimpern",
                             children: [
                                 {
-                                    name: "~ 2 Wochen",
-                                    price: "25€",
-                                    description: "Auffüllen bis zur 2. Woche",
+                                    name: "1:1 Technik",
+                                    description: "Bei der 1:1 Technik wird auf jede Naturwimper eine einzelne Wimper geklebt. Somit wird ein sehr natürliches Ergebnis erzielt.",
+                                    children: [
+                                        {
+                                            name: "Neumodellage",
+                                            price: "75€",
+                                            description: "Neue Anlage"
+                                        },
+                                        {
+                                            name: "~ 2 Wochen",
+                                            price: "25€",
+                                            description: "Auffüllen bis zur 2. Woche"
+                                        },
+                                        {
+                                            name: "~ 3 Wochen",
+                                            price: "30€",
+                                            description: "Auffüllen bis zur 3. Woche"
+                                        },
+                                        {
+                                            name: "~ 4 Wochen",
+                                            price: "35€",
+                                            description: "Auffüllen bis zur 4. Woche"
+                                        }
+                                    ]
                                 },
                                 {
-                                    name: "~ 3 Wochen",
-                                    price: "30€",
-                                    description: "Auffüllen bis zur 3. Woche"
+                                    name: "Hybrid Technik",
+                                    description: "Bei der Hybrid Technik werden abwechselnd Volumenfächer und Einzelwimpern auf die Naturwimpern geklebt. Die Hybrid Technik ist gut geeignet, um mit den Extensions zu starten, für alle die noch unsicher sind wie intensiv das Ergebnis werden soll.",
+                                    children: [
+                                        {
+                                            name: "Neumodellage",
+                                            price: "85€",
+                                            description: "Neue Anlage"
+                                        },
+                                        {
+                                            name: "~ 2 Wochen",
+                                            price: "35€",
+                                            description: "Auffüllen bis zur 2. Woche"
+                                        },
+                                        {
+                                            name: "~ 3 Wochen",
+                                            price: "40€",
+                                            description: "Auffüllen bis zur 3. Woche"
+                                        },
+                                        {
+                                            name: "~ 4 Wochen",
+                                            price: "45€",
+                                            description: "Auffüllen bis zur 4. Woche"
+                                        }
+                                    ]
+                                },
+                                {
+                                    name: "Volumen Technik",
+                                    description: "Bei der Volumen Technik wird auf eine einzelne Naturwimper ein handgemachter Fächer gesetzt. Je nach Kundenwunsch und Gegebenheiten kann das Ergebnis von einem leichten Volumen bis zu einem Mega Volumen gearbeitet werden.",
+                                    children: [
+                                        {
+                                            name: "Neumodellage",
+                                            price: "110€",
+                                            description: "Neue Anlage"
+                                        },
+                                        {
+                                            name: "~ 2 Wochen",
+                                            price: "45€",
+                                            description: "Auffüllen bis zur 2. Woche"
+                                        },
+                                        {
+                                            name: "~ 3 Wochen",
+                                            price: "50€",
+                                            description: "Auffüllen bis zur 3. Woche"
+                                        },
+                                        {
+                                            name: "~ 4 Wochen",
+                                            price: "55€",
+                                            description: "Auffüllen bis zur 4. Woche"
+                                        }
+                                    ]
+                                },
+                                {
+                                    name: "Liftings",
+                                    description: "Beim Augenbrauen- als auch Wimpernlifting werden die Naturhaare in einen angepassten Schwung hoch geliftet. Anschließend werden die Haare gefärbt un es wird ein pflegendes Öl aufgetragen.",
+                                    children: [
+                                        {
+                                            name: "Augenbraunlifting",
+                                            price: "49€",
+                                            description: "Lifting der Augenbraun"
+                                        },
+                                        {
+                                            name: "Wimpernlifting",
+                                            price: "49€",
+                                            description: "Lifting der Naturwimpern"
+                                        },
+                                        {
+                                            name: "Kombi Paket",
+                                            price: "85€",
+                                            description: "Lifting beides"
+                                        }
+                                    ]
+                                },
+                                {
+                                    name: "Zusatzleistung",
+                                    description: "Sämtliche Leistungen",
+                                    popular: true,
+                                    children: [
+                                        {
+                                            name: "Augenbrauen zupfen",
+                                            price: "10€",
+                                            description: "Sauberes zupfen der Augenbrauen"
+                                        },
+                                        {
+                                            name: "Augenbrauen färben",
+                                            price: "10€",
+                                            description: "Sauberes färben der Augenbrauen"
+                                        }
+                                    ]
                                 }
                             ]
-                        }, {
-                            category: "1:1 Technik",
-                            name: "Neumodellage",
-                            price: "75€",
-                            description: "Natürlicher Look mit Einzelwimpern",
-                            details: ["Premium Qualität"],
-                            new: true,
-                            popular: false,
+                        },
+                        {
+                            name: "Nägel",
                             children: [
                                 {
-                                    name: "~ 2 Wochen",
-                                    price: "25€",
-                                    description: "Auffüllen bis zur 2. Woche",
+                                    name: "Shellac",
+                                    description: "Shellac ist eine gute und schonende Alternative zu Gel und Acryl, es wird in dünnen Schichten gearbeitet und hat somit einen sehr natürlichen Effekt.",
+                                    children: [
+                                        {
+                                            name: "Neumodellage",
+                                            price: "35€",
+                                            description: "Neumodellage"
+                                        },
+                                        {
+                                            name: "~ Folgetermin",
+                                            price: "40€",
+                                            description: "Ablösen der alten Nägel und Neumodellage"
+                                        }
+                                    ]
                                 },
-                                {
-                                    name: "~ 3 Wochen",
-                                    price: "30€",
-                                    description: "Auffüllen bis zur 3. Woche"
-                                }
                             ]
-                        }, {
-                            category: "1:1 Technik",
-                            name: "Neumodellage",
-                            price: "75€",
-                            description: "Natürlicher Look mit Einzelwimpern",
-                            details: ["Premium Qualität"],
-                            new: true,
-                            popular: false,
+                        },
+                        {
+                            name: "Sonstiges",
                             children: [
                                 {
-                                    name: "~ 2 Wochen",
-                                    price: "25€",
-                                    description: "Auffüllen bis zur 2. Woche",
+                                    name: "Gutscheine",
+                                    description: "Du kannst dir bei mir einen personalisierten Geschenkgutschein im Wert von 10-250€ erstellen und abholen lassen, gerne schicke ich dir diesen auch per Post zu.",
+                                    children: [
+                                        {
+                                            name: "Geschenkgutschein",
+                                            price: "10€ - 250€",
+                                            description: "Personalisierter Geschenkgutschein"
+                                        }
+                                    ]
                                 },
-                                {
-                                    name: "~ 3 Wochen",
-                                    price: "30€",
-                                    description: "Auffüllen bis zur 3. Woche"
-                                }
-                            ]
-                        }, {
-                            category: "1:1 Technik",
-                            name: "Neumodellage",
-                            price: "75€",
-                            description: "Natürlicher Look mit Einzelwimpern",
-                            details: ["Premium Qualität"],
-                            new: true,
-                            popular: false,
-                            children: [
-                                {
-                                    name: "~ 2 Wochen",
-                                    price: "25€",
-                                    description: "Auffüllen bis zur 2. Woche",
-                                },
-                                {
-                                    name: "~ 3 Wochen",
-                                    price: "30€",
-                                    description: "Auffüllen bis zur 3. Woche"
-                                }
                             ]
                         }
                     ]}
                 />
             </Column>
 
-            <Column center paddingY="xl" id="contact">
+            <Column center paddingY="xl" id="contact" position={"relative"}>
                 <Contact />
             </Column>
 
