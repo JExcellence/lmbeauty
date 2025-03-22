@@ -97,11 +97,19 @@ export const ProfileGallery = () => {
                                         alt: ""
                                     },
                                     {
-                                        src: "/images/work/volumen/eye/volumen_1.jpg",
+                                        src: "/images/work/volumen/eye/volumen_4.jpg",
                                         alt: ""
                                     },
                                     {
-                                        src: "/images/work/volumen/eye/volumen_2.jpg",
+                                        src: "/images/work/volumen/eye/volumen_5.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/volumen/eye/volumen_7.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/volumen/eye/volumen_6.jpg",
                                         alt: ""
                                     }
                                 ]}
@@ -197,11 +205,19 @@ export const ProfileGallery = () => {
                                         alt: ""
                                     },
                                     {
-                                        src: "/images/work/volumen/eye/volumen_1.jpg",
+                                        src: "/images/work/volumen/eye/volumen_4.jpg",
                                         alt: ""
                                     },
                                     {
-                                        src: "/images/work/volumen/eye/volumen_2.jpg",
+                                        src: "/images/work/volumen/eye/volumen_5.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/volumen/eye/volumen_7.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/volumen/eye/volumen_6.jpg",
                                         alt: ""
                                     }
                                 ]}
