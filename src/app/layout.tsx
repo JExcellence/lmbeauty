@@ -2,7 +2,6 @@ import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 
 import classNames from "classnames";
-import { headers } from "next/headers";
 import { Metadata } from "next";
 
 import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/config";
@@ -40,8 +39,7 @@ const code = Roboto_Mono({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-    const host = headers().get("host");
-    const metadataBase = host ? new URL(`https://${host}`) : undefined;
+    const metadataBase = new URL(`https://lmbeauty.de}`)
 
     return {
         title: meta.title,

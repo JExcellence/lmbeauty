@@ -6,7 +6,19 @@ const withMDX = mdx({
 });
 
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
+  eslint: {
+    dirs: [],
+  },
+
+  output: "export",
+
+  images: {
+    domains: ["lmbeauty.de"],
+    unoptimized: true,
+  },
+
   pageExtensions: ["ts", "tsx", "md", "mdx"],
 };
 
