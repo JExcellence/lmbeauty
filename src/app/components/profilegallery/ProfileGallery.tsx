@@ -73,11 +73,35 @@ export const ProfileGallery = () => {
                             <ImageGallery
                                 images={[
                                     {
-                                        src: "/images/eins_zu_eins_1.jpg",
+                                        src: "/images/work/einzel/eye/eins_zu_eins_1.jpg",
                                         alt: ""
                                     },
                                     {
-                                        src: "/images/eins_zu_eins_3.jpg",
+                                        src: "/images/work/einzel/eye/eins_zu_eins_3.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/einzel/eye/eins_zu_eins_2.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/einzel/eye/eins_zu_eins_4.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/hybrid/eye/hybrid_1.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/hybrid/eye/hybrid_2.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/volumen/eye/volumen_1.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/volumen/eye/volumen_2.jpg",
                                         alt: ""
                                     }
                                 ]}
@@ -85,13 +109,13 @@ export const ProfileGallery = () => {
                             <ImageGallery
                                 images={[
                                     {
-                                        src: "/images/eins_zu_eins_1.jpg",
+                                        src: "/images/work/shellac/nails2.jpg",
                                         alt: ""
                                     },
                                     {
-                                        src: "/images/eins_zu_eins_3.jpg",
+                                        src: "/images/work/shellac/nails3.jpg",
                                         alt: ""
-                                    }
+                                    },
                                 ]}
                             />
                             <Column
@@ -155,6 +179,30 @@ export const ProfileGallery = () => {
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_3.jpg",
                                         alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/einzel/eye/eins_zu_eins_2.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/einzel/eye/eins_zu_eins_4.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/hybrid/eye/hybrid_1.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/hybrid/eye/hybrid_2.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/volumen/eye/volumen_1.jpg",
+                                        alt: ""
+                                    },
+                                    {
+                                        src: "/images/work/volumen/eye/volumen_2.jpg",
+                                        alt: ""
                                     }
                                 ]}
                             />
@@ -175,13 +223,13 @@ export const ProfileGallery = () => {
                             <ImageGallery
                                 images={[
                                     {
-                                        src: "/images/work/einzel/eye/eins_zu_eins_1.jpg",
+                                        src: "/images/work/shellac/nails2.jpg",
                                         alt: ""
                                     },
                                     {
-                                        src: "/images/work/einzel/eye/eins_zu_eins_3.jpg",
+                                        src: "/images/work/shellac/nails3.jpg",
                                         alt: ""
-                                    }
+                                    },
                                 ]}
                             />
                             <Column
