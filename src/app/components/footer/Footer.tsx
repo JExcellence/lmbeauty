@@ -21,7 +21,8 @@ export const Footer = () => {
             <Flex
                 maxWidth="xl"
                 direction={"row"}
-                horizontal={"space-between"}
+                horizontal={"center"}
+                padding="xl"
                 vertical={"start"}
                 gap={"l"}
                 className={styles.footerContainer}
