@@ -1,7 +1,7 @@
 "use client";
 
-import {Background, Column, Flex, Heading, IconButton, Text} from "@/once-ui/components";
-import React, {useEffect, useRef} from "react";
+import {Column, Heading, Text} from "@/once-ui/components";
+import React from "react";
 import {Contact} from "@/app/components/contact/contact";
 import {TestimonialCarousel} from "@/app/components/testimonial/testimonialcarousel";
 import {About} from "@/app/components/aboutme/AboutMe";
@@ -268,11 +268,11 @@ export default function Home() {
                 />
             </Column>
 
-            <Column center paddingY="xl" id="contact" position={"relative"}>
+            <Column center paddingY="xl" id="contact" position={"relative"} maxWidth={50}>
                 <Contact />
             </Column>
 
-            <Column center paddingY="xl" position={"relative"}>
+            <Column center paddingY="xl" position={"relative"} maxWidth={50}>
                 <Footer />
             </Column>
 

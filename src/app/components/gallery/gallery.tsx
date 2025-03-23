@@ -21,7 +21,7 @@ interface ImageGalleryProps {
 const ImageGallery: React.FC<ImageGalleryProps> = ({
                                                        images = [],
                                                        autoPlayInterval = 5000,
-                                                       sizes = "100vw",
+                                                       sizes="(max-width: 640px) 90vw, 1200px",
                                                        clickable = true,
                                                        position = "center",
                                                        slideAnimation = false,
@@ -57,8 +57,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                     transitionTimeoutRef.current = undefined;
 
                     startAutoPlay();
-                }, 300);
-            }, 800);
+                }, 150);
+            }, 600);
         }
     };
 
@@ -84,8 +84,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                         setIsTransitioning(true);
                         transitionTimeoutRef.current = undefined;
                         startAutoPlay();
-                    }, 300);
-                }, 800);
+                    }, 150);
+                }, 600);
             }, autoPlayInterval);
         }
     };
@@ -116,7 +116,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
             direction="column"
             vertical={position}
             className={slideAnimation ? styles.galleryContainer : ""}
-            style={{ marginTop: 0 }} // Ensure it's at the top
+            style={{ marginTop: 0 }}
         >
             {slideAnimation ? (
                 <div className={styles.slideContainer} style={{ height }}>
@@ -125,13 +125,17 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                             key={index}
                             className={styles.slideItem}
                             style={{
-                                cursor: clickable ? "pointer" : "default",
+                                cursor: "default",
+                                height: "100%",
+                                width: "100%",
+                                objectFit: "cover",
+                                objectPosition: "center",
                             }}
-                            onClick={clickable ? handleImageClick : undefined}
                         >
                             <img
                                 src={image.src}
                                 alt={image.alt}
+                                width={100}
                             />
                         </div>
                     ))}
@@ -139,7 +143,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
             ) : (
                 <div style={{ height }}>
                     <RevealFx
-                        onClick={clickable ? handleImageClick : undefined}
                         fillWidth
                         trigger={isTransitioning}
                         translateY="16"
@@ -154,7 +157,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                             alt={images[activeIndex]?.alt}
                             src={images[activeIndex]?.src}
                             style={{
-                                cursor: clickable && images.length > 1 ? "pointer" : "default",
+                                cursor: "default",
                                 height: "100%",
                                 width: "100%",
                                 objectFit: "cover",

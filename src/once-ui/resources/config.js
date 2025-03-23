@@ -50,20 +50,26 @@ const effects = {
 };
 
 const meta = {
+  icons: {
+    icon: '/favicon.ico',
+  },
   title: "LMBeauty | Professionelle Wimpern in Oldenburg",
   description: "Entdecke die Kunst der Schönheit mit LM Beauty in Oldenburg. Als professionelle Make-up und Wimpernstylistin verwandle ich Deine Vorstellungskraft in atemberaubende Realität. Vereinbare noch heute einen Termin und lasse Dich von meinem Fachwissen und meiner Leidenschaft verzaubern.",
 };
 
 const og = {
+  icons: {
+    icon: '/favicon.ico',
+  },
   title: "LMBeauty | Professionelle Wimpern in Oldenburg",
   description: "Entdecke die Kunst der Schönheit mit LM Beauty in Oldenburg. Als professionelle Make-up und Wimpernstylistin verwandle ich Deine Vorstellungskraft in atemberaubende Realität. Vereinbare noch heute einen Termin und lasse Dich von meinem Fachwissen und meiner Leidenschaft verzaubern.",
   type: "website",
-  image: "/images/avatar_1.png"
+  image: "https://lmbeauty.de/images/avatar_1.png",
 };
 
 const schema = {
-  logo: "/images/avatar_1.png",
-  type: "website",
+  logo: "https://lmbeauty.de/images/avatar_1.png",
+  type: "LocalBusiness",
   name: "LM Beauty",
   description: "Entdecke die Kunst der Schönheit mit LM-Beauty in Oldenburg. Als professionelle Make-up und Wimpernstylistin verwandle ich Deine Vorstellungskraft in atemberaubende Realität. Vereinbare noch heute einen Termin und lasse Dich von meinem Fachwissen und meiner Leidenschaft verzaubern.",
   email: "info@lmbeauty.de",

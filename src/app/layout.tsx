@@ -2,7 +2,7 @@ import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 
 import classNames from "classnames";
-import { Metadata } from "next";
+import {Metadata, Viewport} from "next";
 
 import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/config";
 import {Background, Column, Flex, ToastProvider} from "@/once-ui/components";
@@ -37,6 +37,16 @@ const code = Roboto_Mono({
     subsets: ["latin"],
     display: "swap",
 });
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+    interactiveWidget: 'resizes-content',
+    themeColor: '#FDA4AF',
+};
+
 
 export async function generateMetadata(): Promise<Metadata> {
     const metadataBase = new URL(`https://lmbeauty.de}`)
@@ -76,6 +86,10 @@ export async function generateMetadata(): Promise<Metadata> {
             description: og.description,
             images: [og.image],
         },
+        icons: {
+            icon: '/favicon.ico',
+            apple: '/apple-touch-icon.png',
+        },
         robots: {
             index: true,
             follow: true,
@@ -91,17 +105,6 @@ export async function generateMetadata(): Promise<Metadata> {
     };
 }
 
-const schemaData = {
-    "@context": "https://schema.org",
-    "@type": schema.type,
-    url: "https://" + baseURL,
-    logo: schema.logo,
-    name: schema.name,
-    description: schema.description,
-    email: schema.email,
-    sameAs: Object.values(social).filter(Boolean),
-};
-
 export default function RootLayout({
                                        children,
                                    }: Readonly<{
@@ -111,6 +114,7 @@ export default function RootLayout({
         <Flex
             as="html"
             lang="de"
+            overflowX="hidden"
             background="page"
             data-neutral={style.neutral}
             data-brand={style.brand}
@@ -128,11 +132,12 @@ export default function RootLayout({
                 secondary ? secondary.variable : "",
                 tertiary ? tertiary.variable : "",
             )}
+
         >
             <ToastProvider>
                 <Column as="body" fillWidth margin="0" padding="0">
                     <Header />
-                    <Hero/>
+                    <Hero fullscreen={true}/>
                     <Flex
                         position="relative"
                         zIndex={0}
