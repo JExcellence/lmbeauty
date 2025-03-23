@@ -20,13 +20,11 @@ export const Footer = () => {
         >
             <Flex
                 maxWidth="xl"
-                direction={"row"}
                 horizontal={"center"}
                 padding="xl"
                 vertical={"start"}
                 gap={"l"}
                 className={styles.footerContainer}
-                mobileDirection={"column"}
             >
                 <Column
                     gap="xs"
