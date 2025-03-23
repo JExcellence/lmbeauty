@@ -1,25 +1,53 @@
 import {
     Button,
-    Column,
+    Column, Flex, Icon,
     Row,
-    SmartLink,
+    SmartLink, Text,
 } from "@/once-ui/components";
+
 import React from "react";
 
+import styles from "./Footer.module.scss"
+
 export const Footer = () => {
+
     return (
-        <Column fillWidth paddingBottom="xl" horizontal="center">
-            <Row maxWidth="xl" horizontal="space-between" gap="128" wrap paddingX="2">
-                <Column gap="12" textVariant="label-default-m">
-                    <Row paddingX="4" marginBottom="8">
+        <Column
+            fillWidth
+            paddingY="xl"
+            horizontal="center"
+            background="neutral-weak"
+        >
+            <Flex
+                maxWidth="xl"
+                direction={"row"}
+                horizontal={"space-between"}
+                vertical={"start"}
+                gap={"l"}
+                className={styles.footerContainer}
+                mobileDirection={"column"}
+            >
+                <Column
+                    gap="xs"
+                    textVariant="label-default-m"
+                    horizontal="center"
+                    marginBottom="xl"
+                >
+                    <Row as="h3" paddingX="4" marginBottom="xs">
                         Sonstiges
                     </Row>
                     <Row>
                         <SmartLink href="#pricelist">Preisliste</SmartLink>
                     </Row>
                 </Column>
-                <Column gap="12" textVariant="label-default-m">
-                    <Row paddingX="4" marginBottom="8">
+
+                <Column
+                    gap="xs"
+                    textVariant="label-default-m"
+                    horizontal="center"
+                    marginBottom="xl"
+                >
+                    <Row as="h3" paddingX="4" marginBottom="xs">
                         Rechtliches
                     </Row>
                     <Row>
@@ -27,20 +55,76 @@ export const Footer = () => {
                     </Row>
                     <Row>
                         <SmartLink href="/">Impressum</SmartLink>
-                    </Row> //TODO imprint
+                    </Row>
                     <Row>
                         <SmartLink href="/">Datenschutz</SmartLink>
-                    </Row> //TODO datenschutz
+                    </Row>
                 </Column>
-                <Column data-border="rounded" gap="12" textVariant="label-default-m">
-                    <Row paddingX="4" marginBottom="8">
+
+                <Column
+                    gap="xs"
+                    textVariant="label-default-m"
+                    horizontal="center"
+                    marginBottom="xl"
+                >
+                    <Row as="h3" paddingX="4" marginBottom="xs">
                         Soziales
                     </Row>
-                    <Button href="#contact" prefixIcon="whatsapp" label="WhatsApp" size="s" variant="secondary" />
-                    <Button href="#contact" prefixIcon="mail" label="E-Mail" size="s" variant="secondary" />
-                    <Button href="#contact" prefixIcon="instagram" label="Instagram" size="s" variant="secondary" />
+                    <Button
+                        href="#contact"
+                        prefixIcon="whatsapp"
+                        label="WhatsApp"
+                        size="s"
+                        variant="secondary"
+                        fillWidth
+                    />
+                    <Button
+                        href="#contact"
+                        prefixIcon="mail"
+                        label="E-Mail"
+                        size="s"
+                        variant="secondary"
+                        fillWidth
+                    />
+                    <Button
+                        href="#contact"
+                        prefixIcon="instagram"
+                        label="Instagram"
+                        size="s"
+                        variant="secondary"
+                        fillWidth
+                    />
                 </Column>
-            </Row>
+            </Flex>
+            <Flex fillWidth horizontal="center" vertical="center" direction="column" position={"absolute"} bottom="0">
+                <Text
+                    align="center"
+                    variant="body-default-m"
+                    onBackground="accent-weak"
+                >
+                    Made by
+                    <SmartLink
+                        style={{ paddingLeft: "4px"}}
+                        href="https://instagram.com/jexcellence_"
+                    >
+                        JExcellence
+                    </SmartLink>
+                </Text>
+                <Text
+                    align="center"
+                    variant="body-default-xs"
+                    onBackground="accent-weak"
+                >
+                    unterstützt durch
+                    <SmartLink
+                        style={{ paddingLeft: "4px"}}
+                        href="https://once-ui.com"
+                        iconSize="s"
+                    >
+                        Once UI
+                    </SmartLink>
+                </Text>
+            </Flex>
         </Column>
     );
 };

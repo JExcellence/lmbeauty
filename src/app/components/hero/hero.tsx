@@ -29,16 +29,16 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
         >
             <Background
                 position={"absolute"}
-                mask={{ x: 50, y: 0, radius: 125 }}
+                mask={{ x: 50, y: 0, radius: 100 }}
                 fill
             >
-                <RevealFx translateY="8" delay={0.1} fillWidth horizontal="center" paddingBottom="s">
+                <RevealFx translateY="8" delay={0.1} horizontal="center">
                     <SmartImage
-                        opacity={70}
+                        opacity={90}
                         src="/images/background/store.mp4"
                         alt="Video"
                         foreground={{
-                            backgroundColor: "rgba(0, 0, 0, 0.25)"
+                            backgroundColor: "rgba(0, 0, 0, 0.15)"
                         }}
                     />
                 </RevealFx>

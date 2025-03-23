@@ -29,12 +29,12 @@ export const ProfileGallery = () => {
             <SegmentedControl zIndex={3}
                 buttons={[
                     {
-                        prefixIcon: "sparkle",
+                        prefixIcon: "heart",
                         label: "Galerie",
                         value: "gallery",
                     },
                     {
-                        prefixIcon: "sparkle",
+                        prefixIcon: "person",
                         label: "Über mich",
                         value: "about",
                     },
@@ -43,7 +43,7 @@ export const ProfileGallery = () => {
             />
 
             {view === 'gallery' && (
-                <Column fillWidth maxWidth="l">
+                <Column fillWidth maxWidth="l" vertical="center" horizontal="center">
                     <Column hide="s">
                         <Background
                             borderBottom={"surface"}
@@ -62,6 +62,8 @@ export const ProfileGallery = () => {
                             }}
                         ></Background>
                         <Grid
+                            fitWidth
+                            fitHeight
                             gap="16"
                             marginTop="32"
                             paddingX="8"
@@ -71,6 +73,8 @@ export const ProfileGallery = () => {
                             borderBottom={"surface"}
                         >
                             <ImageGallery
+                                clickable={false}
+                                position="center"
                                 images={[
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_1.jpg",
@@ -115,6 +119,8 @@ export const ProfileGallery = () => {
                                 ]}
                             />
                             <ImageGallery
+                                clickable={false}
+                                position="center"
                                 images={[
                                     {
                                         src: "/images/work/shellac/nails2.jpg",
@@ -170,6 +176,8 @@ export const ProfileGallery = () => {
                             }}
                         ></Background>
                         <Grid
+                            fitWidth
+                            fitHeight
                             gap="32"
                             marginTop="32"
                             paddingX="8"
@@ -179,6 +187,8 @@ export const ProfileGallery = () => {
                             borderBottom={"surface"}
                         >
                             <ImageGallery
+                                clickable={false}
+                                position="center"
                                 images={[
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_1.jpg",
@@ -237,6 +247,8 @@ export const ProfileGallery = () => {
                                 </Button>
                             </Column>
                             <ImageGallery
+                                clickable={false}
+                                position="center"
                                 images={[
                                     {
                                         src: "/images/work/shellac/nails2.jpg",

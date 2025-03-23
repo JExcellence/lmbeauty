@@ -59,11 +59,11 @@ export const PriceList = ({ services }: PriceListProps) => {
         const isActive = activePaths.has(path);
 
         return (
-            <Column key={path} fillWidth className={styles.serviceContainer} radius="s" border="surface" padding="s">
+            <Column key={path} fillWidth className={styles.serviceContainer} radius="s" border="surface" padding="xs">
                 <Accordion
                     fillWidth
                     title={
-                        <Flex gap="16" vertical="center">
+                        <Flex gap="s" vertical="center">
                             <Icon
                                 name={depth === 0 ? "docCurrencyEuro" : "sparkle"}
                                 onBackground="brand-medium"
@@ -85,7 +85,7 @@ export const PriceList = ({ services }: PriceListProps) => {
                     onToggle={() => toggleAccordion(path)}
                 >
                     {depth === 0 ? (
-                        <Column gap="4">
+                        <Column gap="xs">
                             <Text variant="body-default-s" color="neutral-medium">
                                 {category.details?.[0]}
                             </Text>
@@ -95,7 +95,7 @@ export const PriceList = ({ services }: PriceListProps) => {
                         </Column>
                     ) : (
                         <Column
-                            gap="8"
+                            gap="xs"
                             padding="s"
                             radius="s-4"
                         >
@@ -122,12 +122,12 @@ export const PriceList = ({ services }: PriceListProps) => {
                                         key={`${path}-${index}`}
                                         horizontal="space-between"
                                         vertical="center"
-                                        padding="12"
+                                        padding="s"
                                         radius="xl"
                                         background="neutral-weak"
                                         className={styles.serviceItem}
                                     >
-                                        <Flex gap="16" vertical="center">
+                                        <Flex gap="m" vertical="center">
                                             <Icon
                                                 name="heart"
                                                 size="l"
@@ -140,7 +140,7 @@ export const PriceList = ({ services }: PriceListProps) => {
                                                 </Text>
                                             </Column>
                                         </Flex>
-                                        <Text variant="body-default-l" onBackground="brand-medium">
+                                        <Text variant="body-default-m" onBackground="brand-medium">
                                             {service.price}
                                         </Text>
                                     </Flex>
@@ -167,14 +167,14 @@ export const PriceList = ({ services }: PriceListProps) => {
             <Flex
                 horizontal="center"
                 vertical="center"
-                gap="16"
-                padding="24"
+                gap="s"
+                padding="l"
                 background="surface"
                 className={styles.footer}
             >
                 <Icon name="heart" size="m" onBackground="brand-medium" />
                 <Text align="center" variant="body-default-s">
-                    Alle Preise inkl. MwSt. & Vorbereitung •
+                    Alle Preise inkl. MwSt. & Vorbereitung
                     <SmartLink
                         href="/beratung"
                         color="accent-solid-medium"
