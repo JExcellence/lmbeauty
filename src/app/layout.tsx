@@ -44,7 +44,7 @@ export const viewport: Viewport = {
     initialScale: 1,
     maximumScale: 1,
     userScalable: false,
-    viewportFit: 'cover',
+    viewportFit: 'auto',
     interactiveWidget: 'resizes-content',
     themeColor: '#FDA4AF',
 };
@@ -116,7 +116,6 @@ export default function RootLayout({
         <Flex
             as="html"
             lang="de"
-            overflowX="hidden"
             background="page"
             data-neutral={style.neutral}
             data-brand={style.brand}
@@ -147,7 +146,7 @@ export default function RootLayout({
                         paddingY="l"
                         paddingX="l"
                         horizontal="center"
-                        flex={2}
+                        flex={0}
                     >
                         <Flex horizontal="center" fillWidth minHeight="0">
                             <ViewportLock>

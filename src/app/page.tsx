@@ -272,7 +272,7 @@ export default function Home() {
                 <Contact />
             </Column>
 
-            <Column center paddingY="xl" position={"relative"} maxWidth={50}>
+            <Column center paddingY="xl" position={"relative"} maxWidth={50} horizontal="center">
                 <Footer />
             </Column>
 
