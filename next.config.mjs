@@ -12,13 +12,6 @@ const nextConfig = {
     dirs: [],
   },
 
-  output: "export",
-
-  images: {
-    domains: ["lmbeauty.de"],
-    unoptimized: true,
-  },
-
   pageExtensions: ["ts", "tsx", "md", "mdx"],
 };
 
