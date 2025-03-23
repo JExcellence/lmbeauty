@@ -13,6 +13,7 @@ import React from "react";
 import {CookieBanner} from "@/app/components/cookie/Cookie";
 import {Header} from "@/app/components/header/Header";
 import {Hero} from "@/app/components/hero/hero";
+import {ViewportLock} from "@/app/components/viewport/ViewportLock";
 
 const primary = Lora({
     variable: '--font-primary',
@@ -43,6 +44,7 @@ export const viewport: Viewport = {
     initialScale: 1,
     maximumScale: 1,
     userScalable: false,
+    viewportFit: 'cover',
     interactiveWidget: 'resizes-content',
     themeColor: '#FDA4AF',
 };
@@ -148,7 +150,9 @@ export default function RootLayout({
                         flex={2}
                     >
                         <Flex horizontal="center" fillWidth minHeight="0">
-                            {children}
+                            <ViewportLock>
+                                {children}
+                            </ViewportLock>
                         </Flex>
                     </Flex>
                 </Column>
