@@ -32,7 +32,7 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                 mask={{ x: 50, y: 0, radius: 100 }}
                 fill
             >
-                <RevealFx translateY="8" delay={0.1} horizontal="center">
+                <RevealFx translateY="s" delay={0.1} horizontal="center">
                     <SmartImage
                         opacity={90}
                         src="/images/background/store.mp4"
@@ -43,8 +43,8 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                     />
                 </RevealFx>
             </Background>
-            <Column center zIndex={1} maxWidth={60} marginY="s" gap="32" paddingY="s">
-                <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="s">
+            <Column center zIndex={1} maxWidth="m" marginY="s" gap="m" paddingY="s">
+                <RevealFx translateY="s" delay={0.2} fillWidth horizontal="center" paddingBottom="s">
                     <Badge
                         background="neutral-weak"
                         border="surface"
@@ -54,12 +54,12 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                         Wimperntraum buchen
                     </Badge>
                 </RevealFx>
-                <RevealFx translateY="12" delay={0.4} horizontal="center">
+                <RevealFx translateY="m" delay={0.4} horizontal="center">
                     <Heading onSolid="neutral-weak" align="center" variant="display-strong-m">
                         Dein Moment für Schönheit und Selbstbewusstsein.
                     </Heading>
                 </RevealFx>
-                <RevealFx translateY="16" delay={0.6}>
+                <RevealFx translateY="m" delay={0.6}>
                     <Heading
                         wrap="balance"
                         align="center"
@@ -69,8 +69,8 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                         Professionelle Wimpernverlängerung mit persönlichem Touch – von Lisa Marie für dich.
                     </Heading>
                 </RevealFx>
-                <RevealFx speed="fast" delay={0.6} translateY="16">
-                    <Flex gap="16" vertical="center">
+                <RevealFx delay={0.6} translateY="m">
+                    <Flex gap="m" vertical="center">
                         <Button
                             id="instagram"
                             href="https://www.instagram.com/_l.m_beauty_/"

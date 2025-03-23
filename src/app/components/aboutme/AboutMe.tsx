@@ -12,6 +12,41 @@ import {
 import React from "react";
 import styles from "./AboutMe.module.scss"
 
+const badgeContent = [
+    {
+        icon: "sparkle",
+        text: "Mehr als 5 Jahre Erfahrung im Beauty Bereich",
+    },
+    {
+        icon: "heart",
+        text: "Mehr als 100 zufriedene Kundinnen",
+    },
+    {
+        icon: "sparkle",
+        text: "Trends & Qualität vereint Immer am Puls der Zeit.",
+    },
+    {
+        icon: "clock",
+        text: "Flexible Öffnungszeiten",
+    },
+    {
+        icon: "users",
+        color: "brand-solid-medium",
+        text: "Individuelle Beratung & Personalisierung",
+    },
+    {
+        background: "brand-alpha-weak",
+        icon: "trending",
+        color: "brand-solid-medium",
+        text: "Zufriedenheitsgarantie",
+    },
+    {
+        icon: "gift",
+        color: "brand-solid-medium",
+        text: "Geschenkgutscheine & Pakete verfügbar",
+    },
+];
+
 export const About = () => (
     <Column fillWidth horizontal="center" gap="80" paddingY="l" position="relative">
         <Background
@@ -41,7 +76,7 @@ export const About = () => (
                 height: "0.25rem"
             }}
         />
-        <RevealFx translateY="32" delay={1.6} fillWidth horizontal="center" paddingBottom="s" zIndex={2}>
+        <RevealFx translateY="m" delay={1.6} fillWidth horizontal="center" paddingBottom="s" zIndex={2}>
             <Column fillWidth horizontal="center">
                 <Avatar
                     src="/images/avatar/avatar_1.png"
@@ -54,14 +89,14 @@ export const About = () => (
             </Column>
         </RevealFx>
 
-        <Column gap="32" zIndex={2} fillWidth>
-            <RevealFx translateY="48" delay={1.8} fillWidth horizontal="center" paddingBottom="s" zIndex={2}>
+        <Column gap="m" zIndex={2} fillWidth>
+            <RevealFx translateY="m" delay={1.8} fillWidth horizontal="center" paddingBottom="s" zIndex={2}>
                 <Heading variant="display-strong-xs" align="center">
                     Hallo, schön, dass du hier bist! 🌸
                 </Heading>
             </RevealFx>
 
-            <RevealFx translateY="64" delay={1.9} fillWidth horizontal="center" paddingBottom="s" zIndex={2}>
+            <RevealFx translateY="l" delay={1.9} fillWidth horizontal="center" paddingBottom="s" zIndex={2}>
                 <Text align="center" variant="body-default-l" onBackground="neutral-medium">
                     Hi, ich bin Lisa – Deine Expertin für Schönheit und Selbstbewusstsein.
                     Meine Mission ist es, deine natürliche Schönheit hervorzuheben und dich rundum wohlzufühlen.
@@ -74,76 +109,25 @@ export const About = () => (
                 </Text>
             </RevealFx>
 
-            <RevealFx translateY="64" delay={2.0} fillWidth horizontal="center" paddingBottom="s" zIndex={2}>
-                <Row gap="16" direction="column" center>
+            <RevealFx translateY="l" delay={2.0} fillWidth horizontal="center" paddingBottom="s" zIndex={2}>
+                <Row gap="m" direction="column" center>
                     <Column className={styles.container}>
                         <Flex
-                            gap="16"
-                            padding="4"
+                            gap="m"
+                            padding="xs"
                             className={styles.scrollContainer}
                         >
-                            {[...Array(4)].map((_, idx) => (
-                                <Row key={idx} gap="16">
-                                    <Badge
-                                        background="accent-alpha-weak"
-                                        textVariant="body-default-s"
-                                        icon="sparkle"
-                                        className={styles.badge}
-                                    >
-                                        Mehr als 5 Jahre Erfahrung im Beauty Bereich
-                                    </Badge>
-                                    <Badge
-                                        background="accent-alpha-weak"
-                                        textVariant="body-default-s"
-                                        icon="heart"
-                                        className={styles.badge}
-                                    >
-                                        Mehr als 100 zufriedene Kundinnen
-                                    </Badge>
-                                    <Badge
-                                        background="accent-alpha-weak"
-                                        textVariant="body-default-s"
-                                        icon="sparkle"
-                                        className={styles.badge}
-                                    >
-                                        Trends & Qualität vereint Immer am Puls der Zeit.
-                                    </Badge>
-                                    <Badge
-                                        background="accent-alpha-weak"
-                                        textVariant="body-default-s"
-                                        icon="clock"
-                                        className={styles.badge}
-                                    >
-                                        Flexible Öffnungszeiten
-                                    </Badge>
-                                    <Badge
-                                        background="accent-alpha-weak"
-                                        textVariant="body-default-s"
-                                        icon="users"
-                                        color="brand-solid-medium"
-                                        className={styles.badge}
-                                    >
-                                        Individuelle Beratung & Personalisierung
-                                    </Badge>
-                                    <Badge
-                                        background="brand-alpha-weak"
-                                        textVariant="body-default-s"
-                                        icon="trending"
-                                        color="brand-solid-medium"
-                                        className={styles.badge}
-                                    >
-                                        Zufriedenheitsgarantie
-                                    </Badge>
-                                    <Badge
-                                        background="accent-alpha-weak"
-                                        textVariant="body-default-s"
-                                        icon="gift"
-                                        color="brand-solid-medium"
-                                        className={styles.badge}
-                                    >
-                                        Geschenkgutscheine & Pakete verfügbar
-                                    </Badge>
-                                </Row>
+                            {[...badgeContent, ...badgeContent].map((content, idx) => ( // Duplicate content for seamless loop
+                                <Badge
+                                    key={idx}
+                                    background="accent-alpha-weak"
+                                    textVariant="body-default-s"
+                                    icon={content.icon}
+                                    color={content.color}
+                                    className={styles.badge}
+                                >
+                                    {content.text}
+                                </Badge>
                             ))}
                         </Flex>
                     </Column>
