@@ -14,17 +14,10 @@ const nextConfig = {
     return [
       {
         source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.lmbeauty.de'
-          },
-          {
-            type: 'header',
-            key: 'x-forwarded-proto',
-            value: '(http|https)'
-          }
-        ],
+        has: [{
+          type: 'host',
+          value: 'www.lmbeauty.de'
+        }],
         destination: 'https://lmbeauty.de/:path*',
         permanent: true,
       },
@@ -53,7 +46,6 @@ const nextConfig = {
         { key: 'X-Content-Type-Options', value: 'nosniff' },
         { key: 'X-Frame-Options', value: 'DENY' },
         { key: 'X-XSS-Protection', value: '1; mode=block' },
-        { key: 'X-Powered-By', value: '' },
         {
           key: 'Strict-Transport-Security',
           value: 'max-age=63072000; includeSubDomains; preload'
