@@ -133,7 +133,6 @@ export default function RootLayout({
                 secondary ? secondary.variable : "",
                 tertiary ? tertiary.variable : "",
             )}
-
         >
             <ToastProvider>
                 <Column as="body" fillWidth margin="0" padding="0">

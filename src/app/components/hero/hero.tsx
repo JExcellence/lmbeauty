@@ -36,7 +36,7 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                     <SmartImage
                         opacity={90}
                         src="/images/background/store.mp4"
-                        alt="Video"
+                        alt="Beauty, Laden, Wimpern, Oldenburg"
                         foreground={{
                             backgroundColor: "rgba(0, 0, 0, 0.15)"
                         }}
@@ -55,12 +55,13 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                     </Badge>
                 </RevealFx>
                 <RevealFx translateY="m" delay={0.4} horizontal="center">
-                    <Heading onSolid="neutral-weak" align="center" variant="display-strong-m">
+                    <Heading as="h1" onSolid="neutral-weak" align="center" variant="display-strong-m">
                         Dein Moment für Schönheit und Selbstbewusstsein.
                     </Heading>
                 </RevealFx>
                 <RevealFx translateY="m" delay={0.6}>
                     <Heading
+                        as="h2"
                         wrap="balance"
                         align="center"
                         onSolid="neutral-weak"

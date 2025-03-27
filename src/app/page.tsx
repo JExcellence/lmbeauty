@@ -100,7 +100,7 @@ export default function Home() {
             </Column>
 
             <Column zIndex={1} center paddingY="xl" maxWidth={50} id="pricelist">
-                <Heading variant="display-strong-xs" align="center">Preisliste</Heading>
+                <Heading as="h2" variant="display-strong-xs" align="center">Preisliste</Heading>
                 <Text align="center" wrap="balance" variant="body-default-l" onBackground="neutral-medium" marginBottom="20">
                     Hier findest du meine aktuellen Preise 🌸
                 </Text>

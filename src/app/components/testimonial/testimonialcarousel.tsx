@@ -37,7 +37,7 @@ export const TestimonialCarousel: React.FC<Props> = ({
 
     return (
         <Column fillWidth horizontal="center" paddingY="xl" zIndex={3} gap="40" borderBottom={"surface"}>
-            <Heading variant="display-strong-xs" align="center">
+            <Heading as="h2" variant="display-strong-xs" align="center">
                 Was meine Kunden sagen
             </Heading>
             <Text
