@@ -54,7 +54,7 @@ const meta = {
     icon: '/favicon.ico',
   },
   title: "LMBeauty | Professionelle Wimpern in Oldenburg",
-  description: "Entdecke die Kunst der Schönheit mit LM Beauty in Oldenburg. Als professionelle Make-up und Wimpernstylistin verwandle ich Deine Vorstellungskraft in atemberaubende Realität. Vereinbare noch heute einen Termin und lasse Dich von meinem Fachwissen und meiner Leidenschaft verzaubern.",
+  description: "Hi, ich bin Lisa – deine Make-up & Wimpernexpertin in Oldenburg. Mit Leidenschaft und Präzision hebe ich deine einzigartige Schönheit hervor. Ob natürlicher Alltagslook oder glamouröser Abendstil: Gemeinsam kreieren wir, was zu dir passt. Vertraue auf 𝗟𝗠 𝗕𝗲𝗮𝘂𝘁𝘆 – wo Professionalität und Herzblut dein Strahlen unterstreichen. 💫 Jetzt Termin sichern und dich verwandeln lassen!",
 };
 
 const og = {
@@ -62,7 +62,7 @@ const og = {
     icon: '/favicon.ico',
   },
   title: "LMBeauty | Professionelle Wimpern in Oldenburg",
-  description: "Entdecke die Kunst der Schönheit mit LM Beauty in Oldenburg. Als professionelle Make-up und Wimpernstylistin verwandle ich Deine Vorstellungskraft in atemberaubende Realität. Vereinbare noch heute einen Termin und lasse Dich von meinem Fachwissen und meiner Leidenschaft verzaubern.",
+  description: "Hi, ich bin Lisa – deine Make-up & Wimpernexpertin in Oldenburg. Mit Leidenschaft und Präzision hebe ich deine einzigartige Schönheit hervor. Ob natürlicher Alltagslook oder glamouröser Abendstil: Gemeinsam kreieren wir, was zu dir passt. Vertraue auf 𝗟𝗠 𝗕𝗲𝗮𝘂𝘁𝘆 – wo Professionalität und Herzblut dein Strahlen unterstreichen. 💫 Jetzt Termin sichern und dich verwandeln lassen!.",
   type: "website",
   image: "https://lmbeauty.de/images/avatar_1.png",
 };
@@ -71,7 +71,7 @@ const schema = {
   logo: "https://lmbeauty.de/images/avatar_1.png",
   type: "LocalBusiness",
   name: "LM Beauty",
-  description: "Entdecke die Kunst der Schönheit mit LM-Beauty in Oldenburg. Als professionelle Make-up und Wimpernstylistin verwandle ich Deine Vorstellungskraft in atemberaubende Realität. Vereinbare noch heute einen Termin und lasse Dich von meinem Fachwissen und meiner Leidenschaft verzaubern.",
+  description: "Hi, ich bin Lisa – deine Make-up & Wimpernexpertin in Oldenburg. Mit Leidenschaft und Präzision hebe ich deine einzigartige Schönheit hervor. Ob natürlicher Alltagslook oder glamouröser Abendstil: Gemeinsam kreieren wir, was zu dir passt. Vertraue auf 𝗟𝗠 𝗕𝗲𝗮𝘂𝘁𝘆 – wo Professionalität und Herzblut dein Strahlen unterstreichen. 💫 Jetzt Termin sichern und dich verwandeln lassen!",
   email: "info@lmbeauty.de",
 };
 
