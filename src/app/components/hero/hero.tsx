@@ -36,7 +36,7 @@ const Hero: React.FC<HeroProps> = ({ fullscreen = false }) => {
                     <SmartImage
                         opacity={90}
                         src="/images/background/store.mp4"
-                        alt="Beauty, Laden, Wimpern, Oldenburg"
+                        alt="Beauty / Wimpern / LM Beauty Laden in Oldenburg"
                         foreground={{
                             backgroundColor: "rgba(0, 0, 0, 0.15)"
                         }}

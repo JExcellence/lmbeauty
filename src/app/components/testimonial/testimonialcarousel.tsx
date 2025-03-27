@@ -41,7 +41,7 @@ export const TestimonialCarousel: React.FC<Props> = ({
                 Was meine Kunden sagen
             </Heading>
             <Text
-                as="p"
+                as="div"
                 align="center"
                 variant="body-strong-l"
                 padding="s"
@@ -68,9 +68,11 @@ export const TestimonialCarousel: React.FC<Props> = ({
                     }}
                 >
                     {testimonials.map((testimonial, index) => (
-                        <Column
+                        <Flex
                             key={index}
                             className={styles.carouselSlide}
+                            fillWidth
+                            vertical="space-between"
                         >
                             <Background
                                 zIndex={1}
@@ -134,7 +136,7 @@ export const TestimonialCarousel: React.FC<Props> = ({
                                     )}
                                 </Flex>
                             </Background>
-                        </Column>
+                        </Flex>
                     ))}
                 </Row>
             </Column>

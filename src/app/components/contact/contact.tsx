@@ -90,7 +90,7 @@ export const Contact = () => {
                 columns="2" mobileColumns="1"
             >
                 {contacts.map((contact, index) => (
-                    <RevealFx translateY="16" delay={0.8}>
+                    <RevealFx translateY="16" delay={0.8} key={`reveal-item-${index}`}>
                         <Column
                             radius="s"
                             padding="24"

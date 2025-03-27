@@ -117,9 +117,9 @@ export const About = () => (
                             padding="xs"
                             className={styles.scrollContainer}
                         >
-                            {[...badgeContent, ...badgeContent].map((content, idx) => ( // Duplicate content for seamless loop
+                            {[...badgeContent, ...badgeContent].map((content, index) => ( // Duplicate content for seamless loop
                                 <Badge
-                                    key={idx}
+                                    key={`badge-item-${index}`}
                                     background="accent-alpha-weak"
                                     textVariant="body-default-s"
                                     icon={content.icon}

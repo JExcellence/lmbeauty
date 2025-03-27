@@ -19,7 +19,7 @@ const renderContent = (content: SideContent, clipPath: string) => {
     return (
       <SmartImage
         src={content.src}
-        alt={content.alt || ""}
+        alt={content.alt || "Image"}
         fill
         position="absolute"
         style={{ clipPath }}
