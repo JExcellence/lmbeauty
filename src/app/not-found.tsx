@@ -29,7 +29,7 @@ export default function NotFound() {
                 />
 
                 <Column gap="m" horizontal={"center"} vertical={"center"}>
-                    <Heading variant="display-strong-m">
+                    <Heading as="h1" variant="display-strong-m">
                         Hoppla! Wir haben uns verlaufen
                     </Heading>
 

@@ -91,20 +91,20 @@ export const About = () => (
 
         <Column gap="m" zIndex={2} fillWidth>
             <RevealFx translateY="m" delay={1.8} fillWidth horizontal="center" paddingBottom="s" zIndex={2}>
-                <Heading variant="display-strong-xs" align="center">
+                <Heading as="h2" variant="display-strong-xs" align="center">
                     Hallo, schön, dass du hier bist! 🌸
                 </Heading>
             </RevealFx>
 
-            <RevealFx translateY="l" delay={1.9} fillWidth horizontal="center" paddingBottom="s" zIndex={2}>
+            <RevealFx translateY="l" delay={1.9} fillWidth horizontal="center" paddingBottom="s" zIndex={2} wrap>
                 <Text align="center" variant="body-default-l" onBackground="neutral-medium">
-                    Hi, ich bin Lisa – Deine Expertin für Schönheit und Selbstbewusstsein.
+                    Hi, ich bin Lisa – Deine Expertin für Schönheit und Selbstbewusstsein in <strong>Oldenburg</strong>.
                     Meine Mission ist es, deine natürliche Schönheit hervorzuheben und dich rundum wohlzufühlen.
                     Ob Wimpernstyling oder Nageldesign – ich biete dir Behandlungen, die zu dir und deinen Wünschen passen.
                     Mit viel Erfahrung und Leidenschaft für Ästhetik setze ich auf Perfektion, die nicht nur ein Traum bleiben soll.
                     Deine Schönheit verdient nur das Beste, jeden Tag und für besondere Anlässe.
 
-                    LM Beauty – wo Stil und Professionalität verschmelzen.
+                    <strong>LM Beauty</strong> – wo Stil und Professionalität verschmelzen.
                     Buche jetzt deinen Wimperntraum und lass uns gemeinsam dein Strahlen unterstreichen! 🌸
                 </Text>
             </RevealFx>

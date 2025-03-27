@@ -70,7 +70,7 @@ export const PriceList = ({ services }: PriceListProps) => {
                                 className={styles.categoryIcon}
                             />
                             <Column>
-                                <Heading variant="heading-strong-s">
+                                <Heading as="h2" variant="heading-strong-s">
                                     {category.name}
                                 </Heading>
                                 {depth === 0 && (

@@ -17,7 +17,7 @@ export const ProfileGallery = () => {
     return (
         <Column fillWidth horizontal="center" position={"relative"}>
             <Column fillWidth horizontal="center" paddingY="xl" zIndex={3} borderTop={"surface"}>
-                <Heading variant="display-strong-xs" align="center">
+                <Heading as="h2" variant="display-strong-xs" align="center">
                     Mehr als Wimpern - eine Haltung
                 </Heading>
                 <Text align="center" variant={"body-strong-l"} padding="s">
@@ -78,43 +78,43 @@ export const ProfileGallery = () => {
                                 images={[
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_1.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_3.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_2.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_4.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/hybrid/eye/hybrid_1.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/hybrid/eye/hybrid_2.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_4.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_5.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_7.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_6.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     }
                                 ]}
                             />
@@ -124,11 +124,11 @@ export const ProfileGallery = () => {
                                 images={[
                                     {
                                         src: "/images/work/shellac/nails2.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/shellac/nails3.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                 ]}
                             />
@@ -192,43 +192,43 @@ export const ProfileGallery = () => {
                                 images={[
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_1.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_3.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_2.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_4.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/hybrid/eye/hybrid_1.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/hybrid/eye/hybrid_2.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_4.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_5.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_7.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_6.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     }
                                 ]}
                             />
@@ -252,11 +252,11 @@ export const ProfileGallery = () => {
                                 images={[
                                     {
                                         src: "/images/work/shellac/nails2.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                     {
                                         src: "/images/work/shellac/nails3.jpg",
-                                        alt: ""
+                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
                                     },
                                 ]}
                             />
