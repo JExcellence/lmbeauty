@@ -1,4 +1,5 @@
 import {
+    Badge,
     Button,
     Column, Flex, Icon,
     Row,
@@ -14,16 +15,17 @@ export const Footer = () => {
     return (
         <Column
             fillWidth
-            paddingY="xl"
+            paddingY="s"
             horizontal="center"
             background="neutral-weak"
         >
             <Flex
                 maxWidth="xl"
-                horizontal={"center"}
-                padding="xl"
-                vertical={"start"}
-                gap={"l"}
+                horizontal="center"
+                vertical="space-evenly"
+                mobileDirection={"column"}
+                padding="s"
+                gap="xl"
                 className={styles.footerContainer}
             >
                 <Column
@@ -64,42 +66,47 @@ export const Footer = () => {
                     gap="xs"
                     textVariant="label-default-m"
                     horizontal="center"
+                    vertical="center"
                     marginBottom="xl"
                 >
                     <Row as="h3" paddingX="4" marginBottom="xs">
                         Soziales
                     </Row>
-                    <Button
+                    <Badge
+                        center
+                        width={10}
                         href="#contact"
-                        prefixIcon="whatsapp"
-                        label="WhatsApp"
-                        size="s"
-                        variant="secondary"
-                        fillWidth
+                        icon="whatsapp"
+                        title={"WhatsApp"}
                     />
-                    <Button
+                    <Badge
+                        center
+                        width={10}
                         href="#contact"
-                        prefixIcon="mail"
-                        label="E-Mail"
-                        size="s"
-                        variant="secondary"
-                        fillWidth
+                        icon="mail"
+                        title={"E-Mail"}
                     />
-                    <Button
+                    <Badge
+                        center
+                        width={10}
                         href="#contact"
-                        prefixIcon="instagram"
-                        label="Instagram"
-                        size="s"
-                        variant="secondary"
-                        fillWidth
+                        icon="instagram"
+                        title={"Instagram"}
                     />
                 </Column>
             </Flex>
-            <Flex fillWidth horizontal="center" vertical="center" direction="column" position={"absolute"} bottom="0">
+            <Flex
+                fillWidth
+                horizontal="center"
+                vertical="center"
+                direction="column"
+                paddingY="xs"
+            >
                 <Text
                     align="center"
                     variant="body-default-m"
                     onBackground="accent-weak"
+                    className={styles.footerText}
                 >
                     Made by
                     <SmartLink
