@@ -78,43 +78,43 @@ export const ProfileGallery = () => {
                                 images={[
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_1.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Wimperntechnik 1:1 in Oldenburg I"
                                     },
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_3.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Wimperntechnik 1:1 in Oldenburg III"
                                     },
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_2.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Wimperntechnik 1:1 in Oldenburg II"
                                     },
                                     {
                                         src: "/images/work/einzel/eye/eins_zu_eins_4.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Wimperntechnik 1:1 in Oldenburg IV"
                                     },
                                     {
                                         src: "/images/work/hybrid/eye/hybrid_1.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Wimperntechnik Hybrid in Oldenburg I"
                                     },
                                     {
                                         src: "/images/work/hybrid/eye/hybrid_2.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Wimperntechnik Hybrid in Oldenburg II"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_4.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Wimperntechnik Hybrid in Oldenburg IV"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_5.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Wimperntechnik Volumen in Oldenburg V"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_7.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Wimperntechnik Volumen in Oldenburg VII"
                                     },
                                     {
                                         src: "/images/work/volumen/eye/volumen_6.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Wimperntechnik Volumen in Oldenburg VI"
                                     }
                                 ]}
                             />
@@ -124,11 +124,11 @@ export const ProfileGallery = () => {
                                 images={[
                                     {
                                         src: "/images/work/shellac/nails2.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Shellac Nägel in Oldenburg II"
                                     },
                                     {
                                         src: "/images/work/shellac/nails3.jpg",
-                                        alt: "Beauty, Laden, Wimpern, Oldenburg"
+                                        alt: "Shellac Nägel in Oldenburg III"
                                     },
                                 ]}
                             />
