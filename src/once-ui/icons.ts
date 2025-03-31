@@ -28,6 +28,7 @@ import {
   HiCheckCircle,
   HiOutlineShieldCheck,
   HiOutlineSparkles,
+  HiOutlineComputerDesktop,
   HiOutlineDocumentCurrencyEuro, HiHeart, HiOutlineGift, HiOutlineArrowTrendingUp, HiOutlineUsers
 } from "react-icons/hi2";
 
@@ -79,5 +80,9 @@ export const iconLibrary: Record<string, IconType> = {
   trending: HiOutlineArrowTrendingUp,
   users: HiOutlineUsers,
   sparkle: HiOutlineSparkles,
+  computer: HiOutlineComputerDesktop
   docCurrencyEuro: HiOutlineDocumentCurrencyEuro
 };
+
+export type IconLibrary = typeof iconLibrary;
+export type IconName = keyof IconLibrary;

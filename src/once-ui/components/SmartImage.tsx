@@ -54,10 +54,21 @@ const SmartImage: React.FC<SmartImageProps> = ({
                 setIsEnlarged(false);
             }
         };
+        
+    const handleWheel = (event: WheelEvent) => {
+      if (isEnlarged) {
+        setIsEnlarged(false);
+      }
+    };
 
-        document.addEventListener("keydown", handleEscape);
-        return () => document.removeEventListener("keydown", handleEscape);
-    }, [isEnlarged]);
+    document.addEventListener("keydown", handleEscape);
+    window.addEventListener("wheel", handleWheel, { passive: true });
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, [isEnlarged]);
 
     useEffect(() => {
         if (isEnlarged) {
@@ -223,13 +234,16 @@ const SmartImage: React.FC<SmartImageProps> = ({
                     vertical="center"
                     position="fixed"
                     background="overlay"
+                    pointerEvents="none"
                     onClick={handleClick}
                     top="0"
                     left="0"
+                    zIndex={isEnlarged ? 9 : undefined}
                     opacity={isEnlarged ? 100 : 0}
                     cursor="interactive"
                     transition="macro-medium"
                     style={{
+                        backdropFilter: isEnlarged ? "var(--backdrop-filter)" : "0px",
                         width: "100vw",
                         height: "100vh",
                     }}
