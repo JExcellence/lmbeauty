@@ -48,6 +48,7 @@
   //--icon: url('/trademark/icon-dark.svg');
   --type: url('/images/logo/logo.png');
 
+
     --page-background:              var(--neutral-background-weak);
     --backdrop:                     var(--static-black-medium);
 
@@ -243,8 +244,9 @@
         display: grid;
     }
 
-    //--icon: url('/trademark/icon-light.svg');
-    --type: url('/images/logo/logo.png');
+  //--icon: url('/trademark/icon-dark.svg');
+  --type: url('/images/logo/logo.png');
+
 
     --page-background:              var(--neutral-background-weak);
     --backdrop:                     var(--static-white-medium);

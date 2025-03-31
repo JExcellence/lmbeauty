@@ -80,7 +80,7 @@ export const iconLibrary: Record<string, IconType> = {
   trending: HiOutlineArrowTrendingUp,
   users: HiOutlineUsers,
   sparkle: HiOutlineSparkles,
-  computer: HiOutlineComputerDesktop
+  computer: HiOutlineComputerDesktop,
   docCurrencyEuro: HiOutlineDocumentCurrencyEuro
 };
 
