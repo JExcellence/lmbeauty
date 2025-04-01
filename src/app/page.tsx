@@ -9,7 +9,7 @@ import {ProfileGallery} from "@/app/components/profilegallery/ProfileGallery";
 import {Faq} from "@/app/components/faq/faq";
 import {Footer} from "@/app/components/footer/Footer";
 import {PriceList} from "@/app/components/pricelist/PriceList";
-import {ScrollToTopButton} from "@/once-ui/components/ScrollToTopButton";
+import {ScrollToTop} from "@/once-ui/components/ScrollToTop";
 
 const testimonials = [
     {
@@ -276,7 +276,7 @@ export default function Home() {
                 <Footer />
             </Column>
 
-            <ScrollToTopButton/>
+            <ScrollToTop/>
         </Column>
     );
 }

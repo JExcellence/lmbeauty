@@ -55,12 +55,6 @@ const SmartImage: React.FC<SmartImageProps> = ({
                 setIsEnlarged(false);
             }
         };
-        
-    const handleWheel = (event: WheelEvent) => {
-      if (isEnlarged) {
-        setIsEnlarged(false);
-      }
-    };
 
     const handleWheel = (event: WheelEvent) => {
       if (isEnlarged) {

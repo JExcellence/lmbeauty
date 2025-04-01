@@ -138,12 +138,6 @@ export default function RootLayout({
         >
             <head>
                 <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(schemaData),
-                    }}
-                />
-                <script
                     dangerouslySetInnerHTML={{
                         __html: `
               (function() {
@@ -164,7 +158,6 @@ export default function RootLayout({
                     }}
                 />
             </head>
-            <ThemeProvider>
             <ToastProvider>
                 <Column as="body" fillWidth margin="0" padding="0">
                     <Header />
@@ -186,7 +179,6 @@ export default function RootLayout({
                     </Flex>
                 </Column>
             </ToastProvider>
-            </ThemeProvider>
             <CookieBanner/>
         </Flex>
     );

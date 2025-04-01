@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ReactNode, useState } from "react";
-import { Accordion, Background, Column, Heading, Line, SmartLink, Text } from "@/once-ui/components";
+import { Accordion, Column, Heading, Line, SmartLink, Text } from "@/once-ui/components";
 import { schema } from "@/once-ui/resources/config";
 
 interface FaqProps {
@@ -36,7 +36,7 @@ export const Faq: React.FC<FaqProps> = ({ title, description, content }) => {
                             <Accordion
                                 isOpen={activeIndex === index}
                                 onToggle={() => handleToggle(index)}
-                                title={<Text variant="body-default-s">{item.title}</Text>}
+                                title={item.title}
                             >
                                 <Text variant="body-default-s" onBackground="neutral-medium">{item.content}</Text>
                             </Accordion>

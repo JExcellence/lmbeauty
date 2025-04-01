@@ -49,6 +49,7 @@ const badgeContent = [
 
 export const About = () => (
     <Column fillWidth horizontal="center" gap="80" paddingY="l" position="relative">
+        
         <Background
             position="absolute"
             zIndex={1}
@@ -94,6 +95,7 @@ export const About = () => (
                 <Heading as="h2" variant="display-strong-xs" align="center">
                     Hallo, schön, dass du hier bist! 🌸
                 </Heading>
+
             </RevealFx>
 
             <RevealFx translateY="l" delay={1.9} fillWidth horizontal="center" paddingBottom="s" zIndex={2} wrap>
