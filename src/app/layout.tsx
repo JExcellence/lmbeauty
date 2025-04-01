@@ -83,14 +83,14 @@ export async function generateMetadata(): Promise<Metadata> {
                 | "video.other",
         },
         twitter: {
-            card: 'summary_large_image',
+            card: "summary_large_image",
             title: og.title,
             description: og.description,
             images: [og.image],
         },
         icons: {
-            icon: '/favicon.ico',
-            apple: '/apple-touch-icon.png',
+            icon: "/favicon.ico",
+            apple: "/apple-touch-icon.png",
         },
         robots: {
             index: true,
@@ -114,8 +114,10 @@ export default function RootLayout({
 }>) {
     return (
         <Flex
+            suppressHydrationWarning
             as="html"
             lang="de"
+            fillHeight
             background="page"
             data-neutral={style.neutral}
             data-brand={style.brand}
@@ -134,6 +136,28 @@ export default function RootLayout({
                 tertiary ? tertiary.variable : "",
             )}
         >
+            <head>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme') || 'system';
+                  const root = document.documentElement;
+                  if (theme === 'system') {
+                    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+                  } else {
+                    root.setAttribute('data-theme', theme);
+                  }
+                } catch (e) {
+                  document.documentElement.setAttribute('data-theme', 'dark');
+                }
+              })();
+            `,
+                    }}
+                />
+            </head>
             <ToastProvider>
                 <Column as="body" fillWidth margin="0" padding="0">
                     <Header />
