@@ -15,7 +15,7 @@
     "@next/mdx": "^14.2.16",
     "classnames": "^2.5.1",
     "compressorjs": "^1.2.1",
-    "next": "15.2.3",
+    "next": "14.2.26",
     "cookie": "^1.0.1",
     "critters": "^0.0.23",
     "gray-matter": "^4.0.3",
