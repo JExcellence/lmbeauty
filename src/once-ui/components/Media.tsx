@@ -3,49 +3,58 @@
 import React, { CSSProperties, useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-import { Flex, Skeleton } from ".";
+import { Flex, Skeleton } from "@/once-ui/components";
 
-export interface MediaProps extends React.ComponentProps<typeof Flex> {
-  aspectRatio?: string;
-  height?: number;
-  alt?: string;
-  loading?: boolean;
-  objectFit?: CSSProperties["objectFit"];
-  enlarge?: boolean;
-  src: string;
-  unoptimized?: boolean;
-  sizes?: string;
-  priority?: boolean;
+export interface SmartImageProps extends React.ComponentProps<typeof Flex> {
+    aspectRatio?: string;
+    height?: number;
+    alt?: string;
+    isLoading?: boolean;
+    objectFit?: CSSProperties["objectFit"];
+    enlarge?: boolean;
+    src: string;
+    unoptimized?: boolean;
+    sizes?: string;
+    priority?: boolean;
+    controls?: boolean;
+    foreground?: {
+        text?: string;
+        textColor?: string;
+        backgroundColor?: string;
+        opacity?: number;
+    };
 }
 
-const Media: React.FC<MediaProps> = ({
-  aspectRatio,
-  height,
-  alt = "",
-  loading = false,
-  objectFit = "cover",
-  enlarge = false,
-  src,
-  unoptimized = false,
-  priority,
-  sizes = "100vw",
-  ...rest
-}) => {
-  const [isEnlarged, setIsEnlarged] = useState(false);
-  const imageRef = useRef<HTMLDivElement>(null);
+const SmartImage: React.FC<SmartImageProps> = ({
+                                                   aspectRatio,
+                                                   height,
+                                                   alt = "",
+                                                   isLoading = false,
+                                                   objectFit = "cover",
+                                                   enlarge = false,
+                                                   src,
+                                                   unoptimized = false,
+                                                   priority,
+                                                   sizes="(max-width: 640px) 90vw, 1200px",
+                                                   controls = false,
+                                                   foreground,
+                                                   ...rest
+                                               }) => {
+    const [isEnlarged, setIsEnlarged] = useState(false);
+    const imageRef = useRef<HTMLDivElement>(null);
 
-  const handleClick = () => {
-    if (enlarge) {
-      setIsEnlarged(!isEnlarged);
-    }
-  };
-
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isEnlarged) {
-        setIsEnlarged(false);
-      }
+    const handleClick = () => {
+        if (enlarge) {
+            setIsEnlarged(!isEnlarged);
+        }
     };
+
+    useEffect(() => {
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === "Escape" && isEnlarged) {
+                setIsEnlarged(false);
+            }
+        };
 
     const handleWheel = (event: WheelEvent) => {
       if (isEnlarged) {
@@ -62,28 +71,28 @@ const Media: React.FC<MediaProps> = ({
     };
   }, [isEnlarged]);
 
-  useEffect(() => {
-    if (isEnlarged) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    useEffect(() => {
+        if (isEnlarged) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isEnlarged]);
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isEnlarged]);
 
-  const calculateTransform = () => {
-    if (!imageRef.current) return {};
+    const calculateTransform = () => {
+        if (!imageRef.current) return {};
 
-    const rect = imageRef.current.getBoundingClientRect();
-    const scaleX = window.innerWidth / rect.width;
-    const scaleY = window.innerHeight / rect.height;
-    const scale = Math.min(scaleX, scaleY) * 0.9;
+        const rect = imageRef.current.getBoundingClientRect();
+        const scaleX = window.innerWidth / rect.width;
+        const scaleY = window.innerHeight / rect.height;
+        const scale = Math.min(scaleX, scaleY) * 0.9;
 
-    const translateX = (window.innerWidth - rect.width) / 2 - rect.left;
-    const translateY = (window.innerHeight - rect.height) / 2 - rect.top;
+        const translateX = (window.innerWidth - rect.width) / 2 - rect.left;
+        const translateY = (window.innerHeight - rect.height) / 2 - rect.top;
 
     return {
       transform: isEnlarged
@@ -94,23 +103,23 @@ const Media: React.FC<MediaProps> = ({
     };
   };
 
-  const isYouTubeVideo = (url: string) => {
-    const youtubeRegex =
-      /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    return youtubeRegex.test(url);
-  };
+    const isYouTubeVideo = (url: string) => {
+        const youtubeRegex =
+            /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        return youtubeRegex.test(url);
+    };
 
-  const getYouTubeEmbedUrl = (url: string) => {
-    const match = url.match(
-      /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
-    );
-    return match
-      ? `https://www.youtube.com/embed/${match[1]}?controls=0&rel=0&modestbranding=1`
-      : "";
-  };
+    const getYouTubeEmbedUrl = (url: string) => {
+        const match = url.match(
+            /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+        );
+        return match
+            ? `https://www.youtube.com/embed/${match[1]}?controls=0&rel=0&modestbranding=1`
+            : "";
+    };
 
-  const isVideo = src?.endsWith(".mp4");
-  const isYouTube = isYouTubeVideo(src);
+    const isVideo = src?.endsWith(".mp4");
+    const isYouTube = isYouTubeVideo(src);
 
   return (
     <>
@@ -131,8 +140,8 @@ const Media: React.FC<MediaProps> = ({
         onClick={handleClick}
         {...rest}
       >
-        {loading && <Skeleton shape="block" />}
-        {!loading && isVideo && (
+        {isLoading && <Skeleton shape="block" />}
+        {!isLoading && isVideo && (
           <video
             src={src}
             autoPlay
@@ -146,7 +155,7 @@ const Media: React.FC<MediaProps> = ({
             }}
           />
         )}
-        {!loading && isYouTube && (
+        {!isLoading && isYouTube && (
           <iframe
             width="100%"
             height="100%"
@@ -159,7 +168,7 @@ const Media: React.FC<MediaProps> = ({
             }}
           />
         )}
-        {!loading && !isVideo && !isYouTube && (
+        {!isLoading && !isVideo && !isYouTube && (
           <Image
             src={src}
             alt={alt}
@@ -233,5 +242,6 @@ const Media: React.FC<MediaProps> = ({
   );
 };
 
-Media.displayName = "Media";
-export { Media };
+SmartImage.displayName = "SmartImage";
+
+export { SmartImage };

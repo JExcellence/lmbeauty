@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { ToggleButton, Scroller, Flex, ToggleButtonProps } from ".";
+import React, { useState, useEffect, useRef } from "react";
+import { ToggleButton, Scroller, Flex } from ".";
+import type { ToggleButtonProps } from "./ToggleButton";
 
 interface ButtonOption extends Omit<ToggleButtonProps, "selected"> {
   value: string;
@@ -96,14 +97,13 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
   return (
     <Scroller
       direction="row"
-      fillWidth={fillWidth}
       minWidth={0}
       {...scrollerProps}
       role="tablist"
       aria-orientation="horizontal"
       onKeyDown={handleKeyDown}
     >
-      <Flex fillWidth={fillWidth} gap="-1">
+      <Flex fillWidth gap="-1">
         {buttons.map((button, index) => {
           return (
             <ToggleButton

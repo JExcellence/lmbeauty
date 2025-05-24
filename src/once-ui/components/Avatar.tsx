@@ -90,7 +90,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
             radius="full"
             src={src}
             fill
-            alt="Avatar"
+            alt="Wimpernstylistin LM Beauty"
             sizes={typeof size === "string" ? `${sizeMapping[size]}px` : `${size * 16}px`}
             className={styles.image}
           />

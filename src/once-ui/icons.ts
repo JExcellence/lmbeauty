@@ -29,49 +29,36 @@ import {
   HiOutlineShieldCheck,
   HiOutlineSparkles,
   HiOutlineComputerDesktop,
-  HiOutlineQuestionMarkCircle,
-  HiOutlineInformationCircle,
-  HiOutlineExclamationTriangle,
-  HiOutlineExclamationCircle,
-  HiOutlineCheckBadge,
-  HiOutlineCheckCircle,
-  HiOutlineXMark,
-  HiOutlineUser,
-  HiOutlineEyeDropper,
-  HiOutlineMinus,
-  HiOutlinePlus,
-  HiOutlineCalendar,
-  HiOutlineDocumentDuplicate,
+  HiOutlineDocumentCurrencyEuro, HiHeart, HiOutlineGift, HiOutlineArrowTrendingUp, HiOutlineUsers
 } from "react-icons/hi2";
 
 import { RiVisaLine } from "react-icons/ri";
 
 import {FaDiscord, FaGithub, FaGoogle, FaInstagram, FaWhatsapp} from "react-icons/fa6";
-import {HiMail} from "react-icons/hi";
+import {HiMail, HiOutlineClock} from "react-icons/hi";
+
+import { LuChevronsLeftRight } from "react-icons/lu";
 
 export const iconLibrary: Record<string, IconType> = {
   chevronUp: HiChevronUp,
   chevronDown: HiChevronDown,
   chevronRight: HiChevronRight,
   chevronLeft: HiChevronLeft,
+  chevronsLeftRight: LuChevronsLeftRight,
   refresh: HiOutlineArrowPath,
   check: HiCheck,
   light: HiOutlineSun,
   dark: HiOutlineMoon,
-  help: HiOutlineQuestionMarkCircle,
-  info: HiOutlineInformationCircle,
-  warning: HiOutlineExclamationTriangle,
-  danger: HiOutlineExclamationCircle,
-  checkbox: HiOutlineCheckBadge,
-  check: HiOutlineCheckCircle,
-  copy: HiOutlineDocumentDuplicate,
-  eyeDropper: HiOutlineEyeDropper,
+  helpCircle: HiMiniQuestionMarkCircle,
+  infoCircle: HiInformationCircle,
+  warningTriangle: HiExclamationTriangle,
+  errorCircle: HiExclamationCircle,
+  checkCircle: HiCheckCircle,
+  eyeDropper: HiEyeDropper,
   clipboard: HiOutlineClipboard,
   mail: HiMail,
   person: HiMiniUser,
   close: HiMiniXMark,
-  person: HiOutlineUser,
-  close: HiOutlineXMark,
   openLink: HiOutlineLink,
   discord: FaDiscord,
   instagram: FaInstagram,
@@ -79,15 +66,22 @@ export const iconLibrary: Record<string, IconType> = {
   github: FaGithub,
   whatsapp: FaWhatsapp,
   arrowUpRight: HiArrowUpRight,
-  minus: HiOutlineMinus,
-  plus: HiOutlinePlus,
-  calendar: HiOutlineCalendar,
+  minus: HiMiniMinus,
+  plus: HiMiniPlus,
+  heart: HiHeart,
+  calendar: HiCalendar,
   eye: HiOutlineEye,
   eyeOff: HiOutlineEyeSlash,
   search: HiOutlineMagnifyingGlass,
+  visa: RiVisaLine,
   security: HiOutlineShieldCheck,
+  clock: HiOutlineClock,
+  gift: HiOutlineGift,
+  trending: HiOutlineArrowTrendingUp,
+  users: HiOutlineUsers,
   sparkle: HiOutlineSparkles,
-  computer: HiOutlineComputerDesktop
+  computer: HiOutlineComputerDesktop,
+  docCurrencyEuro: HiOutlineDocumentCurrencyEuro
 };
 
 export type IconLibrary = typeof iconLibrary;

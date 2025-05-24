@@ -1,7 +1,7 @@
 "use client";
 
-import { Flex, RevealFx, Scroller, Media } from ".";
-import { useEffect, useState, useRef } from "react";
+import { Flex, RevealFx, Scroller, SmartImage } from "@/once-ui/components";
+import React, { useEffect, useState, useRef }   from "react";
 
 interface Image {
   src: string;
@@ -87,7 +87,7 @@ const Carousel: React.FC<CarouselProps> = ({
         aspectRatio={aspectRatio}
         speed="fast"
       >
-        <Media
+        <SmartImage
           sizes={sizes}
           priority
           radius="l"
@@ -108,7 +108,6 @@ const Carousel: React.FC<CarouselProps> = ({
             <Flex gap="4" paddingX="s" fillWidth horizontal="center">
               {images.map((_, index) => (
                 <Flex
-                  radius="full"
                   key={index}
                   onClick={() => handleControlClick(index)}
                   style={{
@@ -136,10 +135,10 @@ const Carousel: React.FC<CarouselProps> = ({
                   }}
                   cursor="interactive"
                   padding="4"
-                  aspectRatio={aspectRatio}
+                  width="80"
                   height="80"
                 >
-                  <Media
+                  <SmartImage
                     alt={image.alt}
                     aspectRatio="1 / 1"
                     sizes="120px"
