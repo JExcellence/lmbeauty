@@ -7,7 +7,7 @@ const withMDX = mdx({
 
 const nextConfig = {
   eslint: {
-    dirs: [],
+    ignoreDuringBuilds: true,
   },
   poweredByHeader: false,
   async redirects() {
