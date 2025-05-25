@@ -58,7 +58,7 @@ export const About = () => {
                 }}
             />
 
-            <Column fillWidth zIndex={3} center>
+            <Column fillWidth zIndex={2} center>
                 <Avatar
                     src="/images/avatar/avatar_1.png"
                     align="center"

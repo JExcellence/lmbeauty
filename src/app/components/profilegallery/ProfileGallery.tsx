@@ -80,7 +80,7 @@ const ProfileGallery = () => {
 
     return (
         <Column fillWidth horizontal="center" fill maxWidth={50}>
-            <Column fillWidth horizontal="center" paddingY="l" zIndex={3}>
+            <Column fillWidth horizontal="center" paddingY="l" zIndex={2}>
                 <Heading as="h2" align="center">
                     Mehr als Wimpern - eine Haltung
                 </Heading>
@@ -94,7 +94,7 @@ const ProfileGallery = () => {
             <SegmentedControl
                 paddingX="xl"
                 maxWidth={50}
-                zIndex={3}
+                zIndex={2}
                 buttons={[
                     { prefixIcon: "heart", label: "Galerie", value: "gallery" },
                     { prefixIcon: "person", label: "Über mich", value: "about" },

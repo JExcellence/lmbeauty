@@ -9,6 +9,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    domains: [],
+  },
   poweredByHeader: false,
   async redirects() {
     return [
