@@ -1,136 +1,54 @@
+"use client";
+
 import {
-    Badge,
+    Background,
     Button,
-    Column, Flex, Icon,
+    Column, ElementType,
+    Flex,
+    Icon,
+    Logo,
     Row,
-    SmartLink, Text,
+    ScrollToTop,
+    SmartLink,
+    Text,
 } from "@/once-ui/components";
 
-import React from "react";
-
-import styles from "./Footer.module.scss"
-
-export const Footer = () => {
+const Footer = () => {
 
     return (
-        <Column
-            fillWidth
-            paddingY="s"
-            horizontal="center"
-            background="neutral-weak"
-        >
-            <Flex
-                maxWidth="xl"
-                horizontal="center"
-                vertical="space-evenly"
-                mobileDirection={"column"}
-                padding="s"
-                gap="xl"
-                className={styles.footerContainer}
-            >
-                <Column
-                    gap="xs"
-                    textVariant="label-default-m"
-                    horizontal="center"
-                    marginBottom="xl"
-                >
-                    <Row as="h3" paddingX="4" marginBottom="xs">
-                        Sonstiges
-                    </Row>
-                    <Row>
-                        <SmartLink href="#pricelist">Preisliste</SmartLink>
-                    </Row>
+        <Column gap="l" fillWidth padding="m">
+            <Flex vertical="space-between" horizontal="space-between" wrap paddingX="l">
+                <Column gap="m" horizontal="start">
+                    <Text variant="heading-default-l">LM Beauty</Text>
+                    <ElementType key="contact" href="#">Schulungen (Bald)</ElementType>
+                    <ElementType key="pricelist" href="#">Produkte (Bald)</ElementType>
+                    <ElementType key="partner" href="https://www.jexcellence.de">Entwickelt von JExcellence</ElementType>
                 </Column>
 
-                <Column
-                    gap="xs"
-                    textVariant="label-default-m"
-                    horizontal="center"
-                    marginBottom="xl"
-                >
-                    <Row as="h3" paddingX="4" marginBottom="xs">
-                        Rechtliches
-                    </Row>
-                    <Row>
-                        <SmartLink href="#about">Über mich</SmartLink>
-                    </Row>
-                    <Row>
-                        <SmartLink href="/">Impressum</SmartLink>
-                    </Row>
-                    <Row>
-                        <SmartLink href="/">Datenschutz</SmartLink>
-                    </Row>
-                </Column>
-
-                <Column
-                    gap="xs"
-                    textVariant="label-default-m"
-                    horizontal="center"
-                    vertical="center"
-                    marginBottom="xl"
-                >
-                    <Row as="h3" paddingX="4" marginBottom="xs">
-                        Soziales
-                    </Row>
-                    <Badge
-                        center
-                        width={10}
-                        href="#contact"
-                        icon="whatsapp"
-                        title={"WhatsApp"}
-                    />
-                    <Badge
-                        center
-                        width={10}
-                        href="#contact"
-                        icon="mail"
-                        title={"E-Mail"}
-                    />
-                    <Badge
-                        center
-                        width={10}
-                        href="#contact"
-                        icon="instagram"
-                        title={"Instagram"}
-                    />
+                <Column gap="m" horizontal="end">
+                    <Text variant="heading-default-l">Unternehmen</Text>
+                    <ElementType key="about" href="#about">Über mich</ElementType>
+                    <ElementType key="contact" href="#contact">Kontakt</ElementType>
+                    <ElementType key="pricelist" href="#pricelist">Preisliste</ElementType>
                 </Column>
             </Flex>
-            <Flex
-                fillWidth
-                horizontal="center"
-                vertical="center"
-                direction="column"
-                paddingY="xs"
-            >
-                <Text
-                    align="center"
-                    variant="body-default-m"
-                    onBackground="accent-weak"
-                    className={styles.footerText}
-                >
-                    Made by
-                    <SmartLink
-                        style={{ paddingLeft: "4px"}}
-                        href="https://instagram.com/jexcellence_"
-                    >
-                        JExcellence
-                    </SmartLink>
-                </Text>
-                <Text
-                    align="center"
-                    variant="body-default-xs"
-                    onBackground="accent-weak"
-                >
-                    unterstützt durch
-                    <SmartLink
-                        style={{ paddingLeft: "4px"}}
-                        href="https://once-ui.com"
-                        iconSize="s"
-                    >
-                        Once UI
-                    </SmartLink>
-                </Text>
+
+            <Flex center direction="column" align="center" paddingTop="m">
+                <Row gap="s">
+                    <ElementType key="imprint" href="/imprint">Impressum</ElementType>
+                    <ElementType key="privacy" href="/privacy">Datenschutzerklärung</ElementType>
+                    <ElementType key="terms" href="/terms">AGB</ElementType>
+                </Row>
+
+                <Row gap="s" align="center" paddingTop="s">
+                    <Logo href="/" wordmark size="xs" />
+                    <Text variant="body-default-s" onBackground="accent-weak">
+                        © 2023-2025 LM Beauty. Alle Rechte vorbehalten.
+                    </Text>
+                </Row>
             </Flex>
         </Column>
     );
 };
+
+export { Footer };

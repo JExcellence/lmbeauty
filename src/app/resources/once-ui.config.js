@@ -1,114 +1,64 @@
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://demo.once-ui.com";
+const baseURL = "lmbeauty.de";
 
-// Import and set font for each variant
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+import {Geist, Inter, Lora, Montserrat, Playfair_Display, Roboto_Mono} from "next/font/google";
 
-const primaryFont = Geist({
-  variable: "--font-primary",
-  subsets: ["latin"],
-  display: "swap",
+const primary = Playfair_Display({
+  variable: '--font-primary',
+  subsets: ['latin'],
+  display: 'swap'
 });
 
-const monoFont = Geist_Mono({
-  variable: "--font-code",
-  subsets: ["latin"],
-  display: "swap",
+const secondary = Lora({
+  variable: '--font-secondary',
+  subsets: ['latin'],
+  display: 'swap'
 });
 
-const font = {
-  primary: primaryFont,
-  secondary: primaryFont,
-  tertiary: primaryFont,
-  code: monoFont,
-};
+const tertiary = Lora({
+  variable: '--font-primary',
+  subsets: ['latin'],
+  display: 'swap'
+});
 
-// default customization applied to the HTML in the main layout.tsx
 const style = {
-  theme: "dark", // dark | light - not needed when using ThemeProvider
-  neutral: "gray", // sand | gray | slate
-  brand: "blue", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  accent: "indigo", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  solid: "contrast", // color | contrast | inverse
-  solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative
-  surface: "filled", // filled | translucent
-  transition: "all", // all | micro | macro
-  scaling: "100", // 90 | 95 | 100 | 105 | 110
-};
-
-const effects = {
-  mask: {
-    cursor: false,
-    x: 50,
-    y: 0,
-    radius: 100,
-  },
-  gradient: {
-    display: false,
-    x: 50,
-    y: 0,
-    width: 100,
-    height: 100,
-    tilt: 0,
-    colorStart: "brand-background-strong",
-    colorEnd: "static-transparent",
-    opacity: 50,
-  },
-  dots: {
-    display: true,
-    size: "2",
-    color: "brand-on-background-weak",
-    opacity: 40,
-  },
-  lines: {
-    display: false,
-    color: "neutral-alpha-weak",
-    opacity: 100,
-    thickness: 1,
-    angle: 45,
-    size: "8",
-  },
-  grid: {
-    display: false,
-    color: "neutral-alpha-weak",
-    opacity: 100,
-    width: "2",
-    height: "2",
-  },
+  theme: "dark",
+  neutral: "gray",
+  brand: "pink",
+  accent: "custom",
+  solid: "color",
+  solidStyle: "flat",
+  border: "playful",
+  surface: "translucent",
+  transition: "all",
+  scaling: "90",
 };
 
 // metadata for pages
 const meta = {
   home: {
     path: "/",
-    title: "Once UI for Next.js",
-    description: "An open-source design system and component library for Next.js that emphasizes easy styling and accessibility in UI development.",
-    image: "/og/home.jpg",
-    canonical: "https://once-ui.com",
+    title: "LM Beauty Oldenburg – Expertin für Wimpernverlängerung & Lash Lifting",
+    description: "Entdecke professionelle Wimpernverlängerung & Lash Lifting bei LM Beauty in Oldenburg. Hochwertige Produkte, langanhaltende Ergebnisse & individuelle Beratung.",
+    image: "/images/avatar_1.png",
+    canonical: "https://lmbeauty.de",
     robots: "index,follow",
     alternates: [
-      { href: "https://once-ui.com", hrefLang: "en" },
+      { href: "https://lmbeauty.de", hrefLang: "de" },
     ],
   },
-  // add more routes and reference them in page.tsx
 };
 
 // default schema data
 const schema = {
-  logo: "",
+  logo: "https://lmbeauty.de/images/avatar_1.png",
   type: "Organization",
-  name: "Once UI",
+  name: meta.home.name,
   description: meta.home.description,
-  email: "lorant@once-ui.com",
+  email: "info@lmbeauty.de",
 };
 
-// social links
 const social = {
-  twitter: "https://www.twitter.com/_onceui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  instagram: "https://www.instagram.com/_l.m_beauty_/",
 };
 
-export { baseURL, font, style, meta, schema, social, effects };
+export { baseURL, style, meta, schema, social };

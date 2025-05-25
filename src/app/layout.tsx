@@ -5,23 +5,19 @@ import classNames from "classnames";
 import {Metadata, Viewport} from "next";
 
 import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/config";
-import {Background, Column, Flex, ToastProvider} from "@/once-ui/components";
+import { Column, Flex, ToastProvider, ThemeProvider } from "@/once-ui/components";
 
-import {Lora, Roboto_Mono} from 'next/font/google';
-import { Montserrat } from 'next/font/google';
+import {Inter, Lora, Playfair_Display } from 'next/font/google';
 import React from "react";
-import {CookieBanner} from "@/app/components/cookie/Cookie";
-import {Header} from "@/app/components/header/Header";
-import {Hero} from "@/app/components/hero/hero";
-import {ViewportLock} from "@/app/components/viewport/ViewportLock";
+import {ViewPortLock} from "@/app/components/viewport/ViewportLock";
 
-const primary = Lora({
+const primary = Playfair_Display({
     variable: '--font-primary',
     subsets: ['latin'],
     display: 'swap'
 });
 
-const secondary = Montserrat({
+const secondary = Lora({
     variable: '--font-secondary',
     subsets: ['latin'],
     display: 'swap'
@@ -33,22 +29,16 @@ const tertiary = Lora({
     display: 'swap'
 });
 
-const code = Roboto_Mono({
-    variable: "--font-code",
-    subsets: ["latin"],
-    display: "swap",
-});
-
 export const viewport: Viewport = {
     width: 'device-width',
     initialScale: 1,
     maximumScale: 1,
+    minimumScale: 1,
     userScalable: false,
     viewportFit: 'auto',
     interactiveWidget: 'resizes-content',
     themeColor: '#FDA4AF',
 };
-
 
 export async function generateMetadata(): Promise<Metadata> {
     const metadataBase = new URL(`https://lmbeauty.de}`)
@@ -107,14 +97,23 @@ export async function generateMetadata(): Promise<Metadata> {
     };
 }
 
-export default function RootLayout({
-                                       children,
-                                   }: Readonly<{
+const schemaData = {
+    "@context": "https://schema.org",
+    "@type": schema.type,
+    url: "https://" + baseURL,
+    logo: schema.logo,
+    name: schema.name,
+    description: schema.description,
+    email: schema.email,
+    sameAs: Object.values(social).filter(Boolean),
+};
+
+export default function RootLayout({children,}: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
         <Flex
-            suppressHydrationWarning
+            suppressHydrationWarning={true}
             as="html"
             lang="de"
             fillHeight
@@ -123,7 +122,6 @@ export default function RootLayout({
             data-brand={style.brand}
             data-accent={style.accent}
             data-border={style.border}
-            data-theme={style.theme}
             data-solid={style.solid}
             data-solid-style={style.solidStyle}
             data-surface={style.surface}
@@ -131,12 +129,18 @@ export default function RootLayout({
             data-scaling={style.scaling}
             className={classNames(
                 primary.variable,
-                code.variable,
+                tertiary.variable,
                 secondary ? secondary.variable : "",
                 tertiary ? tertiary.variable : "",
             )}
         >
-            <head>
+            <head title={meta.title}>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(schemaData),
+                    }}
+                />
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `
@@ -157,29 +161,17 @@ export default function RootLayout({
             `,
                     }}
                 />
+                <title></title>
             </head>
-            <ToastProvider>
-                <Column as="body" fillWidth margin="0" padding="0">
-                    <Header />
-                    <Hero fullscreen={true}/>
-                    <Flex
-                        position="relative"
-                        zIndex={0}
-                        fillWidth
-                        paddingY="l"
-                        paddingX="l"
-                        horizontal="center"
-                        flex={0}
-                    >
-                        <Flex horizontal="center" fillWidth minHeight="0">
-                            <ViewportLock>
-                                {children}
-                            </ViewportLock>
-                        </Flex>
-                    </Flex>
-                </Column>
-            </ToastProvider>
-            <CookieBanner/>
+            <ThemeProvider>
+                <ToastProvider>
+                    <Column as="body" fillWidth margin="0" padding="0" style={{ minHeight: "100vh" }}>
+                        <ViewPortLock>
+                            {children}
+                        </ViewPortLock>
+                    </Column>
+                </ToastProvider>
+            </ThemeProvider>
         </Flex>
     );
 }

@@ -2,14 +2,16 @@
 
 import {Column, Heading, Text} from "@/once-ui/components";
 import React from "react";
-import {Contact} from "@/app/components/contact/contact";
-import {TestimonialCarousel} from "@/app/components/testimonial/testimonialcarousel";
-import {About} from "@/app/components/aboutme/AboutMe";
+import {About} from "@/app/components/about-me/AboutMe";
 import {ProfileGallery} from "@/app/components/profilegallery/ProfileGallery";
-import {Faq} from "@/app/components/faq/faq";
 import {Footer} from "@/app/components/footer/Footer";
-import {PriceList} from "@/app/components/pricelist/PriceList";
 import {ScrollToTop} from "@/once-ui/components/ScrollToTop";
+import {Contact} from "@/app/components/contact/Contact";
+import {Header} from "@/app/components/header/Header";
+import {Hero} from "@/app/components/hero/Hero";
+import TestimonialCarousel from "@/app/components/testimonial/TestimonialCarousel";
+import Faq from "@/app/components/faq/Faq";
+import PriceList from "@/app/components/pricelist/PriceList";
 
 const testimonials = [
     {
@@ -34,12 +36,16 @@ const testimonials = [
 
 export default function Home() {
     return (
-        <Column fillWidth center padding="s" gap="s">
-            <Column center paddingY="xl" id="about" maxWidth={50} gap="s">
+        <Column fillWidth center>
+            <Header/>
+            <Column center fill>
+                <Hero/>
+            </Column>
+            <Column center paddingY="l" id="about" maxWidth={85} gap="s">
                 <About />
             </Column>
 
-            <Column center paddingY="xl" maxWidth={50} gap="s">
+            <Column center paddingY="l" id="gallery" maxWidth={85} gap="s">
                 <ProfileGallery />
             </Column>
 
@@ -50,9 +56,9 @@ export default function Home() {
                 />
             </Column>
 
-            <Column zIndex={1} center paddingY="xl" maxWidth={50} id="faq">
+            <Column zIndex={1} center paddingY="xl" id="faq" maxWidth={75}>
                 <Faq
-                    title="Deine Fragen – meine Antworten"
+                    title="Deine Fragen über Wimpernverlängerungen"
                     description="Alles, was du über Wimpernverlängerungen wissen möchtest"
                     content={[
                         {
@@ -99,9 +105,9 @@ export default function Home() {
                 />
             </Column>
 
-            <Column zIndex={1} center paddingY="xl" maxWidth={50} id="pricelist">
-                <Heading as="h2" variant="display-strong-xs" align="center">Preisliste</Heading>
-                <Text align="center" wrap="balance" variant="body-default-l" onBackground="neutral-medium" marginBottom="20">
+            <Column zIndex={1} center padding="xl" maxWidth={40} id="pricelist">
+                <Heading as="h2" variant="heading-strong-xl" align="center">Preisliste</Heading>
+                <Text align="center" variant="label-default-l" onBackground="neutral-medium" marginBottom="20">
                     Hier findest du meine aktuellen Preise 🌸
                 </Text>
                 <PriceList
@@ -268,13 +274,11 @@ export default function Home() {
                 />
             </Column>
 
-            <Column center paddingY="xl" id="contact" position={"relative"} maxWidth={50}>
+            <Column id="contact">
                 <Contact />
             </Column>
 
-            <Column center paddingY="xl" position={"relative"} maxWidth={50} horizontal="center">
-                <Footer />
-            </Column>
+            <Footer />
 
             <ScrollToTop/>
         </Column>

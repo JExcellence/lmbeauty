@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { Flex, RevealFx, SmartImage } from "@/once-ui/components";
+import {Flex, Media, RevealFx} from "@/once-ui/components";
 import styles from "./gallery.module.scss";
 
 interface ImageGalleryProps {
@@ -149,7 +149,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                         speed="fast"
                         style={{ height: "100%" }}
                     >
-                        <SmartImage
+                        <Media
                             sizes={sizes}
                             priority
                             radius="l"

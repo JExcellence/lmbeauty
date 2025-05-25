@@ -2,7 +2,7 @@
 
 import React, { forwardRef } from "react";
 
-import { Skeleton, Icon, Text, StatusIndicator, Flex, Media } from ".";
+import {Skeleton, Icon, Text, StatusIndicator, Flex, Media} from ".";
 import styles from "./Avatar.module.scss";
 
 interface AvatarProps extends React.ComponentProps<typeof Flex> {

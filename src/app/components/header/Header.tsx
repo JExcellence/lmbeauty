@@ -1,17 +1,13 @@
 "use client";
 
 import {
-    Column,
-    Fade,
     Logo,
-    NavIcon,
     Row,
-    SmartLink,
-    Text,
+    UserMenu,
+    Fade, IconButton, Button, NavIcon, Column, Banner, SmartLink,
 } from "@/once-ui/components";
-
-import React, { useEffect, useState } from "react";
-import styles from './Header.module.scss';
+import React, {useEffect, useState} from "react";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 
 interface HeaderProps {
     authenticated?: boolean;
@@ -20,140 +16,258 @@ interface HeaderProps {
     subline?: string;
 }
 
-const NAV_ITEMS = [
-    { id: 'about', label: 'Über mich', icon: 'person' },
-    { id: 'showcase', label: 'Showcase', icon: 'heart' },
-    { id: 'contact', label: 'Termin buchen', icon: 'calendar' },
-    { id: 'pricelist', label: 'Preisliste', icon: 'docCurrencyEuro' },
-];
-
-const Header: React.FC<HeaderProps> = () => {
-    const [activeSection, setActiveSection] = useState('');
-    const [isScrolled, setIsScrolled] = useState(false);
+const Header: React.FC<HeaderProps> = ({ authenticated, avatar, name, subline }) => {
+    const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { scrollY } = useScroll();
 
-    const handleScroll = (id: string, e: React.MouseEvent) => {
-        e.preventDefault();
-        const section = document.getElementById(id);
-        if (section) {
-            const headerHeight = document.querySelector('header')?.clientHeight || 0;
-            const offset = headerHeight + 24;
-
-            window.scrollTo({
-                top: section.offsetTop - offset,
-                behavior: 'smooth'
-            });
-
-            setActiveSection(id);
-            setIsMobileMenuOpen(false);
-        }
-    };
+    useMotionValueEvent(scrollY, "change", (latest) => setScrolled(latest > 50));
 
     useEffect(() => {
-        document.documentElement.style.scrollBehavior = 'smooth';
+        const updateScrolled = () => {
+            setScrolled(window.scrollY > 8);
+        };
+
+        window.addEventListener("scroll", updateScrolled);
+        updateScrolled();
+
         return () => {
-            document.documentElement.style.scrollBehavior = 'auto';
+            window.removeEventListener("scroll", updateScrolled);
         };
     }, []);
 
     return (
-        <Row
-            zIndex={3}
-            paddingX="8"
-            paddingTop="8"
-            fillWidth
-            position="sticky"
-            horizontal="center"
-            top="0"
-            className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}
-        >
-            <Fade
+        <>
+            <Column
+                zIndex={3}
                 fillWidth
-                position="absolute"
+                position="sticky"
                 top="0"
-                height={8}
-                pattern={{ display: true, size: "1" }}
-            />
-            <Row
-                as="header"
-                border="neutral-alpha-weak"
-                maxWidth="xl"
-                paddingX="m"
-                radius="l"
-                height="56"
-                vertical="center"
-                position="relative"
-                background="overlay"
-                className={styles.headerInner}
+                left="0"
             >
-                <Row show="s" gap="8" fillWidth vertical="center" horizontal="space-between">
-                    <Row>
-                        <Logo size="xl" href="/" className={styles.logo}/>
-                    </Row>
-                    <Row>
-                        <NavIcon
-                            isActive={isMobileMenuOpen}
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            aria-label="Mobile Menu"
-                            className={styles.menuToggle}
-                        />
-                    </Row>
-                </Row>
+                <Banner zIndex={4}>
+                    Die Webseite befindet sich noch im Aufbau...
+                </Banner>
+                <Fade fillWidth position="absolute" top="0" height={3} pattern={{display: true, size: "1"}}/>
 
-                <Row hide="s" fillWidth vertical="center" horizontal="end">
-                    <Logo size="xl" href="/" className={styles.logo}/>
-                    <Row
-                        textVariant="label-strong-s"
-                        fillWidth
-                        gap="24"
-                        paddingX="l"
-                        vertical="center"
-                        className={styles.navContainer}
-                    >
-                        {NAV_ITEMS.map((item) => (
-                            <SmartLink
-                                key={item.id}
-                                href={`#${item.id}`}
-                                onClick={(e) => handleScroll(item.id, e)}
-                                prefixIcon={item.icon}
-                                className={`${styles.navItem} ${activeSection === item.id ? styles.active : ''}`}
-                            >
-                                <Text className={styles.navText}>{item.label}</Text>
-                            </SmartLink>
-                        ))}
-                    </Row>
-                </Row>
-
-                {isMobileMenuOpen && (
-                    <Column
+                {/* MOBILE */}
+                <Row
+                    as="header"
+                    fillWidth
+                    paddingY="xs"
+                    paddingX="m"
+                    position="absolute"
+                    top="32"
+                    left="0"
+                    gap="m"
+                    vertical="center"
+                    horizontal="space-between"
+                    show="s"
+                    background="surface"
+                >
+                    <Logo href="/" size="xl"/>
+                    <NavIcon
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        isActive={isMobileMenuOpen}
                         show="s"
-                        position="absolute"
-                        top="64"
-                        left="0"
-                        fillWidth
-                        background="overlay"
-                        border="neutral-alpha-weak"
-                        radius="l"
-                        padding="l"
-                        gap="l"
-                        className={styles.mobileMenu}
+                        zIndex={5}
+                    />
+
+                    {isMobileMenuOpen && (
+                        <Column
+                            fillWidth
+                            position="absolute"
+                            top="56"
+                            left="0"
+                            background="surface"
+                            padding="l"
+                            gap="l"
+                            zIndex={3}
+                        >
+                            <Column gap="l" textVariant="body-strong-s" center>
+                                <SmartLink key="about" href="#about" prefixIcon="person">
+                                    Über mich
+                                </SmartLink>
+                                <SmartLink key="gallery" href="#gallery" prefixIcon="heart">
+                                    Überzeuge dich selbst!
+                                </SmartLink>
+                                <SmartLink key="contact" href="#contact" prefixIcon="calendar">
+                                    Termin buchen
+                                </SmartLink>
+                                <SmartLink key="pricelist" href="#pricelist" prefixIcon="docCurrencyEuro">
+                                    Preisliste
+                                </SmartLink>
+                            </Column>
+
+                            <Row gap="xl" center>
+                                <IconButton
+                                    icon="whatsapp"
+                                    variant="tertiary"
+                                    href="https://wa.me/+4915259675346?text=Hey%20Lisa%20%F0%9F%98%8A%20ich%20habe%20deine%20Webseite%20gesehen%20und%20habe%20Interesse%20an%20einem%20Termin."
+                                />
+                                <IconButton
+                                    icon="instagram"
+                                    variant="tertiary"
+                                    href="https://www.instagram.com/_l.m_beauty_/"
+                                />
+                            </Row>
+
+                            {authenticated && (
+                                <>
+                                    <Button
+                                        size="s"
+                                        label="Anmelden"
+                                        variant="secondary"
+                                        disabled={true}
+                                        weight="default"
+                                    />
+                                    <UserMenu
+                                        name={name}
+                                        subline={subline}
+                                        avatarProps={{ empty: !avatar, src: avatar }}
+                                    />
+                                </>
+                            )}
+                        </Column>
+                    )}
+
+                </Row>
+
+                {/* TABLET */}
+                <Row
+                    as="header"
+                    fillWidth
+                    paddingY="xs"
+                    paddingX="s"
+                    position="absolute"
+                    top="32"
+                    left="0"
+                    background="surface"
+                    gap="s"
+                    show="m"
+                    hide="s"
+                    vertical="center"
+                    horizontal="space-between"
+                >
+                    <Row
+                        gap="s"
                     >
-                        {NAV_ITEMS.map((item) => (
-                            <SmartLink
-                                key={item.id}
-                                href={`#${item.id}`}
-                                onClick={(e) => handleScroll(item.id, e)}
-                                prefixIcon={item.icon}
-                                className={`${styles.navItem} ${activeSection === item.id ? styles.active : ''}`}
+                        <Logo href="/" size="xl"/>
+                        <Row
+                            fillWidth
+                            vertical="center"
+                        >
+                            <Row
+                                fitWidth
+                                gap="s"
+                                vertical="center"
+                                textVariant="label-strong-s"
                             >
-                                <Text className={styles.navText}>{item.label}</Text>
-                            </SmartLink>
-                        ))}
-                    </Column>
-                )}
-            </Row>
-        </Row>
-    );
-};
+                                <SmartLink key="about" href="#about" prefixIcon="person">Über mich</SmartLink>
+                                <SmartLink key="gallery" href="#gallery" prefixIcon="heart">Überzeuge dich selbst!</SmartLink>
+                                <SmartLink key="contact" href="#contact" prefixIcon="calendar">Termin buchen</SmartLink>
+                                <SmartLink key="pricelist" href="#pricelist" prefixIcon="docCurrencyEuro">Preisliste</SmartLink>
+                            </Row>
+                        </Row>
+                    </Row>
+                    <Row
+                        gap="m"
+                    >
+                        <IconButton
+                            icon="whatsapp"
+                            variant="tertiary"
+                            href="https://wa.me/+4915259675346?text=Hey%20Lisa%20%F0%9F%98%8A%20ich%20habe%20deine%20Webseite%20gesehen%20und%20habe%20Interesse%20an%20einem%20Termin."
+                        />
+                        <IconButton
+                            icon="instagram"
+                            variant="tertiary"
+                            href="https://www.instagram.com/_l.m_beauty_/"
+                        />
+                        {authenticated && (
+                            <Button
+                                size="s"
+                                label="Anmelden"
+                                variant="secondary"
+                                disabled={true}
+                                weight="default"
+                            />
+                        )}
+
+                        {authenticated && (
+                            <UserMenu name={name} subline={subline} avatarProps={{empty: !avatar, src: avatar}}/>
+                        )}
+                    </Row>
+                </Row>
+
+                {/* DESKTOP */}
+                <Row
+                    as="header"
+                    fillWidth
+                    paddingY="xs"
+                    paddingX="m"
+                    position="absolute"
+                    top="32"
+                    left="0"
+                    background="surface"
+                    gap="m"
+                    vertical="center"
+                    horizontal="space-between"
+                    hide="m"
+                >
+                    <Row
+                        gap="m"
+                    >
+                        <Logo href="/" size="xl"/>
+                        <Row
+                            fillWidth
+                            vertical="center"
+                        >
+                            <Row
+                                fitWidth
+                                gap="l"
+                                vertical="center"
+                                textVariant="label-strong-m"
+                            >
+                                <SmartLink key="about" href="#about" prefixIcon="person">Über mich</SmartLink>
+                                <SmartLink key="gallery" href="#gallery" prefixIcon="heart">Überzeuge dich selbst!</SmartLink>
+                                <SmartLink key="contact" href="#contact" prefixIcon="calendar">Termin buchen</SmartLink>
+                                <SmartLink key="pricelist" href="#pricelist" prefixIcon="docCurrencyEuro">Preisliste</SmartLink>
+                            </Row>
+                        </Row>
+                    </Row>
+                    <Row
+                        gap="m"
+                    >
+                        <IconButton
+                            icon="whatsapp"
+                            variant="tertiary"
+                            href="https://wa.me/+4915259675346?text=Hey%20Lisa%20%F0%9F%98%8A%20ich%20habe%20deine%20Webseite%20gesehen%20und%20habe%20Interesse%20an%20einem%20Termin."
+                        />
+                        <IconButton
+                            icon="instagram"
+                            variant="tertiary"
+                            href="https://www.instagram.com/_l.m_beauty_/"
+                        />
+                        {authenticated && (
+                            <Button
+                                size="s"
+                                label="Anmelden"
+                                variant="secondary"
+                                disabled={true}
+                                weight="default"
+                            />
+                        )}
+
+                        {authenticated && (
+                            <UserMenu name={name} subline={subline} avatarProps={{empty: !avatar, src: avatar}}/>
+                        )}
+                    </Row>
+                </Row>
+            </Column>
+        </>
+    )
+}
+
+Header.displayName = "Header";
 
 export { Header };

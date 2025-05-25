@@ -1,0 +1,62 @@
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(to right, var(--once-ui-page-background), transparent);
+  }
+
+  &::after {
+    right: 0;
+    transform: rotate(180deg);
+  }
+
+  &::before {
+    left: 0;
+  }
+}
+
+.scrollContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  padding-block: 0.5rem;
+  width: max-content;
+  min-width: 100%;
+  animation: scroll 60s linear infinite;
+  scroll-behavior: smooth;
+  will-change: transform;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.badge {
+  flex: 0 0 auto;
+  transition: transform 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
