@@ -2,8 +2,8 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { Flex, Row, Column, Text, Icon, ToggleButton } from ".";
 import styles from "./MegaMenu.module.scss";
+import {Flex, Row, Column, Text, Icon, ToggleButton} from "@/once-ui/components";
 
 
 export interface MenuLink {
@@ -195,8 +195,7 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ menuGroups, className, ...re
                         <ToggleButton 
                           key={`link-${linkIndex}`}
                           className="fit-height p-4 pr-12"
-                          fillWidth 
-                          justifyContent="start" 
+                          fillWidth
                           href={link.href}
                           onClick={() => handleLinkClick(link.href)}
                         >
