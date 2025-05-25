@@ -32,7 +32,7 @@ const Media: React.FC<MediaProps> = ({
                                          objectFit = "cover",
                                          enlarge = false,
                                          src,
-                                         unoptimized = false,
+                                         unoptimized = true,
                                          priority,
                                          sizes = "100vw",
                                          foreground,
