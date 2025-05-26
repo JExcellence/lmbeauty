@@ -20,7 +20,6 @@ const Footer = () => {
             <Flex vertical="space-between" horizontal="space-between" wrap paddingX="l">
                 <Column gap="m" horizontal="start">
                     <Text variant="heading-default-l">LM Beauty</Text>
-                    <ElementType key="contact" href="#">Schulungen (Bald)</ElementType>
                     <ElementType key="pricelist" href="#">Produkte (Bald)</ElementType>
                     <ElementType key="partner" href="https://www.jexcellence.de">Entwickelt von JExcellence</ElementType>
                 </Column>
