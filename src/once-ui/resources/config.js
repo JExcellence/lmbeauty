@@ -33,7 +33,7 @@ const og = {
 
 const schema = {
   logo: "https://lmbeauty.de/images/avatar_1.png",
-  type: "LocalBusiness",
+  type: "website",
   title: "LMBeauty Oldenburg – Expertin für Wimpernverlängerung & Lash Lifting",
   description: "Entdecke professionelle Wimpernverlängerung & Lash Lifting bei LMBeauty in Oldenburg. Hochwertige Produkte, langanhaltende Ergebnisse & individuelle Beratung.",
   email: "info@lmbeauty.de",
