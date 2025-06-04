@@ -22,7 +22,7 @@ export default function ImpressumPage() {
             <Text as="p" variant="body-default-s" marginTop="s">
                 LM Beauty<br />
                 Lisa Marie Pinske<br />
-                Wechloyer Tor 5<br />
+                Bloherfelderstraße 40<br />
                 26219 Oldenburg<br />
                 Deutschland
             </Text>
